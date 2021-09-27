@@ -36,28 +36,6 @@
                 </a>
 
                 <hr class="sidebar-divider">
-
-                <div class="sidebar-heading" style="color:white!important;">
-                    Editables
-                </div>
-
-                <li class="nav-item">
-                    <a class="nav-link" href="servicios.php">
-                    <i class="fas fa-concierge-bell"></i>
-                    <span>Servicios</span></a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="historia.php">
-                    <i class="fas fa-history"></i>
-                    <span>Historia</span></a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link active" href="contacto.php">
-                    <i class="fas fa-address-book"></i>
-                    <span>Contacto</span></a>
-                </li>
             </ul>
             ';
 				break;
@@ -72,18 +50,6 @@
                     </div>
                     <div class="sidebar-brand-text mx-3">Administrador</div>
                 </a>
-
-                <hr class="sidebar-divider">
-        
-                <div class="sidebar-heading" style="color:white!important;">
-                    Administrador
-                </div>
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="administradores.php">
-                    <i class="fas fa-users"></i>
-                    <span>Profesores</span></a>
-                </li>
 
                 <hr class="sidebar-divider">
 
