@@ -74,6 +74,12 @@
                     <i class="fas fa-address-book"></i>
                     <span>Contacto</span></a>
                 </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" href="categorias.php">
+                    <i class="fas fa-list"></i>
+                    <span>Categorías</span></a>
+                </li>
             </ul>
             ';
 				break;

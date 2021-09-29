@@ -4,7 +4,7 @@ function del(id){
     
         Swal.fire({
             type: 'info',
-            title: '¿Estás seguro de eliminar la historia?',
+            title: '¿Estás seguro de eliminar la categoría?',
             showCancelButton: true,
             showConfirmButton:true,
             cancelButtonText:'No',
@@ -13,20 +13,20 @@ function del(id){
         $('.swal2-confirm').click(function(e){
             e.preventDefault();
             $.ajax({
-                url:'../Db/eliminarHistoria.php',
+                url:'../Db/eliminarCategoria.php',
                 data:form_data,
                 cache: false,
                 contentType: false,
                 processData: false,
                 type:'post',
                 success:function(){
-                    Swal.fire('Historia eliminada correctamente! ','','success').then((result)=>{
+                    Swal.fire('Categoría eliminada correctamente! ','','success').then((result)=>{
                         if(result.value){
-                            window.location.href = "historia.php";
+                            window.location.href = "categorias.php";
                         }
                     });           
                 }, error:function(){
-                    Swal.fire('¡La historia no pudo ser eliminada!','','error');
+                    Swal.fire('¡La categoría no pudo ser eliminada!','','error');
                 }   
             });
         });
@@ -34,8 +34,6 @@ function del(id){
             e.preventDefault();
             Swal.close();
         });
-
-
 }
 
 //Quitar la posibilidad de dar click derecho
