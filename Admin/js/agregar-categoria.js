@@ -1,9 +1,9 @@
-var img;
-var titulo="";
-var subtitulo="";
-var contenido="";
-var profesor="";
-/*
+let img;
+let titulo="";
+let subtitulo="";
+let contenido="";
+let profesor="";
+
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
     e.preventDefault();
@@ -14,18 +14,18 @@ $(document).keydown(function(e){
     if(e.which === 123){
        return false;
     }
-});*/
+});
 function r() {
     location.href = "index.php";
 }
 
 //Quitar la posibilidad de copiar en titulo y cuerpo
 window.onload = function() {
-    var title = document.getElementById('titulo');
+    let title = document.getElementById('titulo');
     title.onpaste = function(e) {
       e.preventDefault();
     }
-    var body = document.getElementById('contenido');
+    let body = document.getElementById('contenido');
     body.onpaste = function(e) {
       e.preventDefault();
     }
@@ -34,7 +34,7 @@ window.onload = function() {
 // / 48-57 numeros / 38 & / 46 . / 60 < / 61 = / 62 > /
 function tprotection(str){
 
-    var iKeyCode = (str.which) ? str.which : str.keyCode
+    let iKeyCode = (str.which) ? str.which : str.keyCode
     if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38|| iKeyCode == 34 )
         return false;
     return true;
@@ -44,7 +44,7 @@ function tprotection(str){
 // / 38 & / 46 . / 60 < / 61 = / 62 > /
 function bprotection(str){
 
-    var iKeyCode = (str.which) ? str.which : str.keyCode
+    let iKeyCode = (str.which) ? str.which : str.keyCode
 
     if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38|| iKeyCode == 34)
         return false;
@@ -190,22 +190,22 @@ $(document).ready(function(){
 
             if(validate1(1) == true && validate1(2) == true && validate1(3) == true && validate1(4) == true && validate1(5) == true){
 
-                var name = document.getElementById("img").files[0].name;
-                var ext = name.split('.').pop().toLowerCase();
+                let name = document.getElementById("img").files[0].name;
+                let ext = name.split('.').pop().toLowerCase();
 
                 if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1) Swal.fire({type:"error", title:"Extensión de imagen no permitida, utiliza: png, jpg, jpeg"});
 
                 else {
-                    var oFReader = new FileReader();
+                    let oFReader = new FileReader();
                     oFReader.readAsDataURL(document.getElementById("img").files[0]);
-                    var f = document.getElementById("img").files[0];
-                    var fsize = f.size;
+                    let f = document.getElementById("img").files[0];
+                    let fsize = f.size;
                     
                     if(fsize > 2000000) Swal.fire({type:"error", title:"Imagen demasiado grande"});
 
                     else{  
                         img = document.getElementById('img').files[0];
-                        var form_data = new FormData();
+                        let form_data = new FormData();
                         form_data.append("img", img);
                         form_data.append("contenido", contenido);form_data.append("titulo", titulo);
                         form_data.append("subtitulo", subtitulo);form_data.append("profesor", profesor);
@@ -234,15 +234,15 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".browse", function() {
-    var file = $(this).parents().find(".file");
+    let file = $(this).parents().find(".file");
     file.trigger("click");
   });
 
 $('input[type="file"]').change(function(e) {
-    var fileName = e.target.files[0].name;
+    let fileName = e.target.files[0].name;
     $("#file").val(fileName);
   
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function(e) {
       // get loaded data and render thumbnail.
       document.getElementById("preview").src = e.target.result;

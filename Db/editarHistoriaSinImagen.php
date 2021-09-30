@@ -21,20 +21,20 @@
     if ($contenido!=="" && $titulo!=="" && $subtitulo!=="" && $id!==""){
 
         $conexion = conectar();
-        $editarPublicacion = $conexion->prepare(" UPDATE historia SET titulo = :titulo, subtitulo= :subtitulo, contenido = :contenido WHERE ID = :id ");
-        $editarPublicacion->bindParam(':titulo', $titulo, PDO::PARAM_STR);
-        $editarPublicacion->bindParam(':subtitulo', $subtitulo, PDO::PARAM_STR);
-        $editarPublicacion->bindParam(':contenido', $contenido, PDO::PARAM_STR);
-        $editarPublicacion->bindParam(':id', $id, PDO::PARAM_STR);
-        $editarPublicacion->execute();
+        $editarHistoria = $conexion->prepare(" UPDATE historia SET titulo = :titulo, subtitulo= :subtitulo, contenido = :contenido WHERE ID = :id ");
+        $editarHistoria->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+        $editarHistoria->bindParam(':subtitulo', $subtitulo, PDO::PARAM_STR);
+        $editarHistoria->bindParam(':contenido', $contenido, PDO::PARAM_STR);
+        $editarHistoria->bindParam(':id', $id, PDO::PARAM_STR);
+        $editarHistoria->execute();
 
-        if($editarPublicacion->rowCount() >= 1){
-            echo $editarPublicacion->execute();
+        if($editarHistoria->rowCount() >= 1){
+            echo $editarHistoria->execute();
 	        echo json_encode(['code'=>200]);
 			exit;
         }
         else {
-            echo $editarPublicacion->execute();
+            echo $editarHistoria->execute();
 	        echo json_encode(['code'=>500]);
 			exit;
         }

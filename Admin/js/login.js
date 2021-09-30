@@ -1,9 +1,9 @@
 $(document).ready(function(e){
     $(".login100-form-btn").click(function(e){
         e.preventDefault();
-        var user = document.getElementById("user").value;
-        var pass = document.getElementById("pass").value;
-        var form_data = new FormData();
+        let user = document.getElementById("user").value;
+        let pass = document.getElementById("pass").value;
+        let form_data = new FormData();
         form_data.append("user", user);
         form_data.append("pass", pass);
         
@@ -33,7 +33,7 @@ $(document).ready(function(e){
 // Validaciones para < > . & y números en el usuario
 // / 38 & / 60 < / 61 = / 62 > /
 function uprotection(str){
-    var iKeyCode = (str.which) ? str.which : str.keyCode
+    let iKeyCode = (str.which) ? str.which : str.keyCode
     if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38) return false;
     return true;
 }
@@ -41,7 +41,7 @@ function uprotection(str){
 // Validaciones para < > . & y números en la contraseña
 // / 38 & / 60 < / 61 = / 62 > /
 function pprotection(str){
-    var iKeyCode = (str.which) ? str.which : str.keyCode
+    let iKeyCode = (str.which) ? str.which : str.keyCode
     if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38) return false;
     return true;
 }

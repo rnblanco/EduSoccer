@@ -4,7 +4,7 @@ function del(id){
     
         Swal.fire({
             type: 'info',
-            title: '¿Estás seguro de eliminar la categoría?',
+            title: '¿Estás seguro de eliminar el alumno?',
             showCancelButton: true,
             showConfirmButton:true,
             cancelButtonText:'No',
@@ -13,20 +13,20 @@ function del(id){
         $('.swal2-confirm').click(function(e){
             e.preventDefault();
             $.ajax({
-                url:'../Db/eliminarCategoria.php',
+                url:'../Db/eliminarAlumno.php',
                 data:form_data,
                 cache: false,
                 contentType: false,
                 processData: false,
                 type:'post',
                 success:function(){
-                    Swal.fire('Categoría eliminada correctamente! ','','success').then((result)=>{
+                    Swal.fire('Alumno eliminado correctamente! ','','success').then((result)=>{
                         if(result.value){
-                            window.location.href = "categorias.php";
+                            window.location.href = "alumnos.php";
                         }
                     });           
                 }, error:function(){
-                    Swal.fire('¡La categoría no pudo ser eliminada!','','error');
+                    Swal.fire('¡el alumno no pudo ser eliminado!','','error');
                 }   
             });
         });

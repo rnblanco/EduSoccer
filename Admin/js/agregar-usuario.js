@@ -1,8 +1,8 @@
-var nombre="";
-var pais="";
-var email = "";
-var pass = "";
-var stipo = document.getElementById('stipo').value;
+let nombre="";
+let pais="";
+let email = "";
+let pass = "";
+let stipo = document.getElementById('stipo').value;
 
 
 //Quitar la posibilidad de dar click derecho
@@ -23,19 +23,19 @@ function r() {
 
 //Quitar la posibilidad de copiar en todo
 window.onload = function() {
-    var nombre = document.getElementById('nombre');
+    let nombre = document.getElementById('nombre');
     nombre.onpaste = function(e) {
       e.preventDefault();
     }
-    var pais = document.getElementById('pais');
+    let pais = document.getElementById('pais');
     pais.onpaste = function(e) {
       e.preventDefault();
     }
-    var email = document.getElementById('email');
+    let email = document.getElementById('email');
     email.onpaste = function(e) {
       e.preventDefault();
     }
-    var pass = document.getElementById('pass');
+    let pass = document.getElementById('pass');
     pass.onpaste = function(e) {
       e.preventDefault();
     }
@@ -50,7 +50,7 @@ function nprotection(str){
     }
     else {
 
-        var iKeyCode = (str.which) ? str.which : str.keyCode
+        let iKeyCode = (str.which) ? str.which : str.keyCode
         if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34)
             return false;
         return true; 
@@ -65,7 +65,7 @@ function pprotection(str){
     }
     else {
 
-        var iKeyCode = (str.which) ? str.which : str.keyCode
+        let iKeyCode = (str.which) ? str.which : str.keyCode
         if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34)
             return false;
         return true; 
@@ -80,7 +80,7 @@ function eprotection(str){
     }
     else {
 
-        var iKeyCode = (str.which) ? str.which : str.keyCode
+        let iKeyCode = (str.which) ? str.which : str.keyCode
         if ( iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34 )
             return false;
         return true; 
@@ -91,7 +91,7 @@ function eprotection(str){
 // / 38 & / 46 . / 60 < / 61 = / 62 > /
 function cprotection(str){
 
-    var iKeyCode = (str.which) ? str.which : str.keyCode
+    let iKeyCode = (str.which) ? str.which : str.keyCode
 
     if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38 || iKeyCode == 34)
         return false;
@@ -193,7 +193,7 @@ $(document).ready(function(){
 
                 if( validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(5)){
 
-                    var form_data = new FormData();
+                    let form_data = new FormData();
                     form_data.append("nombre", nombre); form_data.append("pais", pais);form_data.append("email", email);form_data.append("tipo", tipo);form_data.append("pass", pass);         
                     $.ajax({
                         url:'../Db/agregarUsuario.php',
@@ -226,7 +226,7 @@ $(document).ready(function(){
 
                 if( validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(5)){
 
-                    var form_data = new FormData();
+                    let form_data = new FormData();
                     form_data.append("nombre", nombre); form_data.append("pais", pais);form_data.append("email", email);form_data.append("tipo", "1");form_data.append("pass", pass);         
                     $.ajax({
                         url:'../Db/agregarUsuario.php',

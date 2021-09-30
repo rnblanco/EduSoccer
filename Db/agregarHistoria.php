@@ -22,10 +22,10 @@
     
     if( $subtitulo!=="" && $contenido!=="" && $titulo!=="" && $nuevalocacion!=="" ) {
         $conexion = conectar();
-        $agregarHistorial = $conexion->prepare('INSERT INTO historia (Titulo, Subtitulo, Contenido, Imagen) VALUES (?,?,?,?)');
-        $agregarHistorial->execute([$titulo, $subtitulo, $contenido, $nuevalocacion]);
+        $agregarHistoria = $conexion->prepare('INSERT INTO historia (Titulo, Subtitulo, Contenido, Imagen) VALUES (?,?,?,?)');
+        $agregarHistoria->execute([$titulo, $subtitulo, $contenido, $nuevalocacion]);
 
-        if($agregarHistorial->rowCount() >= 1){
+        if($agregarHistoria->rowCount() >= 1){
             move_uploaded_file($_FILES['img']['tmp_name'], $locacion);
             echo json_encode(['code'=>200]);
             exit;

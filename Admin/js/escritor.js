@@ -1,5 +1,5 @@
 function del(id,tipo){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", id);
     
     if(tipo==3){
@@ -76,7 +76,7 @@ function del(id,tipo){
 }
 
 function deshab(id){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", id);
     
     Swal.fire({
@@ -114,7 +114,7 @@ function deshab(id){
 }
 
 function hab(id){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", id);
     
     Swal.fire({
@@ -153,7 +153,7 @@ function hab(id){
 }
 
 function deshabAdmin(id){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", id);
     
     Swal.fire({
@@ -191,7 +191,7 @@ function deshabAdmin(id){
 }
 
 function habAdmin(id){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", id);
     
     Swal.fire({

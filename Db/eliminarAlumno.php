@@ -14,11 +14,11 @@
 
     if( $id != "") {
         $conexion = conectar();
-        $eliminarHistoria = $conexion->prepare('DELETE from  historia WHERE  ID = :id ');
-        $eliminarHistoria->bindParam(':id', $id, PDO::PARAM_STR);
-        $eliminarHistoria->execute();
+        $eliminarAlumno = $conexion->prepare('DELETE from Alumnos WHERE  ID = :id ');
+        $eliminarAlumno->bindParam(':id', $id, PDO::PARAM_STR);
+        $eliminarAlumno->execute();
         
-        if($eliminarHistoria->rowCount() >= 1){
+        if($eliminarAlumno->rowCount() >= 1){
             http_response_code(200);
             json_encode($data);
         }

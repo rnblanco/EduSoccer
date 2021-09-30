@@ -19,17 +19,17 @@
 	if($contenido !== "" && $titulo !== "" && $id !== ""){
 
 		$conexion = conectar();
-		$editarPublicacion = $conexion->prepare(" UPDATE servicios SET titulo = :titulo , contenido = :contenido WHERE  ID = :id ");
-		$editarPublicacion->bindParam(':titulo', $titulo, PDO::PARAM_STR);
-		$editarPublicacion->bindParam(':contenido', $contenido, PDO::PARAM_STR);
-		$editarPublicacion->bindParam(':id', $id, PDO::PARAM_STR);
-		$editarPublicacion->execute();
+		$editarServicio = $conexion->prepare(" UPDATE servicios SET titulo = :titulo , contenido = :contenido WHERE  ID = :id ");
+		$editarServicio->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+		$editarServicio->bindParam(':contenido', $contenido, PDO::PARAM_STR);
+		$editarServicio->bindParam(':id', $id, PDO::PARAM_STR);
+		$editarServicio->execute();
 
-		if($editarPublicacion->rowCount() >= 1){
-			echo $editarPublicacion->execute();
+		if($editarServicio->rowCount() >= 1){
+			echo $editarServicio->execute();
 			http_response_code(200);
 		}else{
-			echo $editarPublicacion->execute();
+			echo $editarServicio->execute();
 			http_response_code(500);
 		}
 

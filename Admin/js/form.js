@@ -1,7 +1,7 @@
-var img;
-var title="";
-var body="";
-var seccion = "";
+let img;
+let title="";
+let body="";
+let seccion = "";
 
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
@@ -21,11 +21,11 @@ function r() {
 
 //Quitar la posibilidad de copiar en titulo y cuerpo
 window.onload = function() {
-    var title = document.getElementById('title');
+    let title = document.getElementById('title');
     title.onpaste = function(e) {
       e.preventDefault();
     }
-    var body = document.getElementById('body');
+    let body = document.getElementById('body');
     body.onpaste = function(e) {
       e.preventDefault();
     }
@@ -40,7 +40,7 @@ function tprotection(str){
     }
     else {
 
-        var iKeyCode = (str.which) ? str.which : str.keyCode
+        let iKeyCode = (str.which) ? str.which : str.keyCode
         if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38|| iKeyCode == 34 )
             return false;
         return true; 
@@ -52,7 +52,7 @@ function tprotection(str){
 // / 38 & / 46 . / 60 < / 61 = / 62 > /
 function bprotection(str){
 
-    var iKeyCode = (str.which) ? str.which : str.keyCode
+    let iKeyCode = (str.which) ? str.which : str.keyCode
 
     if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38|| iKeyCode == 34)
         return false;
@@ -116,7 +116,7 @@ function validate1(val) {
                 switch(seccion){
                     case "ActividadesPastorales": seccion = "Actividades Pastorales";break;
                     case "ArticulosVocacionales": seccion = "Artículos Vocacionales";break;
-                    case "ArticulosVarios": seccion = " Artículos Varios";break;
+                    case "Articulosletios": seccion = " Artículos letios";break;
                     case "TestimoniosVocacionales": seccion = " Testimonios Vocacionales";break;
                 }  
             }
@@ -161,7 +161,7 @@ function validate1(val) {
                 switch(seccion){
                     case "ActividadesPastorales": seccion = "Actividades Pastorales";break;
                     case "ArticulosVocacionales": seccion = "Artículos Vocacionales";break;
-                    case "ArticulosVarios": seccion = " Artículos Varios";break;
+                    case "Articulosletios": seccion = " Artículos letios";break;
                     case "TestimoniosVocacionales": seccion = " Testimonios Vocacionales";break;
                 }  
             }
@@ -180,7 +180,7 @@ function validate1(val) {
     
 $(document).ready(function(){
     
-        var current_fs, next_fs, previous_fs;
+        let current_fs, next_fs, previous_fs;
         
         $(".next").click(function(e){
             e.preventDefault();
@@ -231,25 +231,25 @@ $(document).ready(function(){
 
             else if(!str2.localeCompare($(this).attr('id')) && val2 == true){
 
-                var name = document.getElementById("img").files[0].name;
-                var ext = name.split('.').pop().toLowerCase();
+                let name = document.getElementById("img").files[0].name;
+                let ext = name.split('.').pop().toLowerCase();
 
                 if(jQuery.inArray(ext, ['png','jpg','jpeg']) == -1){
                     Swal.fire({type:"error", title:"Extensión de imagen no permitida, utiliza: png, jpg, jpeg"});
                 }
 
                 else {
-                    var oFReader = new FileReader();
+                    let oFReader = new FileReader();
                     oFReader.readAsDataURL(document.getElementById("img").files[0]);
-                    var f = document.getElementById("img").files[0];
-                    var fsize = f.size;
+                    let f = document.getElementById("img").files[0];
+                    let fsize = f.size;
                     
                     if(fsize > 2000000){
                         Swal.fire({type:"error", title:"Imagen demasiado grande"});
                     }
                     else{  
                         img = document.getElementById('img').files[0];
-                        var form_data = new FormData();
+                        let form_data = new FormData();
                         form_data.append("img", img);
                         form_data.append("seccion", seccion);form_data.append("title", title);form_data.append("body", body);
                         console.log(img,seccion,title,body);
@@ -309,7 +309,7 @@ $(document).ready(function(){
         });
     
         $('.row .radio').click(function(){
-            var sel = document.getElementsByClassName('radio selected');
+            let sel = document.getElementsByClassName('radio selected');
             if(sel.length>0){
                 sel[0].classList.remove('selected');
                 $(this).toggleClass('selected');
@@ -322,15 +322,15 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".browse", function() {
-    var file = $(this).parents().find(".file");
+    let file = $(this).parents().find(".file");
     file.trigger("click");
   });
 
 $('input[type="file"]').change(function(e) {
-    var fileName = e.target.files[0].name;
+    let fileName = e.target.files[0].name;
     $("#file").val(fileName);
   
-    var reader = new FileReader();
+    let reader = new FileReader();
     reader.onload = function(e) {
       // get loaded data and render thumbnail.
       document.getElementById("preview").src = e.target.result;

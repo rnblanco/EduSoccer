@@ -24,21 +24,21 @@
     if ($contenido!=="" && $titulo!=="" && $subtitulo!=="" && $id!=="" && $profesor!==""){
 
         $conexion = conectar();
-        $editarPublicacion = $conexion->prepare(" UPDATE Categorias SET titulo = :titulo, subtitulo= :subtitulo, contenido = :contenido, profesor=:profesor WHERE ID = :id ");
-        $editarPublicacion->bindParam(':titulo', $titulo, PDO::PARAM_STR);
-        $editarPublicacion->bindParam(':subtitulo', $subtitulo, PDO::PARAM_STR);
-        $editarPublicacion->bindParam(':contenido', $contenido, PDO::PARAM_STR);
-	    $editarPublicacion->bindParam(':profesor', $profesor, PDO::PARAM_STR);
-        $editarPublicacion->bindParam(':id', $id, PDO::PARAM_STR);
-        $editarPublicacion->execute();
+        $editarCategoria = $conexion->prepare(" UPDATE Categorias SET titulo = :titulo, subtitulo= :subtitulo, contenido = :contenido, profesor=:profesor WHERE ID = :id ");
+        $editarCategoria->bindParam(':titulo', $titulo, PDO::PARAM_STR);
+        $editarCategoria->bindParam(':subtitulo', $subtitulo, PDO::PARAM_STR);
+        $editarCategoria->bindParam(':contenido', $contenido, PDO::PARAM_STR);
+	    $editarCategoria->bindParam(':profesor', $profesor, PDO::PARAM_STR);
+        $editarCategoria->bindParam(':id', $id, PDO::PARAM_STR);
+        $editarCategoria->execute();
 
-        if($editarPublicacion->rowCount() >= 1){
-            echo $editarPublicacion->execute();
+        if($editarCategoria->rowCount() >= 1){
+            echo $editarCategoria->execute();
 	        echo json_encode(['code'=>200]);
 			exit;
         }
         else {
-            echo $editarPublicacion->execute();
+            echo $editarCategoria->execute();
 	        echo json_encode(['code'=>500]);
 			exit;
         }

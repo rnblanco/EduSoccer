@@ -1,5 +1,5 @@
 function del(id){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", id);
     
         Swal.fire({

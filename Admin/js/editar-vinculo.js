@@ -1,6 +1,6 @@
-var titulo="";
-var contenido="";
-var id="";
+let titulo="";
+let contenido="";
+let id="";
 
 
 //Quitar la posibilidad de dar click derecho
@@ -21,11 +21,11 @@ function r() {
 
 //Quitar la posibilidad de copiar en titulo y cuerpo
 window.onload = function() {
-    var title = document.getElementById('titulo');
+    let title = document.getElementById('titulo');
     title.onpaste = function(e) {
       e.preventDefault();
     }
-    var body = document.getElementById('contenido');
+    let body = document.getElementById('contenido');
     body.onpaste = function(e) {
       e.preventDefault();
     }
@@ -35,7 +35,7 @@ window.onload = function() {
 // / 48-57 numeros / 38 & / 46 . / 60 < / 61 = / 62 > /
 function tprotection(str){
 
-        var iKeyCode = (str.which) ? str.which : str.keyCode
+        let iKeyCode = (str.which) ? str.which : str.keyCode
         if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34)
             return false;
         return true; 
@@ -45,7 +45,7 @@ function tprotection(str){
 // / 38 & / 46 . / 60 < / 61 = / 62 > /
 function bprotection(str){
 
-    var iKeyCode = (str.which) ? str.which : str.keyCode
+    let iKeyCode = (str.which) ? str.which : str.keyCode
 
     if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38|| iKeyCode == 34)
         return false;
@@ -142,7 +142,7 @@ $(document).ready(function(){
 
             if( validate1(1) && validate1(2) && validate1(4)){
 
-                var form_data = new FormData();
+                let form_data = new FormData();
 
                         form_data.append("contenido", contenido);form_data.append("titulo", titulo);form_data.append("id",id);      
                         $.ajax({

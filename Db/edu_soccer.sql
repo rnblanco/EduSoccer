@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 27-09-2021 a las 08:06:59
+-- Tiempo de generación: 30-09-2021 a las 10:44:29
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.3.28
 
@@ -34,13 +34,22 @@ CREATE TABLE `alumnos` (
   `Fecha_Nacimiento` date NOT NULL,
   `Fecha_Ingreso` date NOT NULL,
   `Fecha_Matricula` date DEFAULT NULL,
-  `Foto` varchar(220) DEFAULT NULL,
-  `Nombre_Padre` int(11) DEFAULT NULL,
-  `Telefono_Padre` int(11) DEFAULT NULL,
-  `Nombre_Madre` int(11) DEFAULT NULL,
-  `Telefono_Madre` int(11) DEFAULT NULL,
-  `Contacto` varchar(220) NOT NULL
+  `Imagen` varchar(220) DEFAULT NULL,
+  `Nombre_Padre` varchar(220) DEFAULT NULL,
+  `Telefono_Padre` varchar(11) DEFAULT NULL,
+  `Nombre_Madre` varchar(220) DEFAULT NULL,
+  `Telefono_Madre` varchar(11) DEFAULT NULL,
+  `Contacto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `alumnos`
+--
+
+INSERT INTO `alumnos` (`ID`, `Nombre`, `Edad`, `Fecha_Nacimiento`, `Fecha_Ingreso`, `Fecha_Matricula`, `Imagen`, `Nombre_Padre`, `Telefono_Padre`, `Nombre_Madre`, `Telefono_Madre`, `Contacto`) VALUES
+(12, 'Alejandro Velasco', 12, '2012-12-12', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212),
+(13, 'Fernando Díaz', 12, '2012-02-20', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212),
+(14, 'Javier Avelar', 12, '2012-12-12', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212);
 
 -- --------------------------------------------------------
 
@@ -81,11 +90,11 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`ID`, `Titulo`, `Subtitulo`, `Contenido`, `Profesor`, `Imagen`) VALUES
-(1, 'Categoría U5', 'Para niños de 3 a 5 años', 'Esta categoría es para los niños que tienen entre 4 y 5 años que quieren practicar football soccer', 'Amilcar', 'edu_image2.jpeg'),
-(2, 'Categoría U7', 'Para niños de 6 y 7 años', 'Esta categoria es para los niños que tienen entre 6 y 7 años que quieren practicar football soccer', 'Andrés', 'edu_image4.jpeg'),
-(3, 'Categoria U9', 'Para niños de 8 y 9 años', 'Esta categoria es para los niños que tienen entre 8 y 9 que quieren practicar football soccer', 'Salvador', 'edu_image5.jpg'),
-(4, 'Categoría U12', 'Para niños de 10 a 12 años', 'Esta categoria es para los niños que tienen entre 10 y 11 que quieren practicar football soccer', 'Mario', 'edu_image6.jpeg'),
-(5, 'Categoría U15', 'Para niños de 12 a 15 años', 'Esta categoria es para los niños que tienen entre 12 a 15 años y quieren practicar football soccer', 'Luis', 'img3.jpeg');
+(1, 'Categoría U5', 'Para niños de 3 a 5 añoss', 'Esta categoría es para los niños que tienen entre 4 y 5 años que quieren practicar football soccer', 'Amilcar', 'edu_image2.jpeg'),
+(2, 'Categoría U7', 'Para niños de 6 y 7 años', 'Esta categoría es para los niños que tienen entre 6 y 7 años que quieren practicar football soccer', 'Andrés', 'edu_image4.jpeg'),
+(3, 'Categoria U9', 'Para niños de 8 y 9 años', 'Esta categoría es para los niños que tienen entre 8 y 9 que quieren practicar football soccer', 'Salvador', 'edu_image5.jpg'),
+(4, 'Categoría U12', 'Para niños de 10 a 12 años', 'Esta categoría es para los niños que tienen entre 10 y 11 que quieren practicar football soccer', 'Mario', 'edu_image6.jpeg'),
+(5, 'Categoría U15', 'Para niños de 12 a 15 años', 'Esta categoría es para los niños que tienen entre 12 a 15 años y quieren practicar football soccer', 'Luis', 'img3.jpeg');
 
 -- --------------------------------------------------------
 
@@ -262,7 +271,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `cargos`
@@ -274,7 +283,7 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
@@ -286,7 +295,7 @@ ALTER TABLE `contacto`
 -- AUTO_INCREMENT de la tabla `historia`
 --
 ALTER TABLE `historia`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`

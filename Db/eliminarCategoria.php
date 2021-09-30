@@ -14,11 +14,11 @@
 
     if( $id != "") {
         $conexion = conectar();
-        $eliminarPublicacion = $conexion->prepare('DELETE from  Categorias WHERE  ID = :id ');
-        $eliminarPublicacion->bindParam(':id', $id, PDO::PARAM_STR);
-        $eliminarPublicacion->execute();
+        $eliminarCategoria = $conexion->prepare('DELETE from  Categorias WHERE  ID = :id ');
+        $eliminarCategoria->bindParam(':id', $id, PDO::PARAM_STR);
+        $eliminarCategoria->execute();
         
-        if($eliminarPublicacion->rowCount() >= 1){
+        if($eliminarCategoria->rowCount() >= 1){
             http_response_code(200);
             json_encode($data);
         }

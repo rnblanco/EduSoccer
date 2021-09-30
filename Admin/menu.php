@@ -36,6 +36,16 @@
                 </a>
 
                 <hr class="sidebar-divider">
+                
+                <div class="sidebar-heading" style="color:white!important;">
+                    Profesorado
+                </div>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="alumnos.php">
+                    <i class="fas fa-plus"></i>
+                    <span>Alumnos</span></a>
+                </li>
             </ul>
             ';
 				break;
@@ -80,6 +90,19 @@
                     <i class="fas fa-list"></i>
                     <span>Categorías</span></a>
                 </li>
+                
+                <hr class="sidebar-divider">
+
+                <div class="sidebar-heading" style="color:white!important;">
+                    Administración
+                </div>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="alumnos.php">
+                    <i class="fas fa-plus"></i>
+                    <span>Alumnos</span></a>
+                </li>
+                
             </ul>
             ';
 				break;

@@ -19,11 +19,11 @@
 
     function Categorias(){
 	    $conexion = conectar();
-	    $buscarHistoria = $conexion->prepare("SELECT * FROM Categorias ORDER BY ID");
-	    $buscarHistoria->execute();
-	    $Historia = $buscarHistoria->fetchAll();
+	    $buscarCategorias = $conexion->prepare("SELECT * FROM Categorias ORDER BY ID");
+	    $buscarCategorias->execute();
+	    $Categorias = $buscarCategorias->fetchAll();
 
-	    foreach($Historia as list($id, $titulo, $subtitulo, $contenido, $profesor, $imagen)){
+	    foreach($Categorias as list($id, $titulo, $subtitulo, $contenido, $profesor, $imagen)){
 		    $imagen==""?$imagen="default.png":$imagen;
 		    if( strlen($contenido) >=300 ){
 			    $contenido = substr($contenido, 0, 200); $contenido .= "...";

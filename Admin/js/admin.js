@@ -1,5 +1,5 @@
 function del(idPublicacion){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", idPublicacion);
     
     Swal.fire({
@@ -38,7 +38,7 @@ function del(idPublicacion){
 }
 
 function delAdmin(idPublicacion){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", idPublicacion);
     
     Swal.fire({
@@ -77,7 +77,7 @@ function delAdmin(idPublicacion){
 }
 
 function deshab(idPublicacion){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", idPublicacion);
     
     Swal.fire({
@@ -115,7 +115,7 @@ function deshab(idPublicacion){
 }
 
 function hab(idPublicacion){
-    var form_data = new FormData();
+    let form_data = new FormData();
     form_data.append("id", idPublicacion);
     
     Swal.fire({
