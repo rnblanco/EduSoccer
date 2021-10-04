@@ -7,6 +7,7 @@ let padreTel="";
 let madre="";
 let madreTel="";
 let contacto="";
+let categoria="";
 
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
@@ -90,6 +91,7 @@ function validate1(val) {
     v7 = document.getElementById("madre");
     v8 = document.getElementById("madreTel");
     v9 = document.getElementById("contacto");
+    v10 = document.getElementById("categoria");
 
     flag1 = true;
     flag2 = true;
@@ -100,6 +102,7 @@ function validate1(val) {
     flag7 = true;
     flag8 = true;
     flag9 = true;
+    flag10 = true;
 
     switch (val){
 
@@ -173,6 +176,17 @@ function validate1(val) {
                 flag9 = true;
             }
             break;
+        case 10:
+            if(v10.value == "") {
+                v10.style.borderColor = "red";
+                flag10 = false;
+            }
+            else {
+                v10.style.borderColor = "green";
+                categoria=v10.value;
+                flag10 = true;
+            }
+            break;
         case 0:
             if(v1.value == "") {
                 v1.style.borderColor = "red";
@@ -230,9 +244,18 @@ function validate1(val) {
                 contacto=v9.value;
                 flag9 = true;
             }
+            if(v10.value == "") {
+                v10.style.borderColor = "red";
+                flag10 = false;
+            }
+            else {
+                v10.style.borderColor = "green";
+                categoria=v10.value;
+                flag10 = true;
+            }
         break;
     }
-    let flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7 && flag8 && flag9;
+    let flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7 && flag8 && flag9 && flag10;
     return flag;
 }
 
@@ -241,10 +264,10 @@ $(document).ready(function(){
         $(".next").click(function(e){
             e.preventDefault();
             validate1(1);validate1(2);validate1(3); validate1(4); validate1(5);
-            validate1(6); validate1(7); validate1(8); validate1(9);
+            validate1(6); validate1(7); validate1(8); validate1(9); validate1(10);
 
             if(validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(5) &&
-                validate1(6) && validate1(7) && validate1(8) && validate1(9)){
+                validate1(6) && validate1(7) && validate1(8) && validate1(9) && validate1(10)){
 
                 let name = document.getElementById("img").files[0] ? document.getElementById("img").files[0].name : null;
                 let ext =  name ? name.split('.').pop().toLowerCase() :null;
@@ -264,7 +287,7 @@ $(document).ready(function(){
                             form_data.append("nombre", nombre);form_data.append("edad", edad);form_data.append("padre", padre || null);
                             form_data.append("padreTel", padreTel || null);form_data.append("madre", madre || null);
                             form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);
-                            form_data.append("id", document.getElementById('ids').value);
+                            form_data.append("id", document.getElementById('ids').value);form_data.append("categoria", categoria);
                             $.ajax({
                                 url:'../Db/editarAlumno.php',
                                 data:form_data,
@@ -289,7 +312,7 @@ $(document).ready(function(){
                         form_data.append("nombre", nombre);form_data.append("edad", edad);form_data.append("padre", padre || null);
                         form_data.append("padreTel", padreTel || null);form_data.append("madre", madre || null);
                         form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);
-                        form_data.append("id", document.getElementById('ids').value);
+                        form_data.append("id", document.getElementById('ids').value);form_data.append("categoria", categoria);
                         $.ajax({
                             url:'../Db/editarAlumno.php',
                             data:form_data,

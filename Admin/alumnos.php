@@ -9,6 +9,7 @@
     /* 
     Orden de tabla publicaciones:
     <th>ID</th>
+    <th>Categoría</th>
     <th>Nombre</th>
     <th>Edad</th>
     <th>Fecha de nacimiento</th>
@@ -28,15 +29,23 @@
 	    $buscarAlumnos->execute();
 	    $Alumnos = $buscarAlumnos->fetchAll();
 
-	    foreach($Alumnos as list($id, $nombre, $edad, $nacimiento, $ingreso, $matricula, $imagen, $padre, $padreTel, $madre, $madreTel, $contacto)){
+	    foreach($Alumnos as list($id, $nombre, $edad, $nacimiento, $ingreso, $matricula, $imagen, $padre, $padreTel, $madre, $madreTel, $contacto, $categoria)){
 		    $imagen==""?$imagen="default_user.png":$imagen;
 			$padre = $padre!='null'? $padre : '-';
 			$padreTel = $padreTel!='null'? $padreTel : '-';
 			$madre = $madre!='null'? $madre : '-';
 		    $madreTel = $madreTel!='null'? $madreTel : '-';
+
+		    $buscarCategorias = $conexion->prepare("SELECT * FROM Categorias WHERE ID=:ID");
+		    $buscarCategorias->bindParam(':ID', $categoria, PDO::PARAM_STR);
+		    $buscarCategorias->execute();
+		    $Categorias = $buscarCategorias->fetchAll();
+		    foreach($Categorias as list($id2, $titulo2, $subtitulo2, $contenido2, $profesor2, $imagen2)){ $categoria = $titulo2; }
+
 		    echo" 
                 <tr>
                     <td>$id</td>
+                    <td>$categoria</td>
                     <td>$nombre</td>
                     <td>$edad</td>
                     <td>$nacimiento</td>

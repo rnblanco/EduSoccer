@@ -13,7 +13,7 @@
 		$buscarAlumnos->execute([$id]);
 		$Alumnos = $buscarAlumnos->fetchAll();
 
-		foreach($Alumnos as list($id, $nombre, $edad, $nacimiento, $ingreso, $matricula, $imagen, $padre, $padreTel, $madre, $madreTel, $contacto)){
+		foreach($Alumnos as list($id, $nombre, $edad, $nacimiento, $ingreso, $matricula, $imagen, $padre, $padreTel, $madre, $madreTel, $contacto, $categoria)){
 
 			$padre = $padre!='null'? $padre : '';
 			$padreTel = $padreTel!='null'? $padreTel : '';
@@ -32,10 +32,23 @@
 			    <div class='form-group'> <label class='form-control-label'>Madre:</label> <input value='$madre' onkeypress='javascript:return tprotection(event)' type='text' id='madre' class='form-control' onblur='validate1(7)'></input></div>
                 <div class='form-group'> <label class='form-control-label'>Teléfono:</label> <input value='$madreTel' onkeypress='javascript:return bprotection(event)' type='number' id='madreTel' class='form-control phoneValidation' onblur='validate1(8)'></input></div>
                 <div class='form-group'> <label class='form-control-label'>Contacto * :</label> <input value='$contacto' onkeypress='javascript:return bprotection(event)' type='number' id='contacto' class='form-control phoneValidation' onblur='validate1(9)'></input></div>
-                <button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>EDITAR<span class='fa fa-long-arrow-right'></span></button>
+                <div class='form-group'> <label class='form-control-label'>Profesor:</label>
+                    <select type='text' id='categoria' class='form-control' onblur='validate1(10)'>";Categorias($categoria);echo"</select>
+				</div>
+				<button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>EDITAR<span class='fa fa-long-arrow-right'></span></button>
             ";
 		}
 	}
+	function Categorias($id){
+		$conexion = conectar();
+		$buscarCategorias = $conexion->prepare("SELECT * FROM Categorias ORDER BY ID");
+		$buscarCategorias->execute();
+		$Categorias = $buscarCategorias->fetchAll();
 
+		foreach($Categorias as list($id2, $titulo2, $subtitulo2, $contenido2, $profesor2, $imagen2)){
+			if($id==$id2) echo" <option value='$id2' selected='selected'> $titulo2 </option>";
+			else echo" <option value='$id2'> $titulo2 </option>";
+		}
+	}
 ?>
 

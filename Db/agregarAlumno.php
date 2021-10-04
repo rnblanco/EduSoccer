@@ -4,7 +4,7 @@
     $id = $_SESSION['id'];
 
     $error="";$nacimiento="";$nombre="";$edad="";$ingreso="";$locacion="";$nuevalocacion="";
-	$matricula="";$padre=""; $padreTel=""; $madre=""; $madreTel=""; $contacto="";
+	$matricula="";$padre=""; $padreTel=""; $madre=""; $madreTel=""; $contacto="";$categoria="";
 
     if(empty($_POST['nacimiento'])) $error = "falta nacimiento";
     else $nacimiento = $_POST['nacimiento'];
@@ -36,17 +36,20 @@
 	if(empty($_POST['contacto'])) $error .= "falta contacto";
 	else $contacto = $_POST['contacto'];
 
+	if(empty($_POST['categoria'])) $error .= "falta categoria";
+	else $categoria = $_POST['categoria'];
+
     if( $_FILES['img'] ){
 	    $locacion = '../assets/img/EduSoccer/Alumnos/' . $_FILES['img']['name'];
         $nuevalocacion = $_FILES['img']['name'];
     }
     else $error .= "falta img";
     
-    if( $edad!=="" && $nacimiento!=="" && $nombre!=="" && $ingreso!=="" && $matricula!="" && $contacto!="") {
+    if( $edad!=="" && $nacimiento!=="" && $nombre!=="" && $ingreso!=="" && $matricula!="" && $contacto!="" && $categoria!=""){
         $conexion = conectar();
         $agregarAlumno = $conexion->prepare('INSERT INTO Alumnos (nombre, edad, fecha_nacimiento, fecha_ingreso, fecha_matricula, 
-                     Imagen, nombre_padre, telefono_padre, nombre_madre, telefono_madre, contacto) VALUES (?,?,?,?,?,?,?,?,?,?,?)');
-        $agregarAlumno->execute([$nombre, $edad, $nacimiento, $ingreso, $matricula, $nuevalocacion, $padre, $padreTel, $madre, $madreTel, $contacto]);
+                     Imagen, nombre_padre, telefono_padre, nombre_madre, telefono_madre, contacto, categoria) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
+        $agregarAlumno->execute([$nombre, $edad, $nacimiento, $ingreso, $matricula, $nuevalocacion, $padre, $padreTel, $madre, $madreTel, $contacto, $categoria]);
 
         if($agregarAlumno->rowCount() >= 1){
 	        If($nuevalocacion!="") move_uploaded_file($_FILES['img']['tmp_name'], $locacion);

@@ -13,9 +13,7 @@
 
 		foreach($Usuarios as list($id, $usuario, $pass, $nombre, $apellido, $edad, $cargo, $estado)){
 			$nombreCompleto = $nombre . " " . $apellido;
-			echo" 
-                <option value='$id'> $nombreCompleto </option>
-            ";
+			echo" <option value='$id'> $nombreCompleto </option> ";
 		}
 	}
 ?>

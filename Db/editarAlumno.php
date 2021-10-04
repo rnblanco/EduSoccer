@@ -2,7 +2,7 @@
     include_once 'sesiones.php';
     require("conexion.php");
 
-    $edad="";$nombre="";$locacion="";$id="";$error=""; $nacimiento="";$padre="";$padreTel="";$madre="";$madreTel="";$contacto="";
+    $edad="";$nombre="";$locacion="";$id="";$error=""; $nacimiento="";$padre="";$padreTel="";$madre="";$madreTel="";$contacto="";$categoria="";
     $nuevalocacion="";
 
     if(empty($_POST['edad'])) $error = "falta edad";
@@ -35,15 +35,17 @@
     if( $_FILES['img'] ) $locacion="hay imagen";
     else $error .= "falta img";
 
+	if(empty($_POST['categoria'])) $error .= "falta categoria";
+	else $categoria = $_POST['categoria'];
+
     //con imagen
-    if( $edad!=="" && $nombre!=="" && $nacimiento!=="" && $id!=="" && $padre!=="" && $padreTel!=="" && $madre!=="" && $madreTel!=="" && $contacto!==""){
+    if( $edad!=="" && $nombre!=="" && $nacimiento!=="" && $id!=="" && $padre!=="" && $padreTel!=="" && $madre!=="" && $madreTel!=="" && $contacto!=="" && $categoria!=""){
         
         $conexion = conectar();
-        $AlumnoActual  = $conexion ->prepare ("SELECT Nombre, Edad, Fecha_Nacimiento,
-       	Nombre_Padre, Telefono_Padre, Nombre_Madre, Telefono_Madre, Contacto from Alumnos WHERE ID = :id ");
+        $AlumnoActual  = $conexion ->prepare ("SELECT * from Alumnos WHERE ID = :id ");
         $AlumnoActual->bindParam(':id', $id, PDO::PARAM_STR);
         $AlumnoActual->execute();
-        foreach($AlumnoActual as list($anombre, $aedad, $anacimiento, $apadre, $apadreTel, $amadre, $amadreTel, $acontacto )){
+        foreach($AlumnoActual as list($anombre, $aedad, $anacimiento, $apadre, $apadreTel, $amadre, $amadreTel, $acontacto, $acategoria)){
 
                 $imagenes = $conexion ->prepare("SELECT imagen from Alumnos WHERE ID = :id ");
                 $imagenes->bindParam(':id', $id, PDO::PARAM_STR);
@@ -66,7 +68,7 @@
 						move_uploaded_file($_FILES['img']['tmp_name'], $locacion);
 						$editarAlumno = $conexion->prepare(" UPDATE Alumnos SET Edad=:Edad, Nombre=:Nombre, Fecha_Nacimiento=:Fecha_Nacimiento, 
 						Nombre_Padre=:Nombre_Padre, Telefono_Padre=:Telefono_Padre, Nombre_Madre=:Nombre_Madre, Telefono_Madre=:Telefono_Madre,
-                    	Contacto=:Contacto, Imagen=:Imagen WHERE ID=:ID ");
+                    	Contacto=:Contacto, Imagen=:Imagen, Categoria=:Categoria WHERE ID=:ID ");
 						$editarAlumno->bindParam(':Edad', $edad, PDO::PARAM_STR);
 						$editarAlumno->bindParam(':Nombre', $nombre, PDO::PARAM_STR);
 						$editarAlumno->bindParam(':Fecha_Nacimiento', $nacimiento, PDO::PARAM_STR);
@@ -76,6 +78,7 @@
 						$editarAlumno->bindParam(':Telefono_Madre', $madreTel, PDO::PARAM_STR);
 						$editarAlumno->bindParam(':Contacto', $contacto, PDO::PARAM_STR);
 						$editarAlumno->bindParam(':Imagen', $imagen, PDO::PARAM_STR);
+						$editarAlumno->bindParam(':Categoria', $categoria, PDO::PARAM_STR);
 						$editarAlumno->bindParam(':ID', $id, PDO::PARAM_STR);
 						$editarAlumno->execute();
 

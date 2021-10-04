@@ -82,6 +82,10 @@
 							  <div class='form-group'> <label class='form-control-label'>Madre:</label> <input onkeypress='javascript:return tprotection(event)' type='text' id='madre' class='form-control' onblur='validate1(9)'></input></div>
                               <div class='form-group'> <label class='form-control-label'>Teléfono:</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='madreTel' class='form-control phoneValidation' onblur='validate1(10)'></input></div>
                               <div class='form-group'> <label class='form-control-label'>Contacto * :</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='contacto' class='form-control phoneValidation' onblur='validate1(11)'></input></div>
+								<div class='form-group'> <label class='form-control-label'>Categoría:</label> <select type='text' id='categoria' class='form-control' onblur='validate1(12)'>
+										<?php Categorias(); ?>
+									</select>
+								</div>
                               <button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>AGREGAR<span class='fa fa-long-arrow-right'></span></button>
                             </div>
                         </form>

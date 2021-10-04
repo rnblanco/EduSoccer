@@ -7,6 +7,7 @@ let padreTel="";
 let madre="";
 let madreTel="";
 let contacto="";
+let categoria="";
 
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
@@ -89,6 +90,7 @@ function validate1(val) {
     v9 = document.getElementById("madre");
     v10 = document.getElementById("madreTel");
     v11 = document.getElementById("contacto");
+    v12 = document.getElementById("categoria");
 
     flag1 = true;
     flag2 = true;
@@ -99,6 +101,7 @@ function validate1(val) {
     flag9 = true;
     flag10 = true;
     flag11 = true;
+    flag12 = true;
 
     switch (val){
 
@@ -172,6 +175,17 @@ function validate1(val) {
                 flag11 = true;
             }
             break;
+        case 12:
+            if(v12.value == "") {
+                v12.style.borderColor = "red";
+                flag12 = false;
+            }
+            else {
+                v12.style.borderColor = "green";
+                categoria=v12.value;
+                flag12 = true;
+            }
+            break;
         case 0:
             if(v1.value == "") {
                 v1.style.borderColor = "red";
@@ -229,9 +243,18 @@ function validate1(val) {
                 contacto=v11.value;
                 flag11 = true;
             }
+            if(v12.value == "") {
+                v12.style.borderColor = "red";
+                flag12 = false;
+            }
+            else {
+                v12.style.borderColor = "green";
+                categoria=v12.value;
+                flag12 = true;
+            }
         break;
     }
-    let flag = flag1 && flag2 && flag3 && flag4 && flag7 && flag8 && flag9 && flag10 && flag11;
+    let flag = flag1 && flag2 && flag3 && flag4 && flag7 && flag8 && flag9 && flag10 && flag11 && flag12;
     return flag;
 }
 
@@ -242,10 +265,10 @@ $(document).ready(function(){
             let today = new Date();
             let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
             validate1(1);validate1(2);validate1(3); validate1(4); validate1(7);
-            validate1(8); validate1(9); validate1(10); validate1(11);
+            validate1(8); validate1(9); validate1(10); validate1(11);validate1(12);
 
             if(validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(7) &&
-                validate1(8) && validate1(9) && validate1(10) && validate1(11)){
+                validate1(8) && validate1(9) && validate1(10) && validate1(11) && validate1(12)){
 
                 let name = document.getElementById("img").files[0] ? document.getElementById("img").files[0].name : null;
                 let ext =  name ? name.split('.').pop().toLowerCase() :null;
@@ -265,7 +288,8 @@ $(document).ready(function(){
                             form_data.append("nacimiento", nacimiento);form_data.append("nombre", nombre);form_data.append("edad", edad);
                             form_data.append("ingreso", date);form_data.append("matricula", date);form_data.append("padre", padre || null);
                             form_data.append("padreTel", padreTel || null);form_data.append("madre", madre || null);
-                            form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);
+                            form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);form_data.append("categoria", categoria);
+                            console.log(categoria)
                             $.ajax({
                                 url:'../Db/agregarAlumno.php',
                                 data:form_data,
@@ -290,7 +314,8 @@ $(document).ready(function(){
                         form_data.append("nacimiento", nacimiento);form_data.append("nombre", nombre);form_data.append("edad", edad);
                         form_data.append("ingreso", date);form_data.append("matricula", date);form_data.append("padre", padre || null);
                         form_data.append("padreTel", padreTel || null);form_data.append("madre", madre || null);
-                        form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);
+                        form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);form_data.append("categoria", categoria);
+                        console.log(categoria)
                         $.ajax({
                             url:'../Db/agregarAlumno.php',
                             data:form_data,

@@ -90,6 +90,7 @@
                   <thead>
                     <tr>
 						<th>ID</th>
+						<th>Categoría</th>
 						<th>Nombre</th>
 						<th>Edad</th>
 						<th>Fecha de nacimiento</th>
