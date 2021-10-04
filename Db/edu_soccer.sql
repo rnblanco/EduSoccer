@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-09-2021 a las 10:44:29
+-- Tiempo de generación: 04-10-2021 a las 16:17:01
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.3.28
 
@@ -39,17 +39,20 @@ CREATE TABLE `alumnos` (
   `Telefono_Padre` varchar(11) DEFAULT NULL,
   `Nombre_Madre` varchar(220) DEFAULT NULL,
   `Telefono_Madre` varchar(11) DEFAULT NULL,
-  `Contacto` int(11) NOT NULL
+  `Contacto` int(11) NOT NULL,
+  `Categoria` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`ID`, `Nombre`, `Edad`, `Fecha_Nacimiento`, `Fecha_Ingreso`, `Fecha_Matricula`, `Imagen`, `Nombre_Padre`, `Telefono_Padre`, `Nombre_Madre`, `Telefono_Madre`, `Contacto`) VALUES
-(12, 'Alejandro Velasco', 12, '2012-12-12', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212),
-(13, 'Fernando Díaz', 12, '2012-02-20', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212),
-(14, 'Javier Avelar', 12, '2012-12-12', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212);
+INSERT INTO `alumnos` (`ID`, `Nombre`, `Edad`, `Fecha_Nacimiento`, `Fecha_Ingreso`, `Fecha_Matricula`, `Imagen`, `Nombre_Padre`, `Telefono_Padre`, `Nombre_Madre`, `Telefono_Madre`, `Contacto`, `Categoria`) VALUES
+(12, 'Alejandro Velasco', 5, '2016-10-03', '2021-09-30', '2021-09-30', NULL, 'Miguel Velasco', '78787877', 'null', 'null', 72727272, 1),
+(13, 'Fernando Díaz', 7, '2014-10-03', '2021-09-30', '2021-09-30', NULL, 'Daniel Díaz', 'null', 'null', 'null', 12121212, 2),
+(14, 'Javier Avelar', 12, '2012-12-12', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212, 4),
+(17, 'Javier Vega', 10, '2021-10-03', '2021-10-03', '2021-10-03', '', 'null', 'null', 'null', 'null', 78787878, 3),
+(18, 'Daniel Hernández', 15, '2006-10-03', '2021-10-03', '2021-10-03', NULL, 'null', 'null', 'null', 'null', 78787878, 5);
 
 -- --------------------------------------------------------
 
@@ -90,11 +93,11 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`ID`, `Titulo`, `Subtitulo`, `Contenido`, `Profesor`, `Imagen`) VALUES
-(1, 'Categoría U5', 'Para niños de 3 a 5 añoss', 'Esta categoría es para los niños que tienen entre 4 y 5 años que quieren practicar football soccer', 'Amilcar', 'edu_image2.jpeg'),
-(2, 'Categoría U7', 'Para niños de 6 y 7 años', 'Esta categoría es para los niños que tienen entre 6 y 7 años que quieren practicar football soccer', 'Andrés', 'edu_image4.jpeg'),
-(3, 'Categoria U9', 'Para niños de 8 y 9 años', 'Esta categoría es para los niños que tienen entre 8 y 9 que quieren practicar football soccer', 'Salvador', 'edu_image5.jpg'),
-(4, 'Categoría U12', 'Para niños de 10 a 12 años', 'Esta categoría es para los niños que tienen entre 10 y 11 que quieren practicar football soccer', 'Mario', 'edu_image6.jpeg'),
-(5, 'Categoría U15', 'Para niños de 12 a 15 años', 'Esta categoría es para los niños que tienen entre 12 a 15 años y quieren practicar football soccer', 'Luis', 'img3.jpeg');
+(1, 'Categoría U5', 'Para niños de 3 a 5 años', 'Esta categoría es para los niños que tienen entre 4 y 5 años que quieren practicar football soccer', '5', 'edu_image2.jpeg'),
+(2, 'Categoría U7', 'Para niños de 6 y 7 años', 'Esta categoría es para los niños que tienen entre 6 y 7 años que quieren practicar football soccer', '6', 'edu_image4.jpeg'),
+(3, 'Categoria U9', 'Para niños de 8 y 9 años', 'Esta categoría es para los niños que tienen entre 8 y 9 que quieren practicar football soccer', '7', 'edu_image5.jpg'),
+(4, 'Categoría U12', 'Para niños de 10 a 12 años', 'Esta categoría es para los niños que tienen entre 10 y 11 que quieren practicar football soccer', '8', 'edu_image6.jpeg'),
+(5, 'Categoría U15', 'Para niños de 12 a 15 años', 'Esta categoría es para los niños que tienen entre 12 a 15 años y quieren practicar football soccer', '9', 'img3.jpeg');
 
 -- --------------------------------------------------------
 
@@ -166,6 +169,32 @@ INSERT INTO `historia` (`ID`, `Titulo`, `Subtitulo`, `Contenido`, `Imagen`) VALU
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `pagos`
+--
+
+CREATE TABLE `pagos` (
+  `ID` int(11) NOT NULL,
+  `Alumno` varchar(220) NOT NULL,
+  `Mes` varchar(220) NOT NULL,
+  `Ano` varchar(220) NOT NULL,
+  `Cobro` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `pagos`
+--
+
+INSERT INTO `pagos` (`ID`, `Alumno`, `Mes`, `Ano`, `Cobro`) VALUES
+(1, '12', '9', '2021', 30),
+(2, '13', '9', '2021', 30),
+(3, '14', '9', '2021', 30),
+(4, '17', '9', '2021', 30),
+(5, '18', '9', '2021', 30),
+(6, '12', '10', '2021', 30);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `servicios`
 --
 
@@ -207,7 +236,12 @@ CREATE TABLE `usuarios` (
 
 INSERT INTO `usuarios` (`ID`, `Usuario`, `Pass`, `Nombre`, `Apellido`, `Edad`, `Cargo`, `Estado`) VALUES
 (1, 'academiaedusoccer@gmail.com', 'c8f493f4b318c07b18ddcae64c2548d0', 'José Salvador', 'Ramírez Abarca', 38, 2, 1),
-(3, 'FBlanco', '609795acbf64138ad153556cffa109b7', 'Fidel', 'Blanco', 18, 1, 1);
+(3, 'FBlanco', '85e6314bbe299502162a9d3b49dd4854', 'Fidel Alejandro', 'Blanco', 18, 1, 1),
+(5, 'AReyes', 'adb28b55979f4c8ff3c1f2eac74ba698', 'Amilcar', 'Reyes', 30, 1, 1),
+(6, 'AGonzalez', '2ea3d772a3aa68ae88dfe2a8d4c77e0c', 'Andrés', 'González', 30, 1, 1),
+(7, 'SRamirez', '7fbbb8e66c846b59e9da01792d42d0c4', 'Salvador', 'Ramírez', 30, 1, 1),
+(8, 'MLopez', 'fcc2aa6cdb96cbbb1d6bcc1c4bc19a48', 'Mario', 'López', 30, 1, 1),
+(9, 'LAndrade', '6e84ecee5715602ca8e6dbb719da014e', 'Luis', 'Andrade', 30, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -250,6 +284,12 @@ ALTER TABLE `historia`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `servicios`
 --
 ALTER TABLE `servicios`
@@ -260,8 +300,8 @@ ALTER TABLE `servicios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `Cargo` (`Cargo`),
-  ADD KEY `Estado` (`Estado`);
+  ADD KEY `usuarios_ibfk_1` (`Cargo`),
+  ADD KEY `usuarios_ibfk_2` (`Estado`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -271,7 +311,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `cargos`
@@ -283,7 +323,7 @@ ALTER TABLE `cargos`
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `contacto`
@@ -298,6 +338,12 @@ ALTER TABLE `historia`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de la tabla `pagos`
+--
+ALTER TABLE `pagos`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT de la tabla `servicios`
 --
 ALTER TABLE `servicios`
@@ -307,18 +353,7 @@ ALTER TABLE `servicios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `usuarios_ibfk_1` FOREIGN KEY (`Cargo`) REFERENCES `cargos` (`ID`),
-  ADD CONSTRAINT `usuarios_ibfk_2` FOREIGN KEY (`Estado`) REFERENCES `estados` (`ID`);
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
