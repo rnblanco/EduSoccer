@@ -8,7 +8,7 @@
 		<meta name="author" content="">
 		<link rel="icon" type="image/x-icon" href="Images/DefaultImages/icon.ico"/>
 
-		<title>Servicios</title>
+		<title>Pagos</title>
 
 		<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -66,7 +66,15 @@
 						<!-- DataTales Example -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h4 class="m-0 font-weight-bold text-primary">Todos los servicios</h4>
+								<h4 class="m-0 font-weight-bold text-primary">Todos los pagos</h4>
+								<div class="d-flex justify-content-end">
+									<a href="agregar-pago.php" class="btn btn-success btn-icon-split">
+										<span class="icon text-white-50">
+										  <i class="fas fa-plus"></i>
+										</span>
+										<span class="text">Agregar pago</span>
+									</a>
+								</div>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
@@ -74,13 +82,14 @@
 										<thead>
 											<tr>
 												<th>ID</th>
-												<th>Titulo</th>
-												<th>Contenido</th>
-												<th>Acciones</th>
+												<th>Alumno</th>
+												<th>Mes</th>
+												<th>Año</th>
+												<th>Cobro</th>
 											</tr>
 										</thead>
 										<tbody>
-											<?php Servicios(); ?>
+											<?php Pagos(); ?>
 										</tbody>
 									</table>
 								</div>
@@ -132,8 +141,8 @@
 		<script src="js/sb-admin-2.js"></script>
 		<script src="vendor/datatables/jquery.dataTables.min.js"></script>
 		<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-		<script src="js/demo/datatables-servicios.js"></script>
-		<script src="js/servicios.js"></script>
+		<script src="js/demo/datatables-pagos.js"></script>
+		<script src="js/pagos.js"></script>
 
 	</body>
 

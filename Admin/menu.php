@@ -109,6 +109,12 @@
                     <span>Profesores</span></a>
                 </li>
                 
+                <li class="nav-item">
+                    <a class="nav-link" href="pagos.php">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Pagos</span></a>
+                </li>
+                
             </ul>
             ';
 				break;

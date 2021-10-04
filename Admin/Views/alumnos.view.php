@@ -79,7 +79,7 @@
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Añadir alumno</span>
+                <span class="text">Agregar alumno</span>
               </a>
               </div>
               

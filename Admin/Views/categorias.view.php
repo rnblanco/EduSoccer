@@ -75,12 +75,12 @@
             <div class="card-header py-3">
               <h4 class="m-0 font-weight-bold text-primary">Todas las categorías</h4>
               <div class="d-flex justify-content-end">
-              <a href="agregar-categoria.php" class="btn btn-success btn-icon-split">
-                <span class="icon text-white-50">
-                  <i class="fas fa-plus"></i>
-                </span>
-                <span class="text">Añadir categoría</span>
-              </a>
+				  <a href="agregar-categoria.php" class="btn btn-success btn-icon-split">
+					<span class="icon text-white-50">
+					  <i class="fas fa-plus"></i>
+					</span>
+					<span class="text">Agregar categoría</span>
+				  </a>
               </div>
               
             </div>

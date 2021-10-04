@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,20 +9,28 @@
   <meta name="author" content="">
   <link rel="icon" type="image/x-icon" href="Images/DefaultImages/icon.ico" />
 
-  <title>Historia</title>
+  <title>Agregar pago</title>
 
-  <!-- Custom fonts for this template -->
+  <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-  <!-- Custom styles for this template -->
+  <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.css" rel="stylesheet">
-
-  <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="css/form.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
 </head>
-
+	<style>
+		.red-border{
+			border-color:red!important;
+		}
+		.green-border{
+			border-color:green!important;
+		}
+	</style>
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -46,11 +53,9 @@
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
           <!-- Sidebar Toggle (Topbar) -->
-          <form class="form-inline">
-            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-              <i class="fa fa-bars"></i>
-            </button>
-          </form>
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -61,7 +66,7 @@
             <?php 
               User();  
             ?>
-
+            
           </ul>
 
         </nav>
@@ -70,40 +75,30 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h4 class="m-0 font-weight-bold text-primary">Todas las historias</h4>
-              <div class="d-flex justify-content-end">
-              <a href="agregar-historia.php" class="btn btn-success btn-icon-split ">
-                <span class="icon text-white-50">
-                  <i class="fas fa-plus"></i>
-                </span>
-                <span class="text">Agregar historia</span>
-              </a>
-              </div>
-              
+          <div class="container-fluid px-1 mx-auto">
+            <div class="row d-flex justify-content-center">
+                <div class="col-xl-10 col-lg-11 col-md-12">
+                    <div class="card b-0">
+                        <h4 class="heading">Agregar un pago</h4>
+                        <form action="../Db/agregarCategoria.php" method="post" enctype="multipart/form-data" id="form">
+                            <div class="form-card">
+                              <label class="mb-3">Para proteger la información que ingresa al sitio, se ha bloqueado la función de pegar texto. Además, no es posible introducir los siguientes caracteres "<  >  =  ." .</label><br>
+
+								<div class='form-group'> <label class='form-control-label'>Alumno:</label>
+									<select class="search-select" style="width: 100%" name="state" id='alumno' class='form-control' onchange='validate1(1)'>
+										<?php Alumnos(); ?>
+									</select>
+								</div>
+                              	<div class='form-group'> <label class='form-control-label'>Mes:</label> <input onkeypress='javascript:return notnumprotection(event)' type='number' id='mes' class='form-control monthValidation' onblur='validate1(4)'></div>
+                              	<div class='form-group'> <label class='form-control-label'>Año:</label> <input onkeypress='javascript:return notnumprotection(event)' type='number' id='ano' class='form-control yearValidation' onblur='validate1(2)'></div>
+                              	<div class='form-group'> <label class='form-control-label'>Cobro:</label> <input onkeypress='javascript:return notnumprotection(event)' type='number' id='cobro' class='form-control moneyValidation' onblur='validate1(5)'></div>
+                              <button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>AGREGAR<span class='fa fa-long-arrow-right'></span></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-						<th>ID</th>
-						<th>Titulo</th>
-						<th>Fecha</th>
-						<th>Contenido</th>
-						<th>Imagen</th>
-						<th>Acciones</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php Historia()?>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+        </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -111,6 +106,7 @@
       </div>
 		<!-- Footer -->
 		<?php require 'footer.php';?>
+
     </div>
     <!-- End of Content Wrapper -->
 
@@ -140,18 +136,16 @@
       </div>
     </div>
   </div>
-  
+
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="vendor/jquery/jquery.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="vendor/jquery-easing/jquery.easing.js"></script>
   <script src="js/sb-admin-2.js"></script>
-  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
-  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-  <script src="js/demo/datatables-historia.js"></script>
-  <script src="js/historia.js"></script>
-    
+  <script src="js/agregar-pago.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 </body>
 
 </html>

@@ -40,7 +40,7 @@ window.onload = function() {
     }
 }
 
-//Validación para telefonos no mayores a 8 digitos
+//Validación para edades no mayores a 100
 $('.ageValidation').on('keydown keyup change', function(e){
     if ($(this).val() > 100 || $(this).val() < 0
         && e.keyCode !== 46 // keycode para delete
