@@ -38,7 +38,7 @@
                 <hr class="sidebar-divider">
                 
                 <div class="sidebar-heading" style="color:white!important;">
-                    Profesorado
+                    Clases
                 </div>
                 
                 <li class="nav-item">
@@ -94,13 +94,19 @@
                 <hr class="sidebar-divider">
 
                 <div class="sidebar-heading" style="color:white!important;">
-                    Administración
+                    Clases
                 </div>
                 
                 <li class="nav-item">
                     <a class="nav-link" href="alumnos.php">
                     <i class="fas fa-plus"></i>
                     <span>Alumnos</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="usuarios.php">
+                    <i class="fas fa-address-book"></i>
+                    <span>Profesores</span></a>
                 </li>
                 
             </ul>

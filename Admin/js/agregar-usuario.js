@@ -1,9 +1,8 @@
 let nombre="";
-let pais="";
-let email = "";
+let apellido="";
+let usuario = "";
 let pass = "";
-let stipo = document.getElementById('stipo').value;
-
+let edad = "";
 
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
@@ -27,32 +26,43 @@ window.onload = function() {
     nombre.onpaste = function(e) {
       e.preventDefault();
     }
-    let pais = document.getElementById('pais');
-    pais.onpaste = function(e) {
+    let apellido = document.getElementById('apellido');
+    apellido.onpaste = function(e) {
       e.preventDefault();
     }
-    let email = document.getElementById('email');
-    email.onpaste = function(e) {
+    let usuario = document.getElementById('usuario');
+    usuario.onpaste = function(e) {
       e.preventDefault();
     }
     let pass = document.getElementById('pass');
     pass.onpaste = function(e) {
       e.preventDefault();
     }
+}
 
+//Validación para telefonos no mayores a 8 digitos
+$('.ageValidation').on('keydown keyup change', function(e){
+    if ($(this).val() > 100 || $(this).val() < 0
+        && e.keyCode !== 46 // keycode para delete
+        && e.keyCode !== 8  // keycode para enter
+    ) {
+        e.preventDefault();
+        $(this).val(Math.trunc($(this).val()/10) <= 0 ? '' : Math.trunc($(this).val()/10));
+    }
+});
+// Validaciones para < > . & y números en el titulo
+function notnumprotection(str){
+    let iKeyCode = (str.which) ? str.which : str.keyCode
+    if ( iKeyCode==45 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34) return false;
+    return true;
 }
 // Validaciones para < > . & y números en el titulo
 // / 48-57 numeros / 38 & / 46 . / 60 < / 61 = / 62 > / " 34/
 function nprotection(str){
-    
-    if(document.getElementById('nombre').value.length>=220){
-        return false;   
-    }
+    if(document.getElementById('nombre').value.length>=220) return false;
     else {
-
         let iKeyCode = (str.which) ? str.which : str.keyCode
-        if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34)
-            return false;
+        if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34 ) return false;
         return true; 
     }  
 }
@@ -60,11 +70,8 @@ function nprotection(str){
 // / 48-57 numeros / 38 & / 46 . / 60 < / 61 = / 62 > /
 function pprotection(str){
     
-    if(document.getElementById('pais').value.length>=220){
-        return false;   
-    }
+    if(document.getElementById('apellido').value.length>=220) return false;
     else {
-
         let iKeyCode = (str.which) ? str.which : str.keyCode
         if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34)
             return false;
@@ -75,14 +82,10 @@ function pprotection(str){
 // / 48-57 numeros / 38 & / 46 . / 60 < / 61 = / 62 > /
 function eprotection(str){
     
-    if(document.getElementById('email').value.length>=220){
-        return false;   
-    }
+    if(document.getElementById('usuario').value.length>=220)return false;
     else {
-
         let iKeyCode = (str.which) ? str.which : str.keyCode
-        if ( iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34 )
-            return false;
+        if ( iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34 ) return false;
         return true; 
     }  
 }
@@ -90,22 +93,18 @@ function eprotection(str){
 // Validaciones para < > . & en contraseña
 // / 38 & / 46 . / 60 < / 61 = / 62 > /
 function cprotection(str){
-
     let iKeyCode = (str.which) ? str.which : str.keyCode
-
-    if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38 || iKeyCode == 34)
-        return false;
+    if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38 || iKeyCode == 34) return false;
     return true;
-    
 }
 // Validaciones para llenar el formulario
 function validate1(val) {
     
     v1 = document.getElementById("nombre");
-    v2 = document.getElementById("pais");
-    v3 = document.getElementById("email");
+    v2 = document.getElementById("apellido");
+    v3 = document.getElementById("usuario");
     v4 = document.getElementById("pass");
-    v5 = document.getElementById("tipo");
+    v5 = document.getElementById("edad");
 
     flag1 = true;
     flag2 = true;
@@ -135,7 +134,7 @@ function validate1(val) {
             }
             else {
                 v2.style.borderColor = "green";
-                pais=v2.value;
+                apellido=v2.value;
                 flag2 = true;
             }
         break;
@@ -148,7 +147,7 @@ function validate1(val) {
             else {
                 v3.style.borderColor = "green";
                 flag3 = true;
-                email= v3.value;
+                usuario= v3.value;
             }
         break;
         case 4:
@@ -171,89 +170,45 @@ function validate1(val) {
             else {
                 v5.style.borderColor = "green";
                 flag5 = true;
-                tipo= v5.value;
+                edad = v5.value;
             }
         break;
     }
-    
-    flag = flag1 && flag2 && flag3 && flag4 && flag5;
-    
+    let flag = flag1 && flag2 && flag3 && flag4 && flag5;
     return flag;
-
 }
     
 $(document).ready(function(){
     
-        $(".next").click(function(e){
-            e.preventDefault();
+    $(".next").click(function(e){
+        e.preventDefault();
+        validate1(1);validate1(2);validate1(3);validate1(4);validate1(5);
 
-            if(stipo==3){
+        if( validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(5)){
 
-                validate1(1);validate1(2);validate1(3);validate1(4);validate1(5);
+            let form_data = new FormData();
+            form_data.append("nombre", nombre); form_data.append("apellido", apellido);form_data.append("edad", edad);
+            form_data.append("cargo", "1");form_data.append("pass", pass);form_data.append("usuario", usuario);
+            $.ajax({
+                url:'../Db/agregarUsuario.php',
+                data:form_data,
+                cache: false,
+                contentType: false,
+                processData: false,
+                type:'post',
+                success:function(){
+                    Swal.fire('Profesor agregado correctamente! ','','success').then((result)=>{
+                        if(result.value){
 
-                if( validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(5)){
-
-                    let form_data = new FormData();
-                    form_data.append("nombre", nombre); form_data.append("pais", pais);form_data.append("email", email);form_data.append("tipo", tipo);form_data.append("pass", pass);         
-                    $.ajax({
-                        url:'../Db/agregarUsuario.php',
-                        data:form_data,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        type:'post',
-                        success:function(){
-                            Swal.fire('Usuario agregado correctamente! ','','success').then((result)=>{
-                                if(result.value){
-
-                                    window.location.href = "administradores.php";
-                                }
-                            });           
-                        }, error:function(){
-                            Swal.fire('El usuario no fue agregado','','error');
-                        }   
-                    });   
+                            window.location.href = "usuarios.php";
+                        }
+                    });
+                }, error:function(){
+                    Swal.fire('El profesor no fue agregado','','error');
                 }
-
-                else{
-                    Swal.fire('Por favor rellena todos los datos requeridos','','error');
-                }
-
-            }
-            else{
-
-                validate1(1);validate1(2);validate1(3);validate1(4);validate1(5);
-
-                if( validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(5)){
-
-                    let form_data = new FormData();
-                    form_data.append("nombre", nombre); form_data.append("pais", pais);form_data.append("email", email);form_data.append("tipo", "1");form_data.append("pass", pass);         
-                    $.ajax({
-                        url:'../Db/agregarUsuario.php',
-                        data:form_data,
-                        cache: false,
-                        contentType: false,
-                        processData: false,
-                        type:'post',
-                        success:function(){
-                            Swal.fire('Usuario agregado correctamente! ','','success').then((result)=>{
-                                if(result.value){
-
-                                    window.location.href = "escritores.php";
-                                }
-                            });           
-                        }, error:function(){
-                            Swal.fire('El usuario no fue agregado','','error');
-                        }   
-                    });   
-                }
-
-                else{
-                    Swal.fire('Por favor rellena todos los datos requeridos','','error');
-                }
-
-                
-            }
-        });
+            });
+        }
+        else Swal.fire('Por favor rellena todos los datos requeridos','','error');
+    });
 });
 

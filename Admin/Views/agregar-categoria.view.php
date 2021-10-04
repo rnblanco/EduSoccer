@@ -74,9 +74,12 @@
                             <div class="form-card">
                               <label class="mb-3">Para proteger la información que ingresa al sitio, se ha bloqueado la función de pegar texto. Además, no es posible introducir los siguientes caracteres "<  >  =  ." .</label><br>
                               <div class='form-group'> <label class='form-control-label'>Imagen * :</label> <br><img src='https://placehold.it/250x300' id='preview' class='img-thumbnail' style='height:250px!important;width:300px!important;'><br><div id='msg'></div><input type='file' name='img' id='img' class='file' accept='image/*' onblur="validate1(3)"><div class='input-group my-3'><input type='text' class='form-control' disabled placeholder='Subir imagen' id="file"><div class='input-group-append'><button type='button' class='browse btn btn-primary'>Subir</button></div></div></div> 
-                              <div class='form-group'> <label class='form-control-label'>Título:</label> <input onkeypress='javascript:return tprotection(event)' type='text' id='titulo' class='form-control' onblur='validate1(1)'></div>
+                              <div class='form-group'> <label class='form-control-label'>Título:</label> <input onkeypress='javascript:return bprotection(event)' type='text' id='titulo' class='form-control' onblur='validate1(1)'></div>
                               <div class='form-group'> <label class='form-control-label'>Subtítulo:</label> <input onkeypress='javascript:return notnumprotection(event)' type='text' id='subtitulo' class='form-control' onblur='validate1(4)'></div>
-                              <div class='form-group'> <label class='form-control-label'>Profesor:</label> <input onkeypress='javascript:return tprotection(event)' type='text' id='profesor' class='form-control' onblur='validate1(5)'></div>
+								<div class='form-group'> <label class='form-control-label'>Profesor:</label> <select type='text' id='profesor' class='form-control' onblur='validate1(5)'>
+										<?php Usuarios(); ?>
+									</select>
+								</div>
                               <div class='form-group'> <label class='form-control-label'>Contenido:</label> <textarea onkeypress='javascript:return bprotection(event)' type='text' id='contenido' class='form-control' onblur='validate1(2)'></textarea></div>
                               <button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>AGREGAR<span class='fa fa-long-arrow-right'></span></button>
                             </div>

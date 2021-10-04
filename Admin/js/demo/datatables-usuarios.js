@@ -3,12 +3,12 @@ $(document).ready(function() {
   $('#dataTable').DataTable({
     "language": {
       "sProcessing":     "Procesando...",
-      "sLengthMenu":     "Mostrar _MENU_ administradores",
-      "sZeroRecords":    "No se encontraron administradores",
-      "sEmptyTable":     "Aún no hay administradores",
-      "sInfo":           "Mostrando administradores del _START_ al _END_ de un total de _TOTAL_ administradores",
-      "sInfoEmpty":      "Mostrando administradores del 0 al 0 de un total de 0 administradores",
-      "sInfoFiltered":   "(filtrado de un total de _MAX_ administradores)",
+      "sLengthMenu":     "Mostrar _MENU_ profesores",
+      "sZeroRecords":    "No se encontraron profesores",
+      "sEmptyTable":     "Aún no hay profesores",
+      "sInfo":           "Mostrando profesores del _START_ al _END_ de un total de _TOTAL_ profesores",
+      "sInfoEmpty":      "Mostrando profesores del 0 al 0 de un total de 0 profesores",
+      "sInfoFiltered":   "(filtrado de un total de _MAX_ profesores)",
       "sInfoPostFix":    "",
       "sSearch":         "Buscar:",
       "sUrl":            "",

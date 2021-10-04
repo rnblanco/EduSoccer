@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" type="image/x-icon" href="Images/DefaultImages/icon.ico" />
 
-  <title> Editar Usuario</title>
+  <title>Editar Profesor</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,7 +69,7 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-10 col-lg-11 col-md-12">
                     <div class="card b-0">
-                        <h4 class="heading">Editar un usuario</h4>
+                        <h4 class="heading">Editar un profesor</h4>
                         <p class="desc"></p>
                         <form action='../Db/EditarPublicacion.php' method='post' enctype='multipart/form-data' id='form'></form>
                           <div class='form-card'>
@@ -81,23 +81,12 @@
                 </div>
             </div>
         </div>
-
         </div>
         <!-- /.container-fluid -->
-
       </div>
       <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Misioneros Vicentinos 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
+		<!-- Footer -->
+		<?php require 'footer.php';?>
     </div>
     <!-- End of Content Wrapper -->
 

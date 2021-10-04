@@ -2,62 +2,35 @@
     include_once 'sesiones.php';
     require("conexion.php");
 
-    $nombre="";$pais="";$email="";$pass="";$tipo="";$error="";
+    $nombre="";$usuario="";$apellido="";$edad="";$pass="";$cargo="";$error="";
 
-    if(empty($_POST['nombre'])){
-        $error = "falta nombre";
-    }
-    else{
-        $nombre = $_POST['nombre'];
-    }
+    if(empty($_POST['nombre'])) $error = "falta nombre";
+    else $nombre = $_POST['nombre'];
 
-    if(empty($_POST['pais'])){
-        $error .= "falta title";
-    }
-    else{
-        $pais = $_POST['pais'];
-    }
+	if(empty($_POST['apellido'])) $error .= "falta apellido";
+	else $apellido = $_POST['apellido'];
 
-    if(empty($_POST['email'])){
-        $error .= "falta email";
-    }
-    else{
-        $email = $_POST['email'];
-    }
+	if(empty($_POST['edad'])) $error .= "falta edad";
+	else $edad = $_POST['edad'];
 
-    if(empty($_POST['pass'])){
-        $error .= "falta pass";
-    }
-    else{
-        $pass = md5($_POST['pass']);
-    }
-    if(empty($_POST['tipo'])){
-        $error .= "falta tipo";
-    }
-    else{
-        $tipo = $_POST['tipo'];
-    }
+    if(empty($_POST['usuario'])) $error .= "falta title";
+    else $usuario = $_POST['usuario'];
 
-    
-    if($nombre!=="" && $pais!=="" && $email!=="" && $pass!=="" && $tipo!==""){
+    if(empty($_POST['pass'])) $error .= "falta pass";
+    else $pass = md5($_POST['pass']);
+
+    if(empty($_POST['cargo'])) $error .= "falta cargo";
+    else $cargo = $_POST['cargo'];
+
+
+    if($nombre!=="" && $apellido!=="" && $edad!=="" && $usuario!=="" && $pass!=="" && $cargo!=="" ){
 
         $conexion = conectar();
-        $nuevoUsuario = $conexion->prepare('INSERT INTO usuarios (Pass, Nombre, Pais, Email, Tipo, Estado) VALUES (?,?,?,?,?,?)');
-        $nuevoUsuario->execute([$pass, $nombre, $pais, $email, $tipo, 1]);
+        $nuevoUsuario = $conexion->prepare('INSERT INTO usuarios (Usuario, Pass, Nombre, Apellido, Edad, Cargo, Estado) VALUES (?,?,?,?,?,?,?)');
+        $nuevoUsuario->execute([$usuario, $pass, $nombre, $apellido, $edad, $cargo, 1]);
 
-        if($nuevoUsuario->rowCount() >= 1){
-            http_response_code(200);
-        }
-        else{
-            http_response_code(404);
-            echo $error;
-        }
-            
+        if($nuevoUsuario->rowCount() >= 1) http_response_code(200);
+        else http_response_code(404);
     }
-    
-    
-    else{
-        http_response_code(404);
-        echo $error;
-    }
+    else http_response_code(404);
 ?>

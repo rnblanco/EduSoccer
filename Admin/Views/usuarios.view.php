@@ -79,7 +79,7 @@
                 <span class="icon text-white-50">
                   <i class="fas fa-plus"></i>
                 </span>
-                <span class="text">Añadir usuario</span>
+                <span class="text">Agregar profesor</span>
               </a>
               </div>
               
@@ -91,15 +91,16 @@
                     <tr>
                       <th>ID</th>
                       <th>Nombre</th>
-                      <th>Pais</th>
                       <th>Usuario</th>
-                      <th>Tipo</th>
+                      <th>Apellido</th>
+                      <th>Edad</th>
+                      <th>Cargo</th>
                       <th>Estado</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <?php Escritores();?>
+                    <?php Usuarios();?>
                   </tbody>
                 </table>
               </div>
@@ -112,15 +113,8 @@
       </div>
       <!-- End of Main Content -->
 
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Misioneros Vicentinos 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
+	  <!-- Footer -->
+	  <?php require 'footer.php';?>
 
     </div>
     <!-- End of Content Wrapper -->
@@ -160,8 +154,8 @@
   <script src="js/sb-admin-2.js"></script>
   <script src="vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-  <script src="js/demo/datatables-administradores.js"></script>
-  <script src="js/escritor.js"></script>
+  <script src="js/demo/datatables-usuarios.js"></script>
+  <script src="js/usuarios.js"></script>
     
 </body>
 

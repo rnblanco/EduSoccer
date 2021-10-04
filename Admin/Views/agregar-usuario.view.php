@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" type="image/x-icon" href="Images/DefaultImages/icon.ico" />
 
-  <title>Agregar Usuario</title>
+  <title>Agregar Profesor</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,47 +69,22 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-10 col-lg-11 col-md-12">
                     <div class="card b-0">
-                        <h4 class="heading">Agregar un usuario</h4>
+                        <h4 class="heading">Agregar un profesor</h4>
                         <p class="desc"></p>
                         <form action='../Db/EditarPublicacion.php' method='post' enctype='multipart/form-data' id='form'></form>
                           <div class='form-card'>
-                            <?php CargarForm($_SESSION['tipo']);?>
-                            <!--<label class='mb-3'>Para proteger la información que ingresa al sitio, se ha bloqueado la función de pegar texto. Además, no es posible introducir los siguientes caracteres '<  >  =  .'</label><br>                            
-                            <div class='form-group'> <label class='form-control-label'>Tipo:</label>
-                              <select type='text' id='tipo' class='form-control' onblur='validate1(5)'>
-                              <option value='1' selected='selected'> Escritor </option>
-                              <option value='2'> Administrador </option>
-                              <option value='3'> Súper Administrador</option></select>
-                            </div>
-                            
-                            <div class='form-group'> <label class='form-control-label'>Nombre:</label> <input onkeypress='javascript:return nprotection(event)'' type='text' id='nombre' class='form-control' onblur='validate1(1)'></div>
-                            <div class='form-group'> <label class='form-control-label'>País:</label> <input onkeypress='javascript:return pprotection(event)'' type='text' id='pais' class='form-control' onblur='validate1(2)'></div>
-                            <div class='form-group'> <label class='form-control-label'>Nombre de usuario:</label> <input onkeypress='javascript:return eprotection(event)'' type='text' id='email' class='form-control' onblur='validate1(3)'></div>
-                            <div class='form-group'> <label class='form-control-label'>Contraseña:</label> <input onkeypress='javascript:return pprotection(event)'' type='password' id='pass' class='form-control' onblur='validate1(4)' placeholder='*******'></div>
-                            <button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>EDITAR<span class='fa fa-long-arrow-right'></span></button>-->
+                            <?php CargarForm();?>
                           </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-
         </div>
         <!-- /.container-fluid -->
-
       </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Misioneros Vicentinos 2020</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
+		<!-- Footer -->
+		<?php require 'footer.php';?>
     </div>
     <!-- End of Content Wrapper -->
 
@@ -148,7 +123,6 @@
   <script src="vendor/jquery-easing/jquery.easing.js"></script>
   <script src="js/sb-admin-2.js"></script>
   <script src="js/agregar-usuario.js"></script>
-
 </body>
 
 </html>

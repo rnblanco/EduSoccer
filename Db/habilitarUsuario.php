@@ -14,13 +14,15 @@
 
     if( $id != "") {
         $conexion = conectar();
-        $eliminarUsuario = $conexion->prepare('DELETE from  usuarios WHERE  ID = :id ');
-        $eliminarUsuario->bindParam(':id', $id, PDO::PARAM_STR);
-        $eliminarUsuario->execute();
-        if($eliminarUsuario->rowCount() >= 1) http_response_code(200);
+        $habilitarUsuario = $conexion->prepare('UPDATE usuarios SET Estado="1" WHERE ID = :id ');
+        $habilitarUsuario->bindParam(':id', $id, PDO::PARAM_STR);
+        $habilitarUsuario->execute();
+
+        if($habilitarUsuario->rowCount() >= 1) http_response_code(200);
         else http_response_code(500);
     }
     else http_response_code(500);
 
 $conexion=null;
+    
 ?>

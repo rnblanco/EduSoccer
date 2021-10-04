@@ -29,7 +29,13 @@
 		$Categorias = $buscarCategorias->fetchAll();
 
 		foreach($Categorias as list($id, $titulo, $subtitulo, $contenido, $profesor, $imagen)){
-
+			$buscarUsuarios = $conexion->prepare("SELECT * FROM Usuarios WHERE ID=:ID");
+			$buscarUsuarios->bindParam(':ID', $profesor, PDO::PARAM_STR);
+			$buscarUsuarios->execute();
+			$Usuarios = $buscarUsuarios->fetchAll();
+			foreach($Usuarios as list($id2, $usuario2, $pass2, $nombre2, $apellido2, $edad2, $cargo2, $estado2)){
+				$profesor = $nombre2 . " " . $apellido2;
+			}
 			$imagen==""?$imagen="default.png":$imagen;
 
 			switch($tipo){

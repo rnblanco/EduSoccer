@@ -2,190 +2,62 @@
     include_once 'sesiones.php';
     require("conexion.php");
 
-    $nombre="";$pais="";$email="";$pass="";$error="";$id="";$tipo="";
+	$nombre="";$usuario="";$apellido="";$edad="";$pass="";$cargo="";$estado="";$error="";$md5="";$id="";
 
-    if(empty($_POST['nombre'])){
-        $error = "falta nombre";
+	if(empty($_POST['nombre'])) $error = "falta nombre";
+	else $nombre = $_POST['nombre'];
+
+	if(empty($_POST['apellido'])) $error .= "falta apellido";
+	else $apellido = $_POST['apellido'];
+
+	if(empty($_POST['edad'])) $error .= "falta edad";
+	else $edad = $_POST['edad'];
+
+	if(empty($_POST['usuario'])) $error .= "falta title";
+	else $usuario = $_POST['usuario'];
+
+	if(empty($_POST['md5'])) $error .= "falta md5";
+	else $md5 = $_POST['md5'];
+
+	if(empty($_POST['pass'])) $error .= "falta pass";
+	else{
+		if($md5) $pass = md5($_POST['pass']);
+		else $pass = $_POST['pass'];
+	}
+
+	if(empty($_POST['cargo'])) $error .= "falta cargo";
+	else $cargo = $_POST['cargo'];
+
+	if(empty($_POST['estado'])) $error .= "falta estado";
+	else $estado = $_POST['estado'];
+
+	if(empty($_POST['id'])) $error .= "falta id";
+	else $id = $_POST['id'];
+
+    if($nombre!=="" && $apellido!=="" && $edad!=="" && $usuario!=="" && $pass!=="" && $cargo!=="" && $id!==""){
+	    $conexion = conectar();
+	    $nuevoUsuario = $conexion->prepare("UPDATE usuarios set Usuario = :Usuario , Pass = :Pass, Nombre = :Nombre, Apellido=:Apellido,
+                    							  Edad=:Edad, Cargo=:Cargo, Estado=:Estado WHERE ID = :ID  ");
+	    $nuevoUsuario->bindParam(':Usuario', $usuario, PDO::PARAM_STR);
+	    $nuevoUsuario->bindParam(':Pass', $pass, PDO::PARAM_STR);
+	    $nuevoUsuario->bindParam(':Nombre', $nombre, PDO::PARAM_STR);
+	    $nuevoUsuario->bindParam(':Apellido', $apellido, PDO::PARAM_STR);
+	    $nuevoUsuario->bindParam(':Edad', $edad, PDO::PARAM_STR);
+	    $nuevoUsuario->bindParam(':Cargo', $cargo, PDO::PARAM_STR);
+	    $nuevoUsuario->bindParam(':Estado', $estado, PDO::PARAM_STR);
+	    $nuevoUsuario->bindParam(':ID', $id, PDO::PARAM_STR);
+	    $nuevoUsuario->execute();
+
+	    if($nuevoUsuario->rowCount() >= 1) http_response_code(200);
+	    else{
+		    http_response_code(404);
+			echo $nuevoUsuario->execute();
+	    }
     }
     else{
-        $nombre = $_POST['nombre'];
+	    http_response_code(400);
+		echo $error;
     }
 
-    if(empty($_POST['pais'])){
-        $error .= "falta title";
-    }
-    else{
-        $pais = $_POST['pais'];
-    }
 
-    if(empty($_POST['email'])){
-        $error .= "falta email";
-    }
-    else{
-        $email = $_POST['email'];
-    }
-
-    if(empty($_POST['pass'])){
-        $error .= "falta pass";
-    }
-    else{
-        $pass = md5($_POST['pass']);
-    }
-    if(empty($_POST['id'])){
-        $error .= "falta id";
-    }
-    else{
-        $id = $_POST['id'];
-    }
-    if(empty($_POST['tipo'])){
-        $error .= "falta tipo";
-    }
-    else{
-        $tipo = $_POST['tipo'];
-    }
-
-    //con pass y con tipo
-    if($nombre!=="" && $pais!=="" && $email!=="" && $pass!=="" && $tipo!==""){
-
-        $conexion = conectar();
-        $usuarioActual = $conexion->prepare("SELECT Nombre, Pais, Email, Pass, Tipo FROM usuarios WHERE Id_Usuario= '$id' ");
-        $usuarioActual->execute();
-
-        foreach($usuarioActual as list($aNombre, $aPais, $aEmail, $aPass, $aTipo )){
-
-            if($aNombre==$nombre && $aPais==$pais && $aEmail==$email && $aPass==$pass && $aTipo==$tipo){
-                http_response_code(505);
-                echo $error; 
-            }
-            else{
-
-                $nuevoUsuario = $conexion->prepare("UPDATE usuarios set Nombre = :nombre , Pais = :pais , Email = :email, Pass= :pass, Tipo = :tipo WHERE Id_Usuario = :id  ");
-                $nuevoUsuario->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':pais', $pais, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':email', $email, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':pass', $pass, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':tipo', $tipo, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':id', $id, PDO::PARAM_STR);
-                $nuevoUsuario->execute();
-
-                if($nuevoUsuario->rowCount() >= 1){
-                    http_response_code(200);
-                    echo $nuevoUsuario->execute();
-                }
-                else{
-                    http_response_code(404);
-                    echo $error;
-                }
-            }
-        }
-    }
-    //sin pass con tipo
-    else if($nombre!=="" && $pais!=="" && $email!=="" && $tipo!==""){
-
-        $conexion = conectar();
-        $usuarioActual = $conexion->prepare("SELECT Nombre, Pais, Email, Tipo FROM usuarios WHERE Id_Usuario= '$id' ");
-        $usuarioActual->execute();
-
-        foreach($usuarioActual as list($aNombre, $aPais, $aEmail, $aPass, $aTipo )){
-
-            if($aNombre==$nombre && $aPais==$pais && $aEmail==$email && $aTipo==$tipo){
-                http_response_code(505);
-                echo $error; 
-            }
-            else{
-
-                $nuevoUsuario = $conexion->prepare("UPDATE usuarios set Nombre = :nombre , Pais = :pais , Email = :email, Tipo = :tipo WHERE Id_Usuario = :id  ");
-                $nuevoUsuario->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':pais', $pais, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':email', $email, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':tipo', $tipo, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':id', $id, PDO::PARAM_STR);
-                $nuevoUsuario->execute();
-
-                if($nuevoUsuario->rowCount() >= 1){
-                    http_response_code(200);
-                    echo $nuevoUsuario->execute();
-                }
-                else{
-                    http_response_code(404);
-                    echo $error;
-                }
-            }
-        }
-    }
-    //con pass sin tipo
-    else if($nombre!=="" && $pais!=="" && $email!=="" && $pass!==""){
-
-
-        $conexion = conectar();
-        $usuarioActual = $conexion->prepare("SELECT Nombre, Pais, Email, Pass FROM usuarios WHERE Id_Usuario= '$id' ");
-        $usuarioActual->execute();
-
-        foreach($usuarioActual as list($aNombre, $aPais, $aEmail, $aPass )){
-
-            if($aNombre==$nombre && $aPais==$pais && $aEmail==$email && $aPass==$pass){
-                http_response_code(505);
-                echo $error; 
-            }
-            else{
-
-                $nuevoUsuario = $conexion->prepare("UPDATE usuarios set Nombre = :nombre , Pais = :pais , Email = :email, Pass= :pass WHERE Id_Usuario = :id  ");
-                $nuevoUsuario->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':pais', $pais, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':email', $email, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':pass', $pass, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':id', $id, PDO::PARAM_STR);
-                $nuevoUsuario->execute();
-
-                if($nuevoUsuario->rowCount() >= 1){
-                    http_response_code(200);
-                    echo $nuevoUsuario->execute();
-                }
-                else{
-                    http_response_code(404);
-                    echo $error;
-                }
-            }
-        }
-    }
-
-    //sin pass sin tipo
-    else if($nombre!=="" && $pais!=="" && $email!==""){
-
-        $conexion = conectar();
-        $usuarioActual = $conexion->prepare("SELECT Nombre, Pais, Email FROM usuarios WHERE Id_Usuario= '$id' ");
-        $usuarioActual->execute();
-
-        foreach($usuarioActual as list($aNombre, $aPais, $aEmail )){
-
-            if($aNombre==$nombre && $aPais==$pais && $aEmail==$email){
-                http_response_code(505);
-                echo $error;
-            }
-            else{
-
-                $nuevoUsuario = $conexion->prepare("UPDATE usuarios set Nombre = :nombre , Pais = :pais , Email = :email WHERE Id_Usuario = :id  ");
-                $nuevoUsuario->bindParam(':nombre', $nombre, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':pais', $pais, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':email', $email, PDO::PARAM_STR);
-                $nuevoUsuario->bindParam(':id', $id, PDO::PARAM_STR);
-                $nuevoUsuario->execute();
-
-                if($nuevoUsuario->rowCount() >= 1){
-                    http_response_code(200);
-                    echo $nuevoUsuario->execute();
-                }
-                else{
-                    http_response_code(404);
-                    echo $error;
-                }
-            }
-        }
-
-    }
-    
-    else{
-        http_response_code(404);
-        echo $error;
-    }
 ?>
