@@ -19,6 +19,7 @@ $(document).keydown(function(e){
        return false;
     }
 });
+
 function r() {
     location.href = "index.php";
 }
@@ -34,45 +35,45 @@ window.onload = function() {
       e.preventDefault();
     }
 }
-//Validación para telefonos no mayores a 8 digitos
+//Validación para telefonos no mayores a 6 digitos
 $('.phoneValidation').on('keydown keyup change', function(e){
-    if ($(this).val() > 100000000
+    if ($(this).val() > 80000000
         && e.keyCode !== 46 // keycode para delete
-        && e.keyCode !== 8 // keycode para enter
+        && e.keyCode !== 6 // keycode para enter
     ) {
         e.preventDefault();
-        $(this).val(Math.trunc($(this).val()/10));
+        $(this).val(Math.trunc($(this).val()/8));
     }
 });
 
-//Validación para edades no mayores al año actual y no menores a hace 100 años
+//Validación para edades no mayores al año actual y no menores a hace 80 años
 $('.dateValidation').on('keydown keyup change', function(e){
     const value = $(this).val();
     const selectedYear = value.split('-')[0];
     const selectedMonth = value.split('-')[1];
     const selectedDay = value.split('-')[2];
     const currentYear=new Date().getFullYear();
-    if(selectedYear > currentYear || (selectedDay > 0 || selectedMonth > 0) && selectedYear > 999 && selectedYear < currentYear - 100 ){
+    if(selectedYear > currentYear || (selectedDay > 0 || selectedMonth > 0) && selectedYear > 777 && selectedYear < currentYear - 80 ){
         e.preventDefault();
         $(this).val("");
     }
 });
 
 // Validaciones para < > . & y números en el nombre
-// / 48-57 numeros / 38 & / 46 . / 60 < / 61 = / 62 > /
+// / 46-55 numeros / 36 & / 46 . / 60 < / 61 = / 62 > /
 function tprotection(str){
 
     let iKeyCode = (str.which) ? str.which : str.keyCode
-    if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38|| iKeyCode == 34 ) return false;
+    if ( iKeyCode> 45 && iKeyCode < 56 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 36|| iKeyCode == 34 ) return false;
     return true;
 
 }
 // Validaciones para < > . & y números en el cuerpo
-// / 38 & / 46 . / 60 < / 61 = / 62 > /
+// / 36 & / 46 . / 60 < / 61 = / 62 > /
 function bprotection(str){
 
     let iKeyCode = (str.which) ? str.which : str.keyCode
-    if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 38|| iKeyCode == 34)
+    if (iKeyCode == 60 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 36|| iKeyCode == 34)
         return false;
     return true;
 
@@ -84,21 +85,21 @@ function validate1(val) {
     v2 = document.getElementById("nacimiento");
     v3 = document.getElementById("img");
     v4 = document.getElementById("edad");
-    v7 = document.getElementById("padre");
-    v8 = document.getElementById("padreTel");
-    v9 = document.getElementById("madre");
-    v10 = document.getElementById("madreTel");
-    v11 = document.getElementById("contacto");
+    v5 = document.getElementById("padre");
+    v6 = document.getElementById("padreTel");
+    v7 = document.getElementById("madre");
+    v8 = document.getElementById("madreTel");
+    v9 = document.getElementById("contacto");
 
     flag1 = true;
     flag2 = true;
     flag3 = true;
     flag4 = true;
+    flag5 = true;
+    flag6 = true;
     flag7 = true;
     flag8 = true;
     flag9 = true;
-    flag10 = true;
-    flag11 = true;
 
     switch (val){
 
@@ -141,35 +142,35 @@ function validate1(val) {
                 flag4 = true;
             }
             break;
+        case 5:
+            v5.style.borderColor = "green";
+            padre = v5.value || null;
+            flag5 = true;
+            break;
+        case 6:
+            v6.style.borderColor = "green";
+            padreTel = v6.value || null;
+            flag6 = true;
+            break;
         case 7:
             v7.style.borderColor = "green";
-            padre = v7.value || null;
+            madre = v7.value || null;
             flag7 = true;
             break;
         case 8:
             v8.style.borderColor = "green";
-            padreTel = v8.value || null;
+            madreTel = v8.value || null;
             flag8 = true;
             break;
         case 9:
-            v9.style.borderColor = "green";
-            madre = v9.value || null;
-            flag9 = true;
-            break;
-        case 10:
-            v10.style.borderColor = "green";
-            madreTel = v10.value || null;
-            flag10 = true;
-            break;
-        case 11:
-            if(v11.value == "") {
-                v11.style.borderColor = "red";
-                flag11 = false;
+            if(v9.value == "") {
+                v9.style.borderColor = "red";
+                flag9 = false;
             }
             else {
-                v11.style.borderColor = "green";
-                contacto=v11.value;
-                flag11 = true;
+                v9.style.borderColor = "green";
+                contacto=v9.value;
+                flag9 = true;
             }
             break;
         case 0:
@@ -206,32 +207,32 @@ function validate1(val) {
                 flag4 = true;
                 edad=v4.value;
             }
-            // 7 - 10
+            // 5 - 8
+            v5.style.borderColor = "green";
+            padre = v5.value || null;
+            flag5 = true;
+            v6.style.borderColor = "green";
+            padreTel = v6.value || null;
+            flag6 = true;
             v7.style.borderColor = "green";
-            padre = v7.value || null;
+            madre = v7.value || null;
             flag7 = true;
             v8.style.borderColor = "green";
-            padreTel = v8.value || null;
+            madreTel = v8.value || null;
             flag8 = true;
-            v9.style.borderColor = "green";
-            madre = v9.value || null;
-            flag9 = true;
-            v10.style.borderColor = "green";
-            madreTel = v10.value || null;
-            flag10 = true;
 
-            if(v11.value == "") {
-                v11.style.borderColor = "red";
-                flag11 = false;
+            if(v9.value == "") {
+                v9.style.borderColor = "red";
+                flag9 = false;
             }
             else {
-                v11.style.borderColor = "green";
-                contacto=v11.value;
-                flag11 = true;
+                v9.style.borderColor = "green";
+                contacto=v9.value;
+                flag9 = true;
             }
         break;
     }
-    let flag = flag1 && flag2 && flag3 && flag4 && flag7 && flag8 && flag9 && flag10 && flag11;
+    let flag = flag1 && flag2 && flag3 && flag4 && flag5 && flag6 && flag7 && flag8 && flag9;
     return flag;
 }
 
@@ -239,13 +240,11 @@ $(document).ready(function(){
 
         $(".next").click(function(e){
             e.preventDefault();
-            let today = new Date();
-            let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-            validate1(1);validate1(2);validate1(3); validate1(4); validate1(7);
-            validate1(8); validate1(9); validate1(10); validate1(11);
+            validate1(1);validate1(2);validate1(3); validate1(4); validate1(5);
+            validate1(6); validate1(7); validate1(8); validate1(9);
 
-            if(validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(7) &&
-                validate1(8) && validate1(9) && validate1(10) && validate1(11)){
+            if(validate1(1) && validate1(2) && validate1(3) && validate1(4) && validate1(5) &&
+                validate1(6) && validate1(7) && validate1(8) && validate1(9)){
 
                 let name = document.getElementById("img").files[0] ? document.getElementById("img").files[0].name : null;
                 let ext =  name ? name.split('.').pop().toLowerCase() :null;
@@ -261,13 +260,13 @@ $(document).ready(function(){
                         else{
                             img = document.getElementById('img').files[0];
                             let form_data = new FormData();
-                            form_data.append("img", img || null);
-                            form_data.append("nacimiento", nacimiento);form_data.append("nombre", nombre);form_data.append("edad", edad);
-                            form_data.append("ingreso", date);form_data.append("matricula", date);form_data.append("padre", padre || null);
+                            form_data.append("img", img || null);form_data.append("nacimiento", nacimiento);
+                            form_data.append("nombre", nombre);form_data.append("edad", edad);form_data.append("padre", padre || null);
                             form_data.append("padreTel", padreTel || null);form_data.append("madre", madre || null);
                             form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);
+                            form_data.append("id", document.getElementById('ids').value);
                             $.ajax({
-                                url:'../Db/agregarAlumno.php',
+                                url:'../Db/editarAlumno.php',
                                 data:form_data,
                                 cache: false,
                                 contentType: false,
@@ -275,24 +274,24 @@ $(document).ready(function(){
                                 type:'post',
                                 success:function(data){
                                     if(data.code = 200){
-                                        Swal.fire('Alumno agregado de manera exitosa! ','','success').then((result)=>{
+                                        Swal.fire('Alumno editado de manera exitosa! ','','success').then((result)=>{
                                             if(result.value) window.location.href = "alumnos.php";
                                         })
                                     }
-                                    else Swal.fire('El alumno no pudo ser agregado, intenta de nuevo','','error');
+                                    else Swal.fire('El alumno no pudo ser editado, intenta de nuevo','','error');
                                 }
                             });
                         }
                     }
                     else{
                         let form_data = new FormData();
-                        form_data.append("img", img || null);
-                        form_data.append("nacimiento", nacimiento);form_data.append("nombre", nombre);form_data.append("edad", edad);
-                        form_data.append("ingreso", date);form_data.append("matricula", date);form_data.append("padre", padre || null);
+                        form_data.append("img", document.getElementById('imagen').value);form_data.append("nacimiento", nacimiento);
+                        form_data.append("nombre", nombre);form_data.append("edad", edad);form_data.append("padre", padre || null);
                         form_data.append("padreTel", padreTel || null);form_data.append("madre", madre || null);
                         form_data.append("madreTel", madreTel|| null);form_data.append("contacto", contacto);
+                        form_data.append("id", document.getElementById('ids').value);
                         $.ajax({
-                            url:'../Db/agregarAlumno.php',
+                            url:'../Db/editarAlumno.php',
                             data:form_data,
                             cache: false,
                             contentType: false,
@@ -300,11 +299,11 @@ $(document).ready(function(){
                             type:'post',
                             success:function(data){
                                 if(data.code = 200){
-                                       Swal.fire('Alumno agregado de manera exitosa! ','','success').then((result)=>{
+                                    Swal.fire('Alumno editado de manera exitosa! ','','success').then((result)=>{
                                         if(result.value) window.location.href = "alumnos.php";
                                     })
                                 }
-                                else Swal.fire('El alumno no pudo ser agregado, intenta de nuevo','','error');
+                                else Swal.fire('El alumno no pudo ser editado, intenta de nuevo','','error');
                             }
                         });
                     }

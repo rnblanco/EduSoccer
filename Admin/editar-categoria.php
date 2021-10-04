@@ -1,5 +1,4 @@
 <?php
-
     require_once '../Db/sesiones.php';
     require("../Db/conexion.php");
     $usuario = $_SESSION['usuario'];

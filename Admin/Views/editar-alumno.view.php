@@ -9,7 +9,7 @@
   <meta name="author" content="">
   <link rel="icon" type="image/x-icon" href="Images/DefaultImages/icon.ico" />
 
-  <title>Agregar alumno</title>
+  <title>Editar alumno</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,20 +69,11 @@
             <div class="row d-flex justify-content-center">
                 <div class="col-xl-10 col-lg-11 col-md-12">
                     <div class="card b-0">
-                        <h4 class="heading">Agregar un alumno</h4>
-                        <form action="../Db/agregarAlumno.php" method="post" enctype="multipart/form-data" id="form">
+                        <h4 class="heading">Editar alumno</h4>
+                        <form action="../Db/editarAlumno.php" method="post" enctype="multipart/form-data" id="form">
                             <div class="form-card">
                               <label class="mb-3">Para proteger la información que ingresa al sitio, se ha bloqueado la función de pegar texto. Además, no es posible introducir los siguientes caracteres "<  >  =  ." .</label><br>
-                              <div class='form-group'> <label class='form-control-label'>Foto:</label> <br><img src='https://placehold.it/250x300' id='preview' class='img-thumbnail' style='height:250px!important;width:300px!important;'><br><div id='msg'></div><input type='file' name='img' id='img' class='file' accept='image/*' onblur="validate1(3)"><div class='input-group my-3'><input type='text' class='form-control' disabled placeholder='Subir imagen' id="file"><div class='input-group-append'><button type='button' class='browse btn btn-primary'>Subir</button></div></div></div>
-                              <div class='form-group'> <label class='form-control-label'>Nombre * :</label> <input onkeypress='javascript:return tprotection(event)' type='text' id='nombre' class='form-control' onblur='validate1(1)'></div>
-                              <div class='form-group'> <label class='form-control-label'>Edad * :</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='edad' class='form-control ageValidation' onblur='validate1(4)'></div>
-                              <div class='form-group'> <label class='form-control-label'>Nacimiento * :</label> <input onkeypress='javascript:return bprotection(event)' type='date' id='nacimiento' class='form-control dateValidation' onblur='validate1(2)'></div>
-                              <div class='form-group'> <label class='form-control-label'>Padre:</label> <input onkeypress='javascript:return tprotection(event)' type='text' id='padre' class='form-control' onblur='validate1(7)'></input></div>
-                              <div class='form-group'> <label class='form-control-label'>Teléfono:</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='padreTel' class='form-control phoneValidation' onblur='validate1(8)'></input></div>
-							  <div class='form-group'> <label class='form-control-label'>Madre:</label> <input onkeypress='javascript:return tprotection(event)' type='text' id='madre' class='form-control' onblur='validate1(9)'></input></div>
-                              <div class='form-group'> <label class='form-control-label'>Teléfono:</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='madreTel' class='form-control phoneValidation' onblur='validate1(10)'></input></div>
-                              <div class='form-group'> <label class='form-control-label'>Contacto * :</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='contacto' class='form-control phoneValidation' onblur='validate1(11)'></input></div>
-                              <button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>AGREGAR<span class='fa fa-long-arrow-right'></span></button>
+								<?php Cargar(); ?>
                             </div>
                         </form>
                     </div>
@@ -134,7 +125,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="vendor/jquery-easing/jquery.easing.js"></script>
   <script src="js/sb-admin-2.js"></script>
-  <script src="js/agregar-alumno.js"></script>
+  <script src="js/editar-alumno.js"></script>
 
 </body>
 
