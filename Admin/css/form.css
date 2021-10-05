@@ -1,8 +1,6 @@
 .seccion-input{
-    display:none;
+    display:none!important;
 }
-
-
 .card {
     background-color: #FFF;
     border-radius: 25px;

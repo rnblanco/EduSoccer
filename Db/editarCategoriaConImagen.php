@@ -27,7 +27,6 @@
     if( $contenido!=="" && $titulo!=="" && $subtitulo!=="" && $id!=="" && $profesor!==""){
         
         $conexion = conectar();
-
         $CategoriaActual  = $conexion ->prepare ("SELECT contenido, titulo, subtitulo, profesor from Categorias WHERE ID = :id ");
         $CategoriaActual->bindParam(':id', $id, PDO::PARAM_STR);
         $CategoriaActual->execute();

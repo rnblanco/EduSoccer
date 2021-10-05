@@ -1,5 +1,5 @@
 <?php
-
+	require_once("../Db/conexion.php");
 	function User(){
 		echo "
         <li class='nav-item dropdown no-arrow'>
@@ -26,28 +26,36 @@
 
 			case 1:
 				echo '
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                <a class="sidebar-brand d-flex align-items-center justify-content-left" href="index.php">
-                    <div class="sidebar-brand-icon rotate-n-15">
-                    <i class="fas fa-futbol"></i>
-                    </div>
-                    <div class="sidebar-brand-text mx-3">Profesor</div>
-                </a>
-
-                <hr class="sidebar-divider">
-                
-                <div class="sidebar-heading" style="color:white!important;">
-                    Clases
-                </div>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="alumnos.php">
-                    <i class="fas fa-plus"></i>
-                    <span>Alumnos</span></a>
-                </li>
-            </ul>
-            ';
+	            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+	
+	                <a class="sidebar-brand d-flex align-items-center justify-content-left" href="index.php">
+	                    <div class="sidebar-brand-icon rotate-n-15">
+	                    <i class="fas fa-futbol"></i>
+	                    </div>
+	                    <div class="sidebar-brand-text mx-3">Profesor</div>
+	                </a>
+	
+	                <hr class="sidebar-divider">
+	                <div class="sidebar-heading" style="color:white!important;">
+	                    Clases
+	                </div>
+	                
+	                <li class="nav-item">
+	                    <a class="nav-link" href="alumnos.php">
+	                    <i class="fas fa-plus"></i>
+	                    <span>Alumnos</span></a>
+	                </li>
+            	';
+				if(existeAsistencia()){
+					echo '
+					<hr class="sidebar-divider">
+	                <div class="sidebar-heading" style="color:white!important;">
+	                    Asistencia
+	                </div>
+					';
+					obtenerAsistencia();
+				}
+				echo'</ul>';
 				break;
 
 			case 2:
@@ -60,9 +68,41 @@
                     </div>
                     <div class="sidebar-brand-text mx-3">Administrador</div>
                 </a>
-
+				';
+				if(existeAsistencia()){
+					echo '
+					<hr class="sidebar-divider">
+	                <div class="sidebar-heading" style="color:white!important;">
+	                    Asistencia
+	                </div>
+					';
+					obtenerAsistencia();
+				}
+                echo'
                 <hr class="sidebar-divider">
-
+                <div class="sidebar-heading" style="color:white!important;">
+                    Clases
+                </div>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="alumnos.php">
+                    <i class="fas fa-plus"></i>
+                    <span>Alumnos</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="usuarios.php">
+                    <i class="fas fa-address-book"></i>
+                    <span>Profesores</span></a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="pagos.php">
+                    <i class="fas fa-credit-card"></i>
+                    <span>Pagos</span></a>
+                </li>
+                
+                 <hr class="sidebar-divider">
                 <div class="sidebar-heading" style="color:white!important;">
                     Editables
                 </div>
@@ -90,34 +130,35 @@
                     <i class="fas fa-list"></i>
                     <span>Categorías</span></a>
                 </li>
-                
-                <hr class="sidebar-divider">
-
-                <div class="sidebar-heading" style="color:white!important;">
-                    Clases
-                </div>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="alumnos.php">
-                    <i class="fas fa-plus"></i>
-                    <span>Alumnos</span></a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="usuarios.php">
-                    <i class="fas fa-address-book"></i>
-                    <span>Profesores</span></a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="nav-link" href="pagos.php">
-                    <i class="fas fa-credit-card"></i>
-                    <span>Pagos</span></a>
-                </li>
-                
             </ul>
             ';
 				break;
 		}
+	}
+
+	function obtenerAsistencia(){
+		$conexion = conectar();
+		$Categorias = $conexion->prepare("SELECT ID, Titulo from Categorias WHERE Profesor = :id ");
+		$Categorias->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
+		$Categorias->execute();
+
+		foreach($Categorias as list ($id, $titulo)){
+			$fecha = date("Y-m-d");
+			echo "
+				<li class='nav-item'>
+                    <a class='nav-link' href='asistencia.php?id=$id&fecha=$fecha'>
+                    <i class='far fa-list-alt'></i>
+                    <span>$titulo</span></a>
+                </li>
+			";
+		}
+	}
+	function existeAsistencia(){
+		$conexion = conectar();
+		$Categorias = $conexion->prepare("SELECT ID, Titulo from Categorias WHERE Profesor = :id ");
+		$Categorias->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
+		$Categorias->execute();
+		if($Categorias->rowCount() >= 1) return true;
+		else return false;
 	}
 ?>
