@@ -2,7 +2,7 @@ let alumno="";
 let mes="";
 let ano="";
 let cobro="";
-/*
+
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
     e.preventDefault();
@@ -13,7 +13,7 @@ $(document).keydown(function(e){
     if(e.which === 123){
        return false;
     }
-});*/
+});
 function r() {
     location.href = "index.php";
 }

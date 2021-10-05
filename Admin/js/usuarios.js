@@ -1,4 +1,4 @@
-function del(id,tipo){
+function del(id){
     let form_data = new FormData();
     form_data.append("id", id);
 

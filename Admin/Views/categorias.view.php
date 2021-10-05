@@ -152,5 +152,4 @@
   <script src="js/demo/datatables-categorias.js"></script>
   <script src="js/categorias.js"></script>
 </body>
-
 </html>

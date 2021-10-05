@@ -135,7 +135,5 @@
 		<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 		<script src="js/demo/datatables-contactos.js"></script>
 		<script src="js/servicios.js"></script>
-
 	</body>
-
 </html>

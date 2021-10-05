@@ -2,7 +2,7 @@ let img;
 let titulo="";
 let contenido="";
 let id="";
-/*
+
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
     e.preventDefault();
@@ -14,7 +14,7 @@ $(document).keydown(function(e){
        return false;
     }
 });
-*/
+
 function r() {
     location.href = "index.php";
 }

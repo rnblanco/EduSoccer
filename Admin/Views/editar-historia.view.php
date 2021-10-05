@@ -128,7 +128,6 @@
   <script src="vendor/jquery-easing/jquery.easing.js"></script>
   <script src="js/sb-admin-2.js"></script>
   <script src="js/editar-historia.js"></script>
-  
 
 </body>
 
