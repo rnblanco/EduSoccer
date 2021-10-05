@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-10-2021 a las 16:17:01
+-- Tiempo de generación: 05-10-2021 a las 08:42:33
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.3.28
 
@@ -53,6 +53,26 @@ INSERT INTO `alumnos` (`ID`, `Nombre`, `Edad`, `Fecha_Nacimiento`, `Fecha_Ingres
 (14, 'Javier Avelar', 12, '2012-12-12', '2021-09-30', '2021-09-30', '', 'null', 'null', 'null', 'null', 12121212, 4),
 (17, 'Javier Vega', 10, '2021-10-03', '2021-10-03', '2021-10-03', '', 'null', 'null', 'null', 'null', 78787878, 3),
 (18, 'Daniel Hernández', 15, '2006-10-03', '2021-10-03', '2021-10-03', NULL, 'null', 'null', 'null', 'null', 78787878, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `asistencia`
+--
+
+CREATE TABLE `asistencia` (
+  `ID` int(11) NOT NULL,
+  `Fecha` date NOT NULL,
+  `Alumno` varchar(220) NOT NULL,
+  `Asistencia` varchar(220) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `asistencia`
+--
+
+INSERT INTO `asistencia` (`ID`, `Fecha`, `Alumno`, `Asistencia`) VALUES
+(7, '2021-10-04', '12', 'Presente');
 
 -- --------------------------------------------------------
 
@@ -254,6 +274,12 @@ ALTER TABLE `alumnos`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `cargos`
 --
 ALTER TABLE `cargos`
@@ -312,6 +338,12 @@ ALTER TABLE `usuarios`
 --
 ALTER TABLE `alumnos`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+
+--
+-- AUTO_INCREMENT de la tabla `asistencia`
+--
+ALTER TABLE `asistencia`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `cargos`
