@@ -19,11 +19,11 @@
 
     function Pagos(){
         $conexion = conectar();
-        $buscarPagos = $conexion->prepare("SELECT * FROM Pagos ORDER BY ID");
+        $buscarPagos = $conexion->prepare("SELECT * FROM Pagos ORDER BY Fecha DESC");
         $buscarPagos->execute();
         $Pagos = $buscarPagos->fetchAll();
 
-        foreach($Pagos as list($id, $alumno, $mes, $ano, $cobro)){
+        foreach($Pagos as list($id, $alumno, $fecha, $cobro)){
 
 	        $conexion = conectar();
 	        $buscarUsuarios = $conexion->prepare("SELECT * FROM Alumnos WHERE ID=:ID");
@@ -34,10 +34,8 @@
 
             echo" 
                 <tr>
-                    <td>$id</td>
+                    <td>$fecha</td>
                     <td>$alumno</td>
-                    <td>$mes</td>
-                    <td>$ano</td>
                     <td>$$cobro</td>
                 </tr>
             ";

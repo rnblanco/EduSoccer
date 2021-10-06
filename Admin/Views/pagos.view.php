@@ -66,17 +66,23 @@
 						<!-- DataTales Example -->
 						<div class="card shadow mb-4">
 							<div class="card-header py-3">
-								<h4 class="m-0 font-weight-bold text-primary">Todos los Pagos</h4>
+								<h4 class="m-0 font-weight-bold text-primary">Todos los pagos</h4>
+								<div class="d-flex justify-content-end">
+									<a href="agregar-pago.php" class="btn btn-success btn-icon-split ">
+										<span class="icon text-white-50">
+										  <i class="fas fa-plus"></i>
+										</span>
+										<span class="text">Agregar pago</span>
+									</a>
+								</div>
 							</div>
 							<div class="card-body">
 								<div class="table-responsive">
 									<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
 										<thead>
 											<tr>
-												<th>ID</th>
+												<th>Fecha</th>
 												<th>Alumno</th>
-												<th>Mes</th>
-												<th>Año</th>
 												<th>Cobro</th>
 											</tr>
 										</thead>

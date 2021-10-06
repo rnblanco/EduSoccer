@@ -1,6 +1,5 @@
 let alumno="";
-let mes="";
-let ano="";
+let fecha="";
 let cobro="";
 
 //Quitar la posibilidad de dar click derecho
@@ -80,8 +79,7 @@ function bprotection(str){
 function validate1(val) {
     v1 = document.getElementById("alumno");
     const selector = document.querySelector('.select2-selection');
-    v2 = document.getElementById("ano");
-    v4 = document.getElementById("mes");
+    v4 = document.getElementById("fecha");
     v5 = document.getElementById("cobro");
 
     flag1 = true;
@@ -102,17 +100,6 @@ function validate1(val) {
                 flag1 = true;
             }
         break;
-        case 2:
-            if(v2.value == "") {
-                v2.style.borderColor = "red";
-                flag2 = false;
-            }
-            else {
-                v2.style.borderColor = "green";
-                ano=v2.value;
-                flag2 = true;
-            }
-        break;
         case 4:
             if(v4.value == "") {
                 v4.style.borderColor = "red";
@@ -120,7 +107,7 @@ function validate1(val) {
             }
             else {
                 v4.style.borderColor = "green";
-                mes=v4.value;
+                fecha=v4.value;
                 flag4 = true;
             }
             break;
@@ -194,16 +181,13 @@ $(document).ready(function(){
         $(".next").click(function(e){
             e.preventDefault();
             validate1(1);
-            validate1(2);
-            validate1(3);
             validate1(4);
             validate1(5);
 
-            if(validate1(1) == true && validate1(2) == true && validate1(3) == true && validate1(4) == true && validate1(5) == true){
+            if(validate1(1) == true && validate1(4) == true && validate1(5) == true){
 
                 let form_data = new FormData();
-                form_data.append("ano", ano);form_data.append("alumno", alumno);
-                form_data.append("mes", mes);form_data.append("cobro", cobro);
+                form_data.append("alumno", alumno); form_data.append("fecha", fecha);form_data.append("cobro", cobro);
                 $.ajax({
                     url:'../Db/agregarPago.php',
                     data:form_data,

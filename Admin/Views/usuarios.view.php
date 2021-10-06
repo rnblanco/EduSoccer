@@ -82,7 +82,6 @@
                 <span class="text">Agregar profesor</span>
               </a>
               </div>
-              
             </div>
             <div class="card-body">
               <div class="table-responsive">
