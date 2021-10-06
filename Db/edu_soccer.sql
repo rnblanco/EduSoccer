@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-10-2021 a las 08:42:33
+-- Tiempo de generación: 07-10-2021 a las 01:24:40
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.3.28
 
@@ -72,7 +72,8 @@ CREATE TABLE `asistencia` (
 --
 
 INSERT INTO `asistencia` (`ID`, `Fecha`, `Alumno`, `Asistencia`) VALUES
-(7, '2021-10-04', '12', 'Presente');
+(7, '2021-10-04', '12', 'Presente'),
+(8, '2021-10-03', '12', 'Ausente');
 
 -- --------------------------------------------------------
 
@@ -195,8 +196,7 @@ INSERT INTO `historia` (`ID`, `Titulo`, `Subtitulo`, `Contenido`, `Imagen`) VALU
 CREATE TABLE `pagos` (
   `ID` int(11) NOT NULL,
   `Alumno` varchar(220) NOT NULL,
-  `Mes` varchar(220) NOT NULL,
-  `Ano` varchar(220) NOT NULL,
+  `Fecha` date NOT NULL,
   `Cobro` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -204,13 +204,14 @@ CREATE TABLE `pagos` (
 -- Volcado de datos para la tabla `pagos`
 --
 
-INSERT INTO `pagos` (`ID`, `Alumno`, `Mes`, `Ano`, `Cobro`) VALUES
-(1, '12', '9', '2021', 30),
-(2, '13', '9', '2021', 30),
-(3, '14', '9', '2021', 30),
-(4, '17', '9', '2021', 30),
-(5, '18', '9', '2021', 30),
-(6, '12', '10', '2021', 30);
+INSERT INTO `pagos` (`ID`, `Alumno`, `Fecha`, `Cobro`) VALUES
+(1, '12', '2021-09-01', 30),
+(2, '13', '2021-09-01', 30),
+(3, '14', '2021-09-01', 30),
+(4, '17', '2021-09-01', 30),
+(5, '18', '2021-09-01', 30),
+(6, '12', '2021-10-01', 30),
+(7, '13', '2021-10-01', 30);
 
 -- --------------------------------------------------------
 
@@ -229,7 +230,7 @@ CREATE TABLE `servicios` (
 --
 
 INSERT INTO `servicios` (`ID`, `Titulo`, `Contenido`) VALUES
-(1, 'Horarios', 'Los horarios son los sabados de 8:30 a 11:00'),
+(1, 'Horarios', 'Los horarios son los sábados de 8:30 a 11:00'),
 (2, 'Categorías', 'Contamos con una gran variedad de categorias desde U5 para los mas pequeños hasta U15 para los mas grandes.'),
 (3, 'Ubicación', 'Los entrenamientos se realizan en las canchas de la Universidad Albert Einstein.');
 
@@ -343,7 +344,7 @@ ALTER TABLE `alumnos`
 -- AUTO_INCREMENT de la tabla `asistencia`
 --
 ALTER TABLE `asistencia`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `cargos`
@@ -373,7 +374,7 @@ ALTER TABLE `historia`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `servicios`
