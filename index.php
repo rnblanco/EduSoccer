@@ -2,6 +2,37 @@
 	require("Db/conexion.php");
 	require_once 'Views/index.view.php';
 
+	//SLIDER
+
+	function SliderNumber(){
+		$conexion=conectar();
+		$buscarSlider = $conexion -> prepare('SELECT * FROM slider WHERE Estado = 2');
+		$buscarSlider -> execute();
+		$slides = $buscarSlider -> fetchAll();
+
+		foreach ($slides as $slide)
+		{
+			if ($slide['ID'] == 1) echo '<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>';
+			else
+			{
+				$num = $slide['ID'] - 1;
+				echo '<li data-target="#carouselExampleIndicators" data-slide-to="'.$num.'"></li>';
+			}
+		}
+	}
+
+	function SliderImage(){
+		$conexion = conectar();
+		$buscarSlider = $conexion->prepare('SELECT * FROM slider WHERE Estado = 2');
+		$buscarSlider->execute();
+		$slides = $buscarSlider->fetchAll();
+
+		foreach($slides as $slide){
+			if($slide['ID'] == 1) echo '<div class="carousel-item active"><img class="d-block w-100" src="assets/img/EduSoccer/' . $slide['Imagen'] . ' " style="height:600px!important;"></div>';
+			else echo '<div class="carousel-item"><img class="d-block w-100" src="assets/img/EduSoccer/' . $slide['Imagen'] . ' " style="height:600px!important;"></div>';
+		}
+	}
+
 	function Servicios(){
 		$conexion = conectar();
 		$buscarServicios = $conexion->prepare("SELECT * FROM servicios ORDER BY ID");

@@ -14,6 +14,7 @@
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
 		<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
 		<!-- Core theme CSS (includes Bootstrap)-->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-uWxY/CJNBR+1zjPWmfnSnVxwRheevXITnMqoEIeG1LJrdI0GlVs/9cVSyPYXdcSF" crossorigin="anonymous">
 		<link href="css/styles.css" rel="stylesheet" />
 	</head>
 	<body id="page-top">
@@ -37,13 +38,26 @@
 			</div>
 		</nav>
 		<!-- Masthead-->
-		<header class="masthead">
-			<div class="container">
-				<div class="masthead-subheading">Bienvenido a EduSoccer</div>
-				<div class="masthead-heading text-uppercase">Es un placer conocerte</div>
-				<a class="btn btn-primary btn-xl text-uppercase" href="#services">Dime mas</a>
+		<div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel" data-interval="4000">
+
+			<ol class="carousel-indicators">
+				<?php SliderNumber(); ?>
+			</ol>
+
+			<div class="carousel-inner">
+				<?php SliderImage(); ?>
 			</div>
-		</header>
+
+			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+				<span class="sr-only"></span>
+			</a>
+			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+				<span class="sr-only"></span>
+			</a>
+		</div>
+
 		<!-- Services-->
 		<section class="page-section" id="services">
 			<div class="container">
@@ -145,9 +159,10 @@
 		<?php Categorias(2) ?>
 
 		<!-- Bootstrap core JS-->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 		<!-- Core theme JS-->
 		<script src="js/scripts.js"></script>
-		<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 	</body>
 </html>

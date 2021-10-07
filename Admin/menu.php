@@ -28,7 +28,7 @@
 				echo '
 	            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 	
-	                <a class="sidebar-brand d-flex align-items-center justify-content-left" href="index.php">
+	                <a class="sidebar-brand d-flex align-items-center justify-content-md-left justify-content-center" href="index.php">
 	                    <div class="sidebar-brand-icon rotate-n-15">
 	                    <i class="fas fa-futbol"></i>
 	                    </div>
@@ -62,7 +62,7 @@
 				echo '
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
-                <a class="sidebar-brand d-flex align-items-center justify-content-left" href="index.php">
+                <a class="sidebar-brand d-flex align-items-center justify-content-md-left justify-content-center" href="index.php">
                     <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-futbol"></i>
                     </div>
@@ -106,6 +106,12 @@
                 <div class="sidebar-heading" style="color:white!important;">
                     Editables
                 </div>
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="carrusel.php">
+                     <i class="fas fa-images"></i>
+                    <span>Carrusel</span></a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="servicios.php">

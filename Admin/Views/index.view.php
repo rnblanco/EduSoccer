@@ -27,9 +27,11 @@
 			<div id="content-wrapper" class="d-flex flex-column">
 				<div id="content">
 					<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-						<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-							<i class="fas fa-futbol"></i>
-						</button>
+						<form class="form-inline justify-content-center">
+							<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3 mt-3">
+								<i class="fa fa-bars"></i>
+							</button>
+						</form>
 						<ul class="navbar-nav ml-auto">
 							<div class="topbar-divider d-none d-sm-block"></div>
 							<?php
@@ -69,12 +71,11 @@
 			</div>
 		</div>
 
-		<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 		<script src="vendor/jquery/jquery.js"></script>
+		<script src="vendor/jquery-easing/jquery.easing.js"></script>
 		<script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-		<script src="vendor/jquery-easing/jquery.easing.js"></script>
 		<script src="js/sb-admin-2.js"></script>
 	</body>
 </html>
