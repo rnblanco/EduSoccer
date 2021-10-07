@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-10-2021 a las 01:24:40
+-- Tiempo de generación: 07-10-2021 a las 05:15:36
 -- Versión del servidor: 10.4.19-MariaDB
 -- Versión de PHP: 7.3.28
 
@@ -237,6 +237,29 @@ INSERT INTO `servicios` (`ID`, `Titulo`, `Contenido`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `slider`
+--
+
+CREATE TABLE `slider` (
+  `ID` int(11) NOT NULL,
+  `Imagen` varchar(220) NOT NULL,
+  `Estado` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `slider`
+--
+
+INSERT INTO `slider` (`ID`, `Imagen`, `Estado`) VALUES
+(1, 'edu_image1.jpeg', 2),
+(2, 'edu_image2.jpeg', 2),
+(6, 'img3.jpeg', 2),
+(7, 'edu_image4.jpeg', 2),
+(8, 'edu_image5.jpg', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `usuarios`
 --
 
@@ -323,6 +346,12 @@ ALTER TABLE `servicios`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indices de la tabla `slider`
+--
+ALTER TABLE `slider`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
@@ -381,6 +410,12 @@ ALTER TABLE `pagos`
 --
 ALTER TABLE `servicios`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT de la tabla `slider`
+--
+ALTER TABLE `slider`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
