@@ -47,7 +47,7 @@
     
     if( $edad!=="" && $nacimiento!=="" && $nombre!=="" && $ingreso!=="" && $matricula!="" && $contacto!="" && $categoria!=""){
         $conexion = conectar();
-        $agregarAlumno = $conexion->prepare('INSERT INTO Alumnos (nombre, edad, fecha_nacimiento, fecha_ingreso, fecha_matricula, 
+        $agregarAlumno = $conexion->prepare('INSERT INTO alumnos (nombre, edad, fecha_nacimiento, fecha_ingreso, fecha_matricula, 
                      Imagen, nombre_padre, telefono_padre, nombre_madre, telefono_madre, contacto, categoria) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)');
         $agregarAlumno->execute([$nombre, $edad, $nacimiento, $ingreso, $matricula, $nuevalocacion, $padre, $padreTel, $madre, $madreTel, $contacto, $categoria]);
 

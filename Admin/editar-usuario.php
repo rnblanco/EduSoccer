@@ -27,7 +27,7 @@
     function CargarPublicacion(){
         $id = $_GET['id'];
         $conexion = conectar();
-        $buscarUsuario = $conexion->prepare("SELECT * FROM Usuarios WHERE ID = ? ");
+        $buscarUsuario = $conexion->prepare("SELECT * FROM usuarios WHERE ID = ? ");
         $buscarUsuario->execute([$id]);
         $Usuario = $buscarUsuario->fetchAll();
 

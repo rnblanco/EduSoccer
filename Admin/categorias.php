@@ -19,13 +19,13 @@
 
     function Categorias(){
 	    $conexion = conectar();
-	    $buscarCategorias = $conexion->prepare("SELECT * FROM Categorias ORDER BY ID");
+	    $buscarCategorias = $conexion->prepare("SELECT * FROM categorias ORDER BY ID");
 	    $buscarCategorias->execute();
 	    $Categorias = $buscarCategorias->fetchAll();
 
 	    foreach($Categorias as list($id, $titulo, $subtitulo, $contenido, $profesor, $imagen)){
 
-		    $buscarUsuarios = $conexion->prepare("SELECT * FROM Usuarios WHERE ID=:ID");
+		    $buscarUsuarios = $conexion->prepare("SELECT * FROM usuarios WHERE ID=:ID");
 		    $buscarUsuarios->bindParam(':ID', $profesor, PDO::PARAM_STR);
 		    $buscarUsuarios->execute();
 		    $Usuarios = $buscarUsuarios->fetchAll();

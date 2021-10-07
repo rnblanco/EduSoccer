@@ -42,7 +42,7 @@
     if( $edad!=="" && $nombre!=="" && $nacimiento!=="" && $id!=="" && $padre!=="" && $padreTel!=="" && $madre!=="" && $madreTel!=="" && $contacto!=="" && $categoria!=""){
         
         $conexion = conectar();
-        $AlumnoActual  = $conexion ->prepare ("SELECT * from Alumnos WHERE ID = :id ");
+        $AlumnoActual  = $conexion ->prepare ("SELECT * from alumnos WHERE ID = :id ");
         $AlumnoActual->bindParam(':id', $id, PDO::PARAM_STR);
         $AlumnoActual->execute();
         foreach($AlumnoActual as list($anombre, $aedad, $anacimiento, $apadre, $apadreTel, $amadre, $amadreTel, $acontacto, $acategoria)){
@@ -66,7 +66,7 @@
 						$imagen = $_FILES['img']['name'];
 						$locacion = '../assets/img/EduSoccer/Alumnos/' . $imagen;
 						move_uploaded_file($_FILES['img']['tmp_name'], $locacion);
-						$editarAlumno = $conexion->prepare(" UPDATE Alumnos SET Edad=:Edad, Nombre=:Nombre, Fecha_Nacimiento=:Fecha_Nacimiento, 
+						$editarAlumno = $conexion->prepare(" UPDATE alumnos SET Edad=:Edad, Nombre=:Nombre, Fecha_Nacimiento=:Fecha_Nacimiento, 
 						Nombre_Padre=:Nombre_Padre, Telefono_Padre=:Telefono_Padre, Nombre_Madre=:Nombre_Madre, Telefono_Madre=:Telefono_Madre,
                     	Contacto=:Contacto, Imagen=:Imagen, Categoria=:Categoria WHERE ID=:ID ");
 						$editarAlumno->bindParam(':Edad', $edad, PDO::PARAM_STR);

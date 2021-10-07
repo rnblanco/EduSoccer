@@ -27,14 +27,14 @@
     if( $contenido!=="" && $titulo!=="" && $subtitulo!=="" && $id!=="" && $profesor!==""){
         
         $conexion = conectar();
-        $CategoriaActual  = $conexion ->prepare ("SELECT contenido, titulo, subtitulo, profesor from Categorias WHERE ID = :id ");
+        $CategoriaActual  = $conexion ->prepare ("SELECT contenido, titulo, subtitulo, profesor from categorias WHERE ID = :id ");
         $CategoriaActual->bindParam(':id', $id, PDO::PARAM_STR);
         $CategoriaActual->execute();
         foreach($CategoriaActual as list($acontenido, $atitulo, $asubtitulo )){
             
             if($acontenido == $contenido && $atitulo == $titulo && $asubtitulo == $subtitulo){
 
-                $imagen = $conexion ->prepare("SELECT imagen from Categorias WHERE ID = :id ");
+                $imagen = $conexion ->prepare("SELECT imagen from categorias WHERE ID = :id ");
                 $imagen->bindParam(':id', $id, PDO::PARAM_STR);
                 $imagen->execute();
 
@@ -52,7 +52,7 @@
             }
             else{
 
-                $imagen = $conexion ->prepare("SELECT imagen from Categorias WHERE ID = :id ");
+                $imagen = $conexion ->prepare("SELECT imagen from categorias WHERE ID = :id ");
                 $imagen->bindParam(':id', $id, PDO::PARAM_STR);
                 $imagen->execute();
 
@@ -61,7 +61,7 @@
                     $success = unlink($locacion);  
                     if($success){
                         move_uploaded_file($_FILES['img']['tmp_name'], $locacion);
-                        $editarCategoria = $conexion->prepare(" UPDATE Categorias SET contenido = :contenido ,titulo = :titulo, subtitulo= :subtitulo, profesor=:profesor WHERE  ID = :id ");
+                        $editarCategoria = $conexion->prepare(" UPDATE categorias SET contenido = :contenido ,titulo = :titulo, subtitulo= :subtitulo, profesor=:profesor WHERE  ID = :id ");
                         $editarCategoria->bindParam(':contenido', $contenido, PDO::PARAM_STR);
                         $editarCategoria->bindParam(':titulo', $titulo, PDO::PARAM_STR);
 	                    $editarCategoria->bindParam(':subtitulo', $subtitulo, PDO::PARAM_STR);

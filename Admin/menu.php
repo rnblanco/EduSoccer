@@ -144,7 +144,7 @@
 
 	function obtenerAsistencia(){
 		$conexion = conectar();
-		$Categorias = $conexion->prepare("SELECT ID, Titulo from Categorias WHERE Profesor = :id ");
+		$Categorias = $conexion->prepare("SELECT ID, Titulo from categorias WHERE Profesor = :id ");
 		$Categorias->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
 		$Categorias->execute();
 
@@ -161,7 +161,7 @@
 	}
 	function existeAsistencia(){
 		$conexion = conectar();
-		$Categorias = $conexion->prepare("SELECT ID, Titulo from Categorias WHERE Profesor = :id ");
+		$Categorias = $conexion->prepare("SELECT ID, Titulo from categorias WHERE Profesor = :id ");
 		$Categorias->bindParam(':id', $_SESSION['id'], PDO::PARAM_STR);
 		$Categorias->execute();
 		if($Categorias->rowCount() >= 1) return true;

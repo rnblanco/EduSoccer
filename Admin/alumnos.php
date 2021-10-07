@@ -4,7 +4,7 @@
 
     $usuario = $_SESSION['usuario'];
     if($usuario == null || $usuario = '') header("Location: ../Db/logOut.php");
-    else require_once 'Views/Alumnos.view.php';
+    else require_once 'Views/alumnos.view.php';
 
     /* 
     Orden de tabla publicaciones:
@@ -25,7 +25,7 @@
 
     function Alumnos(){
 	    $conexion = conectar();
-	    $buscarAlumnos = $conexion->prepare("SELECT * FROM Alumnos ORDER BY ID");
+	    $buscarAlumnos = $conexion->prepare("SELECT * FROM alumnos ORDER BY ID");
 	    $buscarAlumnos->execute();
 	    $Alumnos = $buscarAlumnos->fetchAll();
 
@@ -36,7 +36,7 @@
 			$madre = $madre!='null'? $madre : '-';
 		    $madreTel = $madreTel!='null'? $madreTel : '-';
 
-		    $buscarCategorias = $conexion->prepare("SELECT * FROM Categorias WHERE ID=:ID");
+		    $buscarCategorias = $conexion->prepare("SELECT * FROM categorias WHERE ID=:ID");
 		    $buscarCategorias->bindParam(':ID', $categoria, PDO::PARAM_STR);
 		    $buscarCategorias->execute();
 		    $Categorias = $buscarCategorias->fetchAll();

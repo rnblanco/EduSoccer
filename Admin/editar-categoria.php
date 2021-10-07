@@ -3,13 +3,13 @@
     require("../Db/conexion.php");
     $usuario = $_SESSION['usuario'];
     if($usuario == null || $usuario = '') header("Location: ../Db/logOut.php");
-    else require_once 'Views/editar-Categoria.view.php';
+    else require_once 'Views/editar-categoria.view.php';
 
     function Cargar(){
         $conexion = conectar();
         $id = $_GET['id'];
 
-        $buscarCategoria = $conexion->prepare("SELECT * FROM Categorias WHERE ID = ? ");
+        $buscarCategoria = $conexion->prepare("SELECT * FROM categorias WHERE ID = ? ");
         $buscarCategoria->execute([$id]);
         $Categoria = $buscarCategoria->fetchAll();
 

@@ -16,13 +16,13 @@
 	    $idCategoria = $_GET["id"];
 	    $fecha = $_GET["fecha"];
 	    $conexion = conectar();
-	    $buscarAsistencias = $conexion->prepare("SELECT * FROM Alumnos WHERE Categoria=:Categoria ");
+	    $buscarAsistencias = $conexion->prepare("SELECT * FROM alumnos WHERE Categoria=:Categoria ");
 	    $buscarAsistencias->bindParam(':Categoria',$idCategoria, PDO::PARAM_STR);
 	    $buscarAsistencias->execute();
 	    $Alumnos = $buscarAsistencias->fetchAll();
 
 	    foreach($Alumnos as list($id, $nombre)){
-		    $buscarAsistencias = $conexion->prepare("SELECT Asistencia FROM Asistencia WHERE Fecha=:Fecha AND Alumno=:Alumno ");
+		    $buscarAsistencias = $conexion->prepare("SELECT Asistencia FROM asistencia WHERE Fecha=:Fecha AND Alumno=:Alumno ");
 		    $buscarAsistencias->bindParam(':Fecha',$fecha, PDO::PARAM_STR);
 		    $buscarAsistencias->bindParam(':Alumno',$id, PDO::PARAM_STR);
 		    $buscarAsistencias->execute();

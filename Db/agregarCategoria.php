@@ -25,7 +25,7 @@
     
     if( $subtitulo!=="" && $contenido!=="" && $titulo!=="" && $nuevalocacion!=="" && $profesor!=="" ) {
         $conexion = conectar();
-        $agregarHistorial = $conexion->prepare('INSERT INTO Categorias (Titulo, Subtitulo, Contenido, Profesor, Imagen) VALUES (?,?,?,?,?)');
+        $agregarHistorial = $conexion->prepare('INSERT INTO categorias (Titulo, Subtitulo, Contenido, Profesor, Imagen) VALUES (?,?,?,?,?)');
         $agregarHistorial->execute([$titulo, $subtitulo, $contenido, $profesor, $nuevalocacion]);
 
         if($agregarHistorial->rowCount() >= 1){

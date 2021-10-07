@@ -18,7 +18,7 @@
 
     function Historias(){
 	    $conexion = conectar();
-	    $buscarHistoria = $conexion->prepare("SELECT * FROM Historia ORDER BY ID");
+	    $buscarHistoria = $conexion->prepare("SELECT * FROM historia ORDER BY ID");
 	    $buscarHistoria->execute();
 	    $Historia = $buscarHistoria->fetchAll();
 

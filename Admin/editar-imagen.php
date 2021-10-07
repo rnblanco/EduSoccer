@@ -5,12 +5,9 @@
 
     $usuario = $_SESSION['usuario'];
     
-    if($usuario == null || $usuario = ''){
-        header("Location: ../Db/logOut.php");
-    }
-    else{
-        require_once 'Views/editar-imagen.view.php';
-    }
+    if($usuario == null || $usuario = '') header("Location: ../Db/logOut.php");
+    else require_once 'Views/editar-imagen.view.php';
+
     
     function Cargar(){
         $conexion = conectar();

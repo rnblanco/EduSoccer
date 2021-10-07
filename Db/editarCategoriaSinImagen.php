@@ -24,7 +24,7 @@
     if ($contenido!=="" && $titulo!=="" && $subtitulo!=="" && $id!=="" && $profesor!==""){
 
         $conexion = conectar();
-        $editarCategoria = $conexion->prepare(" UPDATE Categorias SET titulo = :titulo, subtitulo= :subtitulo, contenido = :contenido, profesor=:profesor WHERE ID = :id ");
+        $editarCategoria = $conexion->prepare(" UPDATE categorias SET titulo = :titulo, subtitulo= :subtitulo, contenido = :contenido, profesor=:profesor WHERE ID = :id ");
         $editarCategoria->bindParam(':titulo', $titulo, PDO::PARAM_STR);
         $editarCategoria->bindParam(':subtitulo', $subtitulo, PDO::PARAM_STR);
         $editarCategoria->bindParam(':contenido', $contenido, PDO::PARAM_STR);

@@ -17,7 +17,7 @@
     
     if( $alumno!=="" && $fecha!=="" && $cobro!=="" ) {
         $conexion = conectar();
-        $agregarPago = $conexion->prepare('INSERT INTO Pagos (fecha, alumno, cobro) VALUES (?,?,?)');
+        $agregarPago = $conexion->prepare('INSERT INTO pagos (fecha, alumno, cobro) VALUES (?,?,?)');
         $agregarPago->execute([$fecha, $alumno, $cobro]);
 
         if($agregarPago->rowCount() >= 1)echo json_encode(['code'=>200]);

@@ -9,7 +9,7 @@
 		$conexion = conectar();
 		$id = $_GET['id'];
 
-		$buscarAlumnos = $conexion->prepare("SELECT * FROM Alumnos WHERE ID = ? ");
+		$buscarAlumnos = $conexion->prepare("SELECT * FROM alumnos WHERE ID = ? ");
 		$buscarAlumnos->execute([$id]);
 		$Alumnos = $buscarAlumnos->fetchAll();
 

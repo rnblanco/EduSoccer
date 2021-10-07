@@ -60,7 +60,7 @@
 		$Categorias = $buscarCategorias->fetchAll();
 
 		foreach($Categorias as list($id, $titulo, $subtitulo, $contenido, $profesor, $imagen)){
-			$buscarUsuarios = $conexion->prepare("SELECT * FROM Usuarios WHERE ID=:ID");
+			$buscarUsuarios = $conexion->prepare("SELECT * FROM usuarios WHERE ID=:ID");
 			$buscarUsuarios->bindParam(':ID', $profesor, PDO::PARAM_STR);
 			$buscarUsuarios->execute();
 			$Usuarios = $buscarUsuarios->fetchAll();
@@ -127,7 +127,7 @@
 
 	function Historia(){
 		$conexion = conectar();
-		$buscarHistoria = $conexion->prepare("SELECT * FROM Historia ORDER BY ID");
+		$buscarHistoria = $conexion->prepare("SELECT * FROM historia ORDER BY ID");
 		$buscarHistoria->execute();
 		$Historia = $buscarHistoria->fetchAll();
 
@@ -151,7 +151,7 @@
 
 	function Contacto(){
 		$conexion = conectar();
-		$buscarContacto = $conexion->prepare("SELECT * FROM Contacto ORDER BY ID");
+		$buscarContacto = $conexion->prepare("SELECT * FROM contacto ORDER BY ID");
 		$buscarContacto->execute();
 		$Contacto = $buscarContacto->fetchAll();
 

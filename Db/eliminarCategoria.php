@@ -14,7 +14,7 @@
 
     if( $id != "") {
         $conexion = conectar();
-        $eliminarCategoria = $conexion->prepare('DELETE from  Categorias WHERE  ID = :id ');
+        $eliminarCategoria = $conexion->prepare('DELETE from  categorias WHERE  ID = :id ');
         $eliminarCategoria->bindParam(':id', $id, PDO::PARAM_STR);
         $eliminarCategoria->execute();
         

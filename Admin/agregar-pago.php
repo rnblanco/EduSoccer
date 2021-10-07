@@ -7,7 +7,7 @@
 
 	function Alumnos(){
 		$conexion = conectar();
-		$buscarAlumnos = $conexion->prepare("SELECT * FROM Alumnos ORDER BY ID");
+		$buscarAlumnos = $conexion->prepare("SELECT * FROM alumnos ORDER BY ID");
 		$buscarAlumnos->execute();
 		$Alumnos = $buscarAlumnos->fetchAll();
 

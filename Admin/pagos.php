@@ -5,7 +5,7 @@
     $usuario = $_SESSION['usuario'];
     
     if($usuario == null || $usuario = '') header("Location: ../Db/logOut.php");
-    else require_once 'Views/Pagos.view.php';
+    else require_once 'Views/pagos.view.php';
 
 
     /* 
@@ -19,14 +19,14 @@
 
     function Pagos(){
         $conexion = conectar();
-        $buscarPagos = $conexion->prepare("SELECT * FROM Pagos ORDER BY Fecha DESC");
+        $buscarPagos = $conexion->prepare("SELECT * FROM pagos ORDER BY Fecha DESC");
         $buscarPagos->execute();
         $Pagos = $buscarPagos->fetchAll();
 
         foreach($Pagos as list($id, $alumno, $fecha, $cobro)){
 
 	        $conexion = conectar();
-	        $buscarUsuarios = $conexion->prepare("SELECT * FROM Alumnos WHERE ID=:ID");
+	        $buscarUsuarios = $conexion->prepare("SELECT * FROM alumnos WHERE ID=:ID");
 	        $buscarUsuarios->bindParam(':ID', $alumno, PDO::PARAM_STR);
 	        $buscarUsuarios->execute();
 	        $Usuarios = $buscarUsuarios->fetchAll();

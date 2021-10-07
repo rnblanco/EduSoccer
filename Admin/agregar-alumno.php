@@ -7,7 +7,7 @@
 
 	function Categorias(){
 		$conexion = conectar();
-		$buscarCategorias = $conexion->prepare("SELECT * FROM Categorias");
+		$buscarCategorias = $conexion->prepare("SELECT * FROM categorias");
 		$buscarCategorias->execute();
 		$Categorias = $buscarCategorias->fetchAll();
 		foreach($Categorias as list($id2, $titulo2, $subtitulo2, $contenido2, $profesor2, $imagen2)){ echo" <option value='$id2'> $titulo2 </option>"; }

@@ -18,13 +18,13 @@
     if( $asistencia!=="" && $fecha!=="" && $alumno!=="" ) {
         $conexion = conectar();
 
-	    $buscarAsistencias = $conexion->prepare("SELECT Asistencia FROM Asistencia WHERE Fecha=:Fecha AND Alumno=:Alumno");
+	    $buscarAsistencias = $conexion->prepare("SELECT Asistencia FROM asistencia WHERE Fecha=:Fecha AND Alumno=:Alumno");
 	    $buscarAsistencias->bindParam(':Fecha',$fecha, PDO::PARAM_STR);
 	    $buscarAsistencias->bindParam(':Alumno',$alumno, PDO::PARAM_STR);
 	    $buscarAsistencias->execute();
 
 		if($buscarAsistencias->rowCount()>=1){
-			$editarAsistencias = $conexion->prepare("UPDATE Asistencia SET Asistencia=:Asistencia WHERE Fecha=:Fecha AND Alumno=:Alumno");
+			$editarAsistencias = $conexion->prepare("UPDATE asistencia SET Asistencia=:Asistencia WHERE Fecha=:Fecha AND Alumno=:Alumno");
 			$editarAsistencias->bindParam(':Fecha',$fecha, PDO::PARAM_STR);
 			$editarAsistencias->bindParam(':Alumno',$alumno, PDO::PARAM_STR);
 			$editarAsistencias->bindParam(':Asistencia',$asistencia, PDO::PARAM_STR);
@@ -36,7 +36,7 @@
 			}
 		}
 	    else{
-		    $agregarHistoria = $conexion->prepare('INSERT INTO Asistencia (Fecha, Alumno, Asistencia) VALUES (?,?,?)');
+		    $agregarHistoria = $conexion->prepare('INSERT INTO asistencia (Fecha, Alumno, Asistencia) VALUES (?,?,?)');
 		    $agregarHistoria->execute([$fecha, $alumno, $asistencia]);
 		    if($agregarHistoria->rowCount() >= 1) echo json_encode(['code'=>200]);
 		    else {

@@ -14,7 +14,7 @@
 
     if( $id != "") {
         $conexion = conectar();
-        $eliminarAlumno = $conexion->prepare('DELETE from Alumnos WHERE  ID = :id ');
+        $eliminarAlumno = $conexion->prepare('DELETE from alumnos WHERE  ID = :id ');
         $eliminarAlumno->bindParam(':id', $id, PDO::PARAM_STR);
         $eliminarAlumno->execute();
         
