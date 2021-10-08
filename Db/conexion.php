@@ -2,13 +2,13 @@
 
     function conectar(){
         $host = "localhost";
-        //Servidor en linea
+        // Servidor en linea
         /*
         $dbname = "id17703196_edu_soccer";
         $user = "id17703196_root";
         $password = "/C8Ik}_L)zM<K3FO";
         */
-        //Servidor local
+        // Servidor local
 
         $dbname = "edu_soccer";
         $user = "root";
