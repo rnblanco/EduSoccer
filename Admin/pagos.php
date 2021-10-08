@@ -18,23 +18,35 @@
     */
 
     function Pagos(){
+
         $conexion = conectar();
         $buscarPagos = $conexion->prepare("SELECT * FROM pagos ORDER BY Fecha DESC");
         $buscarPagos->execute();
         $Pagos = $buscarPagos->fetchAll();
 
         foreach($Pagos as list($id, $alumno, $fecha, $cobro)){
-
+	        $cat="Categoría inexistente";
 	        $conexion = conectar();
-	        $buscarUsuarios = $conexion->prepare("SELECT * FROM alumnos WHERE ID=:ID");
-	        $buscarUsuarios->bindParam(':ID', $alumno, PDO::PARAM_STR);
-	        $buscarUsuarios->execute();
-	        $Usuarios = $buscarUsuarios->fetchAll();
-	        foreach($Usuarios as list($id2, $nombre)){ $alumno = $nombre; }
+	        $buscarAlumnos = $conexion->prepare("SELECT * FROM alumnos WHERE ID=:ID");
+	        $buscarAlumnos->bindParam('ID', $alumno, PDO::PARAM_STR);
+	        $buscarAlumnos->execute();
+	        $Alumnos = $buscarAlumnos->fetchAll();
+
+	        foreach($Alumnos as list ($id, $nombre, $edad, $nacimiento, $ingreso, $matricula, $imagen, $padre, $padreTel, $madre, $madreTel, $contacto, $categoria)){
+				$alumno = $nombre;
+		        $buscarCategoria = $conexion->prepare("SELECT * FROM categorias WHERE ID=:ID");
+		        $buscarCategoria->bindParam('ID', $categoria, PDO::PARAM_STR);
+		        $buscarCategoria->execute();
+		        $Categorias = $buscarCategoria->fetchAll();
+				foreach($Categorias as list($id, $cate)){
+					$cat = $cate;
+				}
+			}
 
             echo" 
                 <tr>
                     <td>$fecha</td>
+                    <td>$cat</td>
                     <td>$alumno</td>
                     <td>$$cobro</td>
                 </tr>

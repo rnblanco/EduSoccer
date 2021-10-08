@@ -82,6 +82,7 @@
 										<thead>
 											<tr>
 												<th>Fecha</th>
+												<th>Categoría</th>
 												<th>Alumno</th>
 												<th>Cobro</th>
 											</tr>
