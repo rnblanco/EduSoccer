@@ -17,27 +17,20 @@ function r() {
     location.href = "index.php";
 }
 
-//Validación para edades no mayores a 100
-$('.monthValidation').on('keydown keyup change', function(e){
-    if ($(this).val() > 12 || $(this).val() < 0
-        && e.keyCode !== 46 // keycode para delete
-        && e.keyCode !== 8  // keycode para enter
-    ) {
+//Validación para fechas no menores al 2017 (año de creacion de la escuela) y fechas no mayores a un año en el futuro
+$('.dateValidation').on('keydown keyup change', function(e){
+    const value = $(this).val();
+    const selectedYear = value.split('-')[0];
+    const selectedMonth = value.split('-')[1];
+    const selectedDay = value.split('-')[2];
+    const currentYear=new Date().getFullYear();
+    if(selectedYear > currentYear + 1 || (selectedDay > 0 || selectedMonth > 0) && selectedYear < 2017 ){
         e.preventDefault();
-        $(this).val(Math.trunc($(this).val()/10) <= 0 ? '' : Math.trunc($(this).val()/10));
+        $(this).val("");
+        validate1(4);
     }
 });
-//Validación para años no mayores a 100 después del actual y no menores al actual
-$('.yearValidation').on('keydown keyup change', function(e){
-    const currentYear = new Date().getFullYear();
-    if ($(this).val() > currentYear + 100  || $(this).val() < currentYear - 1 &&  $(this).val() > currentYear - 20 || $(this).val() < 0
-        && e.keyCode !== 46 // keycode para delete
-        && e.keyCode !== 8  // keycode para enter
-    ) {
-        e.preventDefault();
-        $(this).val(Math.trunc($(this).val()/10) <= 0 ? '' : Math.trunc($(this).val()/10));
-    }
-});
+
 //Validación para montos no mayores a 100 ni menores a 0
 $('.moneyValidation').on('keydown keyup change', function(e){
     if ($(this).val() > 100 || $(this).val() < 0
@@ -48,12 +41,14 @@ $('.moneyValidation').on('keydown keyup change', function(e){
         $(this).val(Math.trunc($(this).val()/10) <= 0 ? '' : Math.trunc($(this).val()/10));
     }
 });
+
 // Validaciones para < > . & y números en el titulo
 function notnumprotection(str){
     let iKeyCode = (str.which) ? str.which : str.keyCode
     if ( iKeyCode==45 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38 || iKeyCode == 34) return false;
     return true;
 }
+
 // Validaciones para < > . & y números en el alumno
 // / 48-57 numeros / 38 & / 46 . / 60 < / 61 = / 62 > /
 function tprotection(str){
@@ -64,6 +59,7 @@ function tprotection(str){
     return true;
     
 }
+
 // Validaciones para < > . & y números en el cuerpo
 // / 38 & / 46 . / 60 < / 61 = / 62 > /
 function bprotection(str){
@@ -75,6 +71,7 @@ function bprotection(str){
     return true;
     
 }
+
 // Validaciones para llenar el formulario
 function validate1(val) {
     v1 = document.getElementById("alumno");

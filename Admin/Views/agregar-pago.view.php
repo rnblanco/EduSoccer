@@ -89,7 +89,7 @@
 										<?php Alumnos(); ?>
 									</select>
 								</div>
-                              	<div class='form-group'> <label class='form-control-label'>Fecha:</label> <input onkeypress='javascript:return notnumprotection(event)' type='date' id='fecha' class='form-control monthValidation' onblur='validate1(4)'></div>
+                              	<div class='form-group'> <label class='form-control-label'>Fecha:</label> <input onkeypress='javascript:return notnumprotection(event)' type='date' id='fecha' class='form-control dateValidation' onblur='validate1(4)'></div>
                               	<div class='form-group'> <label class='form-control-label'>Cobro:</label> <input onkeypress='javascript:return notnumprotection(event)' type='number' id='cobro' class='form-control moneyValidation' onblur='validate1(5)'></div>
                               <button id='next' class='btn-block btn-primary mt-3 mb-1 next mt-4' type='submit'>AGREGAR<span class='fa fa-long-arrow-right'></span></button>
                             </div>
