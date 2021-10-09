@@ -33,3 +33,7 @@
         width: 125vw;
     }
 }
+section#contact{
+    background-size: cover;
+    background-image: url("../assets/img/futbol.jpg");
+}
