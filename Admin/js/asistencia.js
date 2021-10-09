@@ -32,7 +32,7 @@ function ReloadDb(){
         type:'post',
         success:function(data){
             if(data.code = 200){
-                Swal.fire('Asistencia registrada de manera exitosa! ','','success').then((result)=>{if(result.value) location.reload();})
+                Swal.fire('Asistencia registrada de manera exitosa! ','','success').then((result)=>{if(result.value) window.location.href = window.location.href;})
             }
             else Swal.fire('La asistencia no pudo ser registrada, intenta de nuevo','','error');
         }
