@@ -76,9 +76,9 @@
 								<h4 class="m-0 font-weight-bold text-primary">Todas las Historias</h4>
 								<div class="d-flex justify-content-end">
 									<a href="agregar-historia.php" class="btn btn-success btn-icon-split">
-					<span class="icon text-white-50">
-					  <i class="fas fa-plus"></i>
-					</span>
+										<span class="icon text-white-50">
+										  <i class="fas fa-plus"></i>
+										</span>
 										<span class="text">Agregar historia</span>
 									</a>
 								</div>
@@ -93,7 +93,7 @@
 												<th>Fecha</th>
 												<th>Contenido</th>
 												<th>Imagen</th>
-												<th>Acciones</th>
+												<th class="btn-actions">Acciones</th>
 											</tr>
 										</thead>
 										<tbody>

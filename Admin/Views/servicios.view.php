@@ -76,7 +76,7 @@
 												<th>ID</th>
 												<th>Titulo</th>
 												<th>Contenido</th>
-												<th>Acciones</th>
+												<th class="btn-actions">Acciones</th>
 											</tr>
 										</thead>
 										<tbody>

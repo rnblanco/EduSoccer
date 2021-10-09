@@ -29,7 +29,7 @@
                     <td>$id</td>
                     <td>$titulo</td>
                     <td>$contenido</td>
-                    <td>
+                    <td class='btn-actions'>
                         <a href='editar-servicio.php?id=$id' class='btn btn-warning btn-block'><span class='icon text-white-50'><i class='fas fa-edit'></i></span><span class='text'>  Editar</span></a><div class='my-2'></div>
                     </td>
                 </tr>

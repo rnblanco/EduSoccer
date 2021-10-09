@@ -102,7 +102,7 @@
 						<th>Teléfono</th>
 						<th>Contacto</th>
 						<th>Imagen</th>
-						<th>Acciones</th>
+						<th class="btn-actions">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -35,7 +35,7 @@
                     <td>$subtitulo</td>
                     <td>$contenido</td>
                     <td><img class='card-img-top' src='../assets/img/EduSoccer/$imagen' alt='Card image cap' style='height:150px!important;width:200px!important;'></td>            
-                    <td>
+                    <td class='btn-actions'>
                         <a href='editar-historia.php?id=$id' class='btn btn-warning btn-icon-split btn-block'>
                         	<span class='icon text-white-50'>
                         		<i class='fas fa-edit'></i>

@@ -94,8 +94,8 @@
                       <th>Apellido</th>
                       <th>Edad</th>
                       <th>Cargo</th>
-                      <th>Estado</th>
-                      <th>Acciones</th>
+                      <th class="btn-actions">Estado</th>
+                      <th class="btn-actions">Acciones</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -11232,3 +11232,8 @@ body.sidebar-toggled footer.sticky-footer {
 .negrita{
   font-weight: bold;
 }
+@media print{
+  .navbar-nav,.card-header,.dataTables_paginate, .dataTables_info, .dataTables_length, .dataTables_filter, .btn-actions, footer{
+    display:none;
+  }
+}

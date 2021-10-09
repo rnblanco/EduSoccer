@@ -77,7 +77,7 @@
 												<th>Titulo</th>
 												<th>Contenido</th>
 												<th>Imagen</th>
-												<th>Acciones</th>
+												<th class="btn-actions">Acciones</th>
 											</tr>
 										</thead>
 										<tbody>

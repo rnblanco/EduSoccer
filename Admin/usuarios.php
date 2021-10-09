@@ -55,7 +55,7 @@
                         </td>";
 				}
 				else if($estado==1){
-					echo"<td>
+					echo"<td class='btn-actions'>
                         Habilitado<br>
                         <a onclick='deshab($id)' style='color:white!important' class='btn btn-secondary btn-icon-split'>
                             <span class='icon text-white-50'>
@@ -66,7 +66,7 @@
                         </td>";
 				}
 				echo"
-                    <td>
+                    <td class='btn-actions'>
                         <a href='editar-usuario.php?id=$id' class='btn btn-warning btn-icon-split btn-block'><span class='icon text-white-50'><i class='fas fa-edit'></i></span><span class='text'>Editar</span></a><div class='my-2'></div>
                         <a style='color:white' class='btn btn-danger btn-icon-split btn-block' onclick='del($id,$stipo)'><span class='icon text-white-50'><i class='fas fa-trash'></i></span><span class='text'>Borrar</span></a>
                     </td>
