@@ -28,8 +28,8 @@
 		$slides = $buscarSlider->fetchAll();
 
 		foreach($slides as $slide){
-			if($slide['ID'] == 1) echo '<div class="carousel-item active"><img class="d-block w-100" src="assets/img/EduSoccer/' . $slide['Imagen'] . ' " style="height:600px!important;"></div>';
-			else echo '<div class="carousel-item"><img class="d-block w-100" src="assets/img/EduSoccer/' . $slide['Imagen'] . ' " style="height:600px!important;"></div>';
+			if($slide['ID'] == 1) echo '<div class="carousel-item active"><img class="d-block w-100 carousel-image" src="assets/img/EduSoccer/' . $slide['Imagen'] . ' " style="height:700px;"></div>';
+			else echo '<div class="carousel-item"><img class="d-block w-100 carousel-image" src="assets/img/EduSoccer/' . $slide['Imagen'] . ' " style="height:700px;"></div>';
 		}
 	}
 
