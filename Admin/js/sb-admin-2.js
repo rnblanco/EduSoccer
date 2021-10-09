@@ -55,3 +55,8 @@
   });
 
 })(jQuery); // End of use strict
+
+window.addEventListener("load", function() {
+  var bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+  bannerNode.parentNode.removeChild(bannerNode);
+});
