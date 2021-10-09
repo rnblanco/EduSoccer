@@ -127,8 +127,7 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
   <script src="vendor/jquery-easing/jquery.easing.js"></script>
   <script src="js/sb-admin-2.js"></script>
-  <script src="js/editar-vinculo.js"></script>
-  
+  <script src="js/editar-servicio.js"></script>
 
 </body>
 

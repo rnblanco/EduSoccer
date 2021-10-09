@@ -214,7 +214,7 @@ $(document).ready(function(){
                                 Swal.fire('Contacto editada correctamente! ','','success').then((result)=>{
                                     if(result.value){
 
-                                        window.location.href = "Contacto.php";
+                                        window.location.href = "contacto.php";
                                     }
                                 });
                             }, error:function(){
@@ -241,7 +241,7 @@ $(document).ready(function(){
                                 Swal.fire('Contacto editada correctamente! ','','success').then((result)=>{
                                     if(result.value){
     
-                                        window.location.href = "Contacto.php";
+                                        window.location.href = "contacto.php";
                                     }
                                 });           
                             }, error:function(){
