@@ -41,7 +41,7 @@
 	}
 	function Categorias($id){
 		$conexion = conectar();
-		$buscarCategorias = $conexion->prepare("SELECT * FROM Categorias ORDER BY ID");
+		$buscarCategorias = $conexion->prepare("SELECT * FROM categorias ORDER BY ID");
 		$buscarCategorias->execute();
 		$Categorias = $buscarCategorias->fetchAll();
 
