@@ -1,7 +1,5 @@
 <?php   
     include_once 'sesiones.php';
-    require("conexion.php");
-
     $edad="";$nombre="";$locacion="";$id="";$error=""; $nacimiento="";$padre="";$padreTel="";$madre="";$madreTel="";$contacto="";$categoria="";$success=false;
     $nuevalocacion="";
 

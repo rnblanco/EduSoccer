@@ -1,6 +1,5 @@
-<?php   
-    session_start();
-    require("conexion.php");
+<?php
+	include_once 'sesiones.php';
     $error="";$id="";$data="";
 
     if(empty($_POST["id"])){

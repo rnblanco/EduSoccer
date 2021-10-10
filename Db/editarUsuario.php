@@ -1,7 +1,5 @@
 <?php   
     include_once 'sesiones.php';
-    require("conexion.php");
-
 	$nombre="";$usuario="";$apellido="";$edad="";$pass="";$cargo="";$estado="";$error="";$md5="";$id="";
 
 	if(empty($_POST['nombre'])) $error = "falta nombre";

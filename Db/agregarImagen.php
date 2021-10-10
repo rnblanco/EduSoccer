@@ -1,7 +1,5 @@
 <?php   
     include_once 'sesiones.php';
-    require("conexion.php");
-
     $error="";$test="";$ext="";$name="";$locacion="";$nuevalocacion="";
 
     if( $_FILES['img'] ){

@@ -1,11 +1,6 @@
 <?php
 	include_once 'sesiones.php';
-	require("conexion.php");
-
-	$titulo = "";
-	$contenido = "";
-	$id = "";
-	$error = "";
+	$titulo = "";$contenido = "";$id = "";$error = "";
 
 	if(empty($_POST['titulo'])) $error .= "falta titulo";
 	else $titulo = $_POST['titulo'];

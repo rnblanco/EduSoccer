@@ -8,7 +8,7 @@ let madre="";
 let madreTel="";
 let contacto="";
 let categoria="";
-
+/*
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
     e.preventDefault();
@@ -23,7 +23,7 @@ $(document).keydown(function(e){
 function r() {
     location.href = "index.php";
 }
-
+*/
 //Quitar la posibilidad de copiar en nombre y cuerpo
 window.onload = function() {
     let title = document.getElementById('nombre');
@@ -67,6 +67,13 @@ function tprotection(str){
     if ( iKeyCode> 47 && iKeyCode < 58 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 38|| iKeyCode == 34 ) return false;
     return true;
 
+}
+//Validaciones para correo
+// / 46-55 numeros / 36 & / 46 . / 60 < / 61 = / 62 > /
+function cprotection(str){
+    let iKeyCode = (str.which) ? str.which : str.keyCode
+    if ( iKeyCode> 45 && iKeyCode < 56 && iKeyCode != 46 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 36|| iKeyCode == 34 ) return false;
+    return true;
 }
 // Validaciones para < > . & y números en el cuerpo
 // / 38 & / 46 . / 60 < / 61 = / 62 > /

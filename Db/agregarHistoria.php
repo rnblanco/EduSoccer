@@ -1,6 +1,5 @@
 <?php   
     include_once 'sesiones.php';
-    require("conexion.php");
     $id = $_SESSION['id'];
 
     $error="";$contenido="";$titulo="";$subtitulo="";$test="";$ext="";$name="";$locacion="";$nuevalocacion="";

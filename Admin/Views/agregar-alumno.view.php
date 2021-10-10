@@ -81,7 +81,7 @@
                               <div class='form-group'> <label class='form-control-label'>Teléfono:</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='padreTel' class='form-control phoneValidation' onblur='validate1(8)'></input></div>
 							  <div class='form-group'> <label class='form-control-label'>Madre:</label> <input onkeypress='javascript:return tprotection(event)' type='text' id='madre' class='form-control' onblur='validate1(9)'></input></div>
                               <div class='form-group'> <label class='form-control-label'>Teléfono:</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='madreTel' class='form-control phoneValidation' onblur='validate1(10)'></input></div>
-                              <div class='form-group'> <label class='form-control-label'>Contacto * :</label> <input onkeypress='javascript:return bprotection(event)' type='number' id='contacto' class='form-control phoneValidation' onblur='validate1(11)'></input></div>
+                              <div class='form-group'> <label class='form-control-label'>Contacto * :</label> <input onkeypress='javascript:return cprotection(event)' type='email' id='contacto' class='form-control' onblur='validate1(11)'></input></div>
 								<div class='form-group'> <label class='form-control-label'>Categoría:</label> <select type='text' id='categoria' class='form-control' onblur='validate1(12)'>
 										<?php Categorias(); ?>
 									</select>

@@ -1,7 +1,5 @@
 <?php   
     include_once 'sesiones.php';
-    require("conexion.php");
-
     $contenido="";$titulo="";$locacion="";$id="";$error="";
     $test="";$ext="";$name="";$nuevalocacion="";
 
