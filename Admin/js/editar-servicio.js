@@ -152,11 +152,8 @@ $(document).ready(function(){
                 processData: false,
                 type:'post',
                 success:function(){
-                    Swal.fire('Vínculo editado correctamente! ','','success').then((result)=>{
-                        if(result.value){
-
-                            window.location.href = "servicios.php";
-                        }
+                    Swal.fire('Servicio editado correctamente! ','','success').then((result)=>{
+                        if(result.value) window.location.href = "servicios.php";
                     });
                 }, error:function(){
                     Swal.fire('No has hecho cambios en el servicio','','error');

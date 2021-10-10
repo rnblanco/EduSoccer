@@ -56,7 +56,7 @@
 			}
 			else echo "<td>
 						<select type='text' id='asistencia' class='form-control' onchange='ReloadDb()'>
-							<option>Elegir</option>
+							<option id='deletable'>Elegir</option>
 							<option value='Presente,$id'>Presente</option>
 							<option value='Ausente,$id'>Ausente</option>
 						</select>";
