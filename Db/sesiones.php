@@ -1,4 +1,13 @@
-<?php 
+<?php
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\SMTP;
+	use PHPMailer\PHPMailer\Exception;
+
+	require '../phpmailer/src/PHPMailer.php';
+	require '../phpmailer/src/SMTP.php';
+	require '../phpmailer/src/Exception.php';
+	require("../Db/conexion.php");
+
     session_start();
 	// Máxima duración de sesión activa en hora
 	define( 'MAX_SESSION_TIEMPO', 3600 * 1 );
@@ -22,4 +31,77 @@
 		@session_destroy();
 	}
 
+	$conexion = conectar();
+	$primerDia = new DateTime();
+	$primerDia->modify('first day of this month');
+	$ultimoDia = new DateTime();
+	$ultimoDia->modify('last day of this month');
+	$primerDia = $primerDia->format('Y-m-d');
+	$ultimoDia = $ultimoDia->format('Y-m-d');
+
+	$buscarAsistencias = $conexion->prepare("SELECT Alumno FROM asistencia WHERE Asistencia ='Presente' AND Fecha BETWEEN '$primerDia' AND '$ultimoDia'");
+	$buscarAsistencias->execute();
+	//Si funcionó la búsqueda de asistencias por fecha
+	if($buscarAsistencias->rowCount()>=1){
+		$Alumnos = $buscarAsistencias->fetchAll();
+		// Eliminar elementos repetidos
+		$Alumnos = array_map("unserialize", array_unique(array_map("serialize", $Alumnos)));
+		foreach($Alumnos as list ($alumno)){
+			$buscarPagos = $conexion->prepare("SELECT * FROM pagos WHERE Alumno='$alumno' AND  Fecha BETWEEN '$primerDia' AND '$ultimoDia'");
+			$buscarPagos->execute();
+
+			$buscarRecordatorios = $conexion->prepare("SELECT * FROM recordatorios WHERE Alumno='$alumno'");
+			$buscarRecordatorios->execute();
+
+			if(!($buscarPagos->rowCount()>=1)){
+				if(!($buscarRecordatorios->rowCount()>=1)){
+
+					$buscarAlumno = $conexion->prepare("SELECT Nombre, Contacto FROM alumnos WHERE ID='$alumno'");
+					$buscarAlumno->execute();
+					$Alumno = $buscarAlumno->fetchAll();
+
+					foreach($Alumno as list ($nombre, $contacto)){
+						$mail = new PHPMailer(true);
+						try {
+							//enviar correo
+							$mail->SMTPDebug = SMTP::DEBUG_OFF;
+							$mail->isSMTP();
+							$mail->Host = 'smtp.gmail.com';
+							$mail->SMTPAuth = true;
+							$mail->Username = 'academiaedusoccer@gmail.com';
+							$mail->Password = 'Admin Edusoccer';
+							$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+							$mail->Port = 587;
+							$mail->SMTPOptions = array(
+								'ssl' => array(
+									'verify_peer' => false,
+									'verify_peer_name' => false,
+									'allow_self_signed' => true
+								)
+							);
+
+							$mail->setFrom('academiaedusoccer@gmail.com', 'Academia EduSoccer');
+							$mail->addAddress($contacto, $nombre);
+
+							$mail->isHTML(true);
+							$mail->Subject = 'Pago atrasado';
+							$mail->Body = 'Por este medio se le hace el recordatorio que su hijo ha asistido a clases y su pagó aún no ha sido recibido.<br/>
+										Por favor acercase con el profesor para realizar el pago correspondiente a este mes.';
+							$mail->send();
+
+							//ingresar a base de datos que el recordatorio fue hecho
+							$agregarRecordatorio = $conexion->prepare("INSERT INTO recordatorios(inicio,fin,alumno) VALUES(?,?,?)");
+							$agregarRecordatorio->execute([$primerDia,$ultimoDia,$alumno]);
+						} catch (Exception $e) {
+							echo 'Mensaje ' . $mail->ErrorInfo;
+						}
+					}
+				}
+			}
+		}
+	}else{
+		echo $primerDia;
+		echo "<br>" . $ultimoDia;
+	}
+	$conexion = NULL;
 ?>

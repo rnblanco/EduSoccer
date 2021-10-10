@@ -1,8 +1,5 @@
 <?php
-
     require_once '../Db/sesiones.php';
-    require("../Db/conexion.php");
-
     $usuario = $_SESSION['usuario'];
     
     if($usuario == null || $usuario = '') header("Location: ../Db/logOut.php");

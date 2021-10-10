@@ -1,8 +1,7 @@
 <?php
-	require("../Db/conexion.php");
 	require_once '../Db/sesiones.php';
-
 	$usuario = $_SESSION['usuario'];
+
 	if($usuario == null || $usuario = '' && empty($_GET['id'] && empty($_GET['fecha']))) header("Location: ../Db/logOut.php");
 	else require_once 'Views/asistencia.view.php';
 	/*
@@ -51,8 +50,7 @@
 			else echo "<option id='deletable'>Elegir</option>
 						<option value='Presente'>Presente</option>
 						<option value='Ausente'>Ausente</option>
-					</select>";
-			echo "</tr>";
+					</select></tr>";
 		}
 	}
 

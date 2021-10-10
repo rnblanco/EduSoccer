@@ -63,8 +63,8 @@
 		<section class="page-section" id="services">
 			<div class="container">
 				<div class="text-center">
-					<h2 class="section-heading text-uppercase">Informacion general</h2>
-					<h3 class="section-subheading text-muted">Aqui puedes ver la informacion general de la Academia EduSoccer</h3>
+					<h2 class="section-heading text-uppercase">Información general</h2>
+					<h3 class="section-subheading text-muted">Aquí puedes ver la información general de la Academia EduSoccer</h3>
 				</div>
 				<div class="row text-center">
 					<?php Servicios() ?>
@@ -76,7 +76,7 @@
 			<div class="container">
 				<div class="text-center">
 					<h2 class="section-heading text-uppercase">Categorías</h2>
-					<h3 class="section-subheading text-muted">A continuacion se muestran las distintas categorías que hay en la academia.</h3>
+					<h3 class="section-subheading text-muted">A continuación se muestran las distintas categorías que hay en la academia.</h3>
 				</div>
 				<div class="row">
 					<?php Categorias(1) ?>
@@ -111,7 +111,7 @@
 			<div class="container">
 				<div class="text-center">
 					<h2 class="section-heading text-uppercase">Contactos</h2>
-					<h3 class="section-subheading text-muted">Puedes saber mas de nosotros y contactarnos a travez de</h3>
+					<h3 class="section-subheading text-muted">Puedes saber mas de nosotros y contactarnos a través de</h3>
 				</div>
 				<div class="row">
 					<?php Contacto() ?>

@@ -1,7 +1,5 @@
 <?php
-    require("../Db/conexion.php");
     require_once '../Db/sesiones.php';
-
     $usuario = $_SESSION['usuario'];
     $tipo = $_SESSION['tipo'];
     

@@ -63,11 +63,16 @@ $('.dateValidation').on('keydown keyup change', function(e){
 // Validaciones para < > . & y números en el nombre
 // / 46-55 numeros / 36 & / 46 . / 60 < / 61 = / 62 > /
 function tprotection(str){
-
     let iKeyCode = (str.which) ? str.which : str.keyCode
     if ( iKeyCode> 45 && iKeyCode < 56 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 46 || iKeyCode == 36|| iKeyCode == 34 ) return false;
     return true;
-
+}
+//Validaciones para correo
+// / 46-55 numeros / 36 & / 46 . / 60 < / 61 = / 62 > /
+function cprotection(str){
+    let iKeyCode = (str.which) ? str.which : str.keyCode
+    if ( iKeyCode> 45 && iKeyCode < 56 && iKeyCode != 46 || iKeyCode==61 || iKeyCode == 62 || iKeyCode == 60 || iKeyCode == 36|| iKeyCode == 34 ) return false;
+    return true;
 }
 // Validaciones para < > . & y números en el cuerpo
 // / 36 & / 46 . / 60 < / 61 = / 62 > /
