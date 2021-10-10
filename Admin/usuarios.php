@@ -46,23 +46,23 @@
 				if($estado==2){
 					echo"<td>
                         Deshabilitado<br>
-                        <a onclick='hab($id)' style='color:white!important' class='btn btn-success btn-icon-split'>
+                        <button onclick='hab($id)' style='color:white!important' class='btn btn-success btn-icon-split'>
                             <span class='icon text-white-50'>
                             <i class='fas fa-check'></i>
                             </span>
                             <span class='text'>Habilitar</span>
-                        </a>
+                        </button>
                         </td>";
 				}
 				else if($estado==1){
 					echo"<td class='btn-actions'>
                         Habilitado<br>
-                        <a onclick='deshab($id)' style='color:white!important' class='btn btn-secondary btn-icon-split'>
+                        <button onclick='deshab($id)' style='color:white!important' class='btn btn-secondary btn-icon-split'>
                             <span class='icon text-white-50'>
                             <i class='fas fa-times'></i>
                             </span>
                             <span class='text'>Deshabilitar</span>
-                        </a>
+                        </button>
                         </td>";
 				}
 				echo"

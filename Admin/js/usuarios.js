@@ -21,9 +21,7 @@ function del(id){
             type:'post',
             success:function(){
                 Swal.fire('Profesor eliminado correctamente! ','','success').then((result)=>{
-                    if(result.value){
-                        window.location.href = "usuarios.php";
-                    }
+                    if(result.value) window.location.href = "usuarios.php";
                 });
             }, error:function(){
                 Swal.fire('¡El profesor no pudo ser eliminado!','','error');
@@ -60,9 +58,7 @@ function deshab(id){
             type:'post',
             success:function(){
                 Swal.fire('Profesor deshabilitado correctamente! ','','success').then((result)=>{
-                    if(result.value){
-                        window.location.href = "usuarios.php";
-                    }
+                    if(result.value) window.location.href = "usuarios.php";
                 });           
             }, error:function(){
                 Swal.fire('¡El profesor no pudo ser deshabilitado!','','error');
@@ -98,9 +94,7 @@ function hab(id){
             type:'post',
             success:function(){
                 Swal.fire('Profesor habilitado correctamente! ','','success').then((result)=>{
-                    if(result.value){
-                        window.location.href = "usuarios.php";
-                    }
+                    if(result.value) window.location.href = "usuarios.php";
                 });           
             }, error:function(){
                 Swal.fire('¡El profesor no pudo ser habilitado!','','error');

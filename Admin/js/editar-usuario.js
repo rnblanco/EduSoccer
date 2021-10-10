@@ -201,10 +201,7 @@ $(document).ready(function(){
                     type:'post',
                     success:function(){
                         Swal.fire('Profesor editado correctamente! ','','success').then((result)=>{
-                            if(result.value){
-
-                                window.location.href = "usuarios.php";
-                            }
+                            if(result.value) window.location.href = "usuarios.php";
                         });
                     }, error:function(){
                         Swal.fire('Por favor cambia los datos para proceder','','error');
@@ -233,10 +230,7 @@ $(document).ready(function(){
                     type:'post',
                     success:function(){
                         Swal.fire('Profesor editado correctamente! ','','success').then((result)=>{
-                            if(result.value){
-
-                                window.location.href = "usuarios.php";
-                            }
+                            if(result.value) window.location.href = "usuarios.php";
                         });
                     }, error:function(){
                         Swal.fire('Por favor cambia los datos para proceder','','error');
