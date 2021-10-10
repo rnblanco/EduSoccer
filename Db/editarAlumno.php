@@ -2,7 +2,7 @@
     include_once 'sesiones.php';
     require("conexion.php");
 
-    $edad="";$nombre="";$locacion="";$id="";$error=""; $nacimiento="";$padre="";$padreTel="";$madre="";$madreTel="";$contacto="";$categoria="";
+    $edad="";$nombre="";$locacion="";$id="";$error=""; $nacimiento="";$padre="";$padreTel="";$madre="";$madreTel="";$contacto="";$categoria="";$success=false;
     $nuevalocacion="";
 
     if(empty($_POST['edad'])) $error = "falta edad";
@@ -47,53 +47,59 @@
         $AlumnoActual->execute();
         foreach($AlumnoActual as list($anombre, $aedad, $anacimiento, $apadre, $apadreTel, $amadre, $amadreTel, $acontacto, $acategoria)){
 
-                $imagenes = $conexion ->prepare("SELECT imagen from Alumnos WHERE ID = :id ");
-                $imagenes->bindParam(':id', $id, PDO::PARAM_STR);
-                $imagenes->execute();
+            $imagenes = $conexion ->prepare("SELECT imagen from Alumnos WHERE ID = :id ");
+            $imagenes->bindParam(':id', $id, PDO::PARAM_STR);
+            $imagenes->execute();
 
-                foreach($imagenes as list($imagen)){
-	                if($imagen !="" && $imagen!=NULL && $imagen!="null"){
-						if($_FILES['img']['name']){
-							$locacion = '../assets/img/EduSoccer/Alumnos/' . $imagen;
-							$success = unlink($locacion);
-							move_uploaded_file($_FILES['img']['tmp_name'], $locacion);
-						}
-		                else $success = true;
-						if($success)http_response_code(200);
-						else http_response_code(500);
-	                }
-					else{
-						$imagen = $_FILES['img']['name'];
+            foreach($imagenes as list($imagen)){
+                if($imagen !="" && $imagen!=NULL && $imagen!="null"){
+					if($_FILES['img']['name']){
 						$locacion = '../assets/img/EduSoccer/Alumnos/' . $imagen;
-						move_uploaded_file($_FILES['img']['tmp_name'], $locacion);
-						$editarAlumno = $conexion->prepare(" UPDATE alumnos SET Edad=:Edad, Nombre=:Nombre, Fecha_Nacimiento=:Fecha_Nacimiento, 
-						Nombre_Padre=:Nombre_Padre, Telefono_Padre=:Telefono_Padre, Nombre_Madre=:Nombre_Madre, Telefono_Madre=:Telefono_Madre,
-                    	Contacto=:Contacto, Imagen=:Imagen, Categoria=:Categoria WHERE ID=:ID ");
-						$editarAlumno->bindParam(':Edad', $edad, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Nombre', $nombre, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Fecha_Nacimiento', $nacimiento, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Nombre_Padre', $padre, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Telefono_Padre', $padreTel, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Nombre_Madre', $madre, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Telefono_Madre', $madreTel, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Contacto', $contacto, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Imagen', $imagen, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':Categoria', $categoria, PDO::PARAM_STR);
-						$editarAlumno->bindParam(':ID', $id, PDO::PARAM_STR);
-						$editarAlumno->execute();
-
-						if($editarAlumno->rowCount() >= 1){
-							echo $editarAlumno->execute();
-							http_response_code(200);
-						}else{
-							echo $editarAlumno->execute();
-							echo $imagen;
-							http_response_code(500);
-						}
+						$success = unlink($locacion);
 					}
                 }
-            }
+                else{
+	                $imagen = $_FILES['img']['name'];
+	                $locacion = '../assets/img/EduSoccer/Alumnos/' . $imagen;
+                }
+                move_uploaded_file($_FILES['img']['tmp_name'], $locacion);
+                $editarAlumno = $conexion->prepare(" UPDATE alumnos SET Edad=:Edad, Nombre=:Nombre, Fecha_Nacimiento=:Fecha_Nacimiento, 
+					Nombre_Padre=:Nombre_Padre, Telefono_Padre=:Telefono_Padre, Nombre_Madre=:Nombre_Madre, Telefono_Madre=:Telefono_Madre,
+                    Contacto=:Contacto, Imagen=:Imagen, Categoria=:Categoria WHERE ID=:ID ");
+                $editarAlumno->bindParam(':Edad', $edad, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Nombre', $nombre, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Fecha_Nacimiento', $nacimiento, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Nombre_Padre', $padre, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Telefono_Padre', $padreTel, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Nombre_Madre', $madre, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Telefono_Madre', $madreTel, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Contacto', $contacto, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Imagen', $imagen, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':Categoria', $categoria, PDO::PARAM_STR);
+                $editarAlumno->bindParam(':ID', $id, PDO::PARAM_STR);
+                $editarAlumno->execute();
 
+                if($editarAlumno->rowCount() >= 1){
+	                echo $editarAlumno->execute();
+	                http_response_code(200);
+                }else{
+	                echo $editarAlumno->execute();
+	                echo $error;
+	                if($success){
+		                http_response_code(200);
+						exit();
+	                }
+	                else{
+		                http_response_code(400);
+						exit();
+	                }
+	                http_response_code(400);
+                }
+				exit();
+            }
+	        http_response_code(404);
+	        echo $error;
+		}
     }
     else{
         http_response_code(404);

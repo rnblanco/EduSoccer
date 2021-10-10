@@ -245,7 +245,7 @@ $(document).ready(function(){
                                     }
                                 });           
                             }, error:function(){
-                                Swal.fire('No has hecho cambios en la Contacto','','error');
+                                Swal.fire('No has hecho cambios en el contacto','','error');
                             }
                         });   
             }

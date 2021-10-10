@@ -129,7 +129,7 @@ $(document).ready(function(){
                                     }
                                 });           
                             }, error:function(){
-                                Swal.fire('La imagen no fue editada','','error');
+                                Swal.fire('No has cambiado la imagen','','error');
                             }   
                         });   
                     }

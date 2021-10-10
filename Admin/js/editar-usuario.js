@@ -233,7 +233,7 @@ $(document).ready(function(){
                             if(result.value) window.location.href = "usuarios.php";
                         });
                     }, error:function(){
-                        Swal.fire('Por favor cambia los datos para proceder','','error');
+                        Swal.fire('No has hecho cambios en el profesor','','error');
                     }
                 });
             }

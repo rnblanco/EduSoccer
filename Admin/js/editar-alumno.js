@@ -326,7 +326,8 @@ $(document).ready(function(){
                                         if(result.value) window.location.href = "alumnos.php";
                                     })
                                 }
-                                else Swal.fire('El alumno no pudo ser editado, intenta de nuevo','','error');
+                            }, error:function(){
+                                Swal.fire('No has hecho cambios en el alumno','','error');
                             }
                         });
                     }
