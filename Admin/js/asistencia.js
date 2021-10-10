@@ -15,14 +15,13 @@ function Reload(){
     window.location.href="asistencia.php?id=" + document.getElementById('ids').value + "&fecha=" + document.getElementById('fecha').value;
 }
 
-function ReloadDb(){
-    let asistencia = document.getElementById('asistencia').value;
-    let asistenciaReal = asistencia.split(",",1)[0];
-    let id = asistencia.split(",",2)[1];
+function ReloadDb(id, fecha){
+    console.log(fecha)
     let form_data = new FormData();
     form_data.append("alumno", id);
-    form_data.append("fecha", document.getElementById('fecha').value);
-    form_data.append("asistencia", asistenciaReal);
+    form_data.append("fecha", fecha);
+    let asistencia = document.getElementById('selector'+id);
+    form_data.append("asistencia", asistencia.value);
     $.ajax({
         url:'../Db/agregarAsistencia.php',
         data:form_data,

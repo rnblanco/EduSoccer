@@ -25,22 +25,23 @@
 
 		if($buscarAsistencias->rowCount()>=1){
 			$editarAsistencias = $conexion->prepare("UPDATE asistencia SET Asistencia=:Asistencia WHERE Fecha=:Fecha AND Alumno=:Alumno");
+			$editarAsistencias->bindParam(':Asistencia',$asistencia, PDO::PARAM_STR);
 			$editarAsistencias->bindParam(':Fecha',$fecha, PDO::PARAM_STR);
 			$editarAsistencias->bindParam(':Alumno',$alumno, PDO::PARAM_STR);
-			$editarAsistencias->bindParam(':Asistencia',$asistencia, PDO::PARAM_STR);
 			$editarAsistencias->execute();
 			if($editarAsistencias->rowCount() >= 1) echo json_encode(['code'=>200]);
 			else {
+				echo $editarAsistencias->execute();
 				echo json_encode(['code'=>404]);
 				echo $error;
 			}
 		}
 	    else{
-		    $agregarHistoria = $conexion->prepare('INSERT INTO asistencia (Fecha, Alumno, Asistencia) VALUES (?,?,?)');
-		    $agregarHistoria->execute([$fecha, $alumno, $asistencia]);
-		    if($agregarHistoria->rowCount() >= 1) echo json_encode(['code'=>200]);
+		    $agregarAsistencia = $conexion->prepare('INSERT INTO asistencia (Fecha, Alumno, Asistencia) VALUES (?,?,?)');
+		    $agregarAsistencia->execute([$fecha, $alumno, $asistencia]);
+		    if($agregarAsistencia->rowCount() >= 1) echo json_encode(['code'=>200]);
 		    else {
-			    echo json_encode(['code'=>404]);
+			    echo json_encode(['code'=>500]);
 			    echo $error;
 		    }
 	    }

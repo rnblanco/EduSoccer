@@ -34,32 +34,24 @@
                 <tr>
                     <td>$id</td>
                     <td>$nombre</td>
-                    ";
+                    <td>
+						<select type='text' id='selector$id' class='form-control' onchange='ReloadDb(`$id`,`$fecha`)'>
+				";
 			if($asistencia >=1){
-				echo "<td>
-						<select type='text' id='asistencia' class='form-control' onchange='ReloadDb()'>
-						";
 				if($presente_ausente=="Ausente"){
-					echo "
-								<option value='Presente,$id'>Presente</option>
-								<option value='Ausente,$id' selected='selected'>Ausente</option>
-							";
+					echo "	<option value='Presente'>Presente</option>
+							<option value='Ausente' selected='selected'>Ausente</option>";
 				}
 				else{
-					echo "
-								<option value='Presente,$id' selected='selected'>Presente</option>
-								<option value='Ausente,$id'>Ausente</option>
-							";
-				}echo "
-						</select>
-					</td>";
+					echo "	<option value='Presente' selected='selected'>Presente</option>
+							<option value='Ausente'>Ausente</option>";
+				}
+				echo "</select></td>";
 			}
-			else echo "<td>
-						<select type='text' id='asistencia' class='form-control' onchange='ReloadDb()'>
-							<option id='deletable'>Elegir</option>
-							<option value='Presente,$id'>Presente</option>
-							<option value='Ausente,$id'>Ausente</option>
-						</select>";
+			else echo "<option id='deletable'>Elegir</option>
+						<option value='Presente'>Presente</option>
+						<option value='Ausente'>Ausente</option>
+					</select>";
 			echo "</tr>";
 		}
 	}
