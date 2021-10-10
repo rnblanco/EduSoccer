@@ -47,7 +47,7 @@
         $AlumnoActual->execute();
         foreach($AlumnoActual as list($anombre, $aedad, $anacimiento, $apadre, $apadreTel, $amadre, $amadreTel, $acontacto, $acategoria)){
 
-            $imagenes = $conexion ->prepare("SELECT imagen from Alumnos WHERE ID = :id ");
+            $imagenes = $conexion ->prepare("SELECT imagen from alumnos WHERE ID = :id ");
             $imagenes->bindParam(':id', $id, PDO::PARAM_STR);
             $imagenes->execute();
 

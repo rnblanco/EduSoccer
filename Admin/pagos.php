@@ -25,7 +25,7 @@
         $Pagos = $buscarPagos->fetchAll();
 
         foreach($Pagos as list($id, $alumno, $fecha, $cobro)){
-	        $cat="Categoría inexistente";
+	        $cat="Alumno sin categoría asignada";
 	        $conexion = conectar();
 	        $buscarAlumnos = $conexion->prepare("SELECT * FROM alumnos WHERE ID=:ID");
 	        $buscarAlumnos->bindParam('ID', $alumno, PDO::PARAM_STR);

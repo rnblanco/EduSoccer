@@ -40,7 +40,10 @@
 		    $buscarCategorias->bindParam(':ID', $categoria, PDO::PARAM_STR);
 		    $buscarCategorias->execute();
 		    $Categorias = $buscarCategorias->fetchAll();
-		    foreach($Categorias as list($id2, $titulo2, $subtitulo2, $contenido2, $profesor2, $imagen2)){ $categoria = $titulo2; }
+		    if($buscarCategorias->rowCount()>=1){
+			    foreach($Categorias as list($id2, $titulo2, $subtitulo2, $contenido2, $profesor2, $imagen2)){ $categoria = $titulo2; }
+		    }
+		    else $categoria = "Alumno sin categoría asignada";
 
 		    echo" 
                 <tr>
