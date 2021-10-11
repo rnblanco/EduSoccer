@@ -85,7 +85,7 @@
 
 							$mail->isHTML(true);
 							$mail->Subject = 'Pago atrasado';
-							$mail->Body = 'Por este medio se le hace el recordatorio que su hijo ha asistido a clases y su pagó aún no ha sido recibido.<br/>
+							$mail->Body = 'Por este medio se le hace el recordatorio que su hijo ha asistido a clases y su pago aún no ha sido recibido.<br/>
 										Por favor acercase con el profesor para realizar el pago correspondiente a este mes.';
 							$mail->send();
 
