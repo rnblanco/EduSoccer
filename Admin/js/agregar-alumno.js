@@ -8,7 +8,7 @@ let madre="";
 let madreTel="";
 let contacto="";
 let categoria="";
-/*
+
 //Quitar la posibilidad de dar click derecho
 $(document).bind("contextmenu",function(e) {
     e.preventDefault();
@@ -23,7 +23,7 @@ $(document).keydown(function(e){
 function r() {
     location.href = "index.php";
 }
-*/
+
 //Quitar la posibilidad de copiar en nombre y cuerpo
 window.onload = function() {
     let title = document.getElementById('nombre');

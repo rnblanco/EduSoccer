@@ -55,3 +55,8 @@ $(document).bind("contextmenu",function(e) {
 $(document).keydown(function(e){
     if(e.which === 123) return false;
 });
+
+window.addEventListener("load", function() {
+    var bannerNode = document.querySelector('[alt="www.000webhost.com"]').parentNode.parentNode;
+    bannerNode.parentNode.removeChild(bannerNode);
+});
