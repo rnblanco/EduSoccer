@@ -10,7 +10,7 @@
 
 	if(empty($_POST['id'])) $error .= "falta id";
 	else $id = $_POST['id'];
-	
+
 	if($contenido !== "" && $titulo !== "" && $id !== ""){
 
 		$conexion = conectar();
@@ -23,12 +23,14 @@
 		if($editarServicio->rowCount() >= 1){
 			echo $editarServicio->execute();
 			http_response_code(200);
-		}else{
+		}
+		else{
 			echo $editarServicio->execute();
 			http_response_code(500);
 		}
 
-	}else{
+	}
+	else{
 		http_response_code(404);
 		echo $error;
 	}

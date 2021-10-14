@@ -136,6 +136,17 @@
                     <i class="fas fa-list"></i>
                     <span>Categorías</span></a>
                 </li>
+                
+                <hr class="sidebar-divider">
+                <div class="sidebar-heading" style="color:white!important;">
+                    Cuenta
+                </div>
+                
+                <li class="nav-item">
+                    <a class="nav-link active" href="password.php">
+                    <i class="fas fa-key"></i>
+                    <span>Cambiar contraseña</span></a>
+                </li>
             </ul>
             ';
 				break;
