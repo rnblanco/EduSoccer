@@ -13,6 +13,7 @@
 	<th>Mes</th>
 	<th>Año</th>
 	<th>Cobro</th>
+	<th>Acciones</th>
     */
 
     function Pagos(){
@@ -22,7 +23,7 @@
         $buscarPagos->execute();
         $Pagos = $buscarPagos->fetchAll();
 
-        foreach($Pagos as list($id, $alumno, $fecha, $cobro)){
+        foreach($Pagos as list($idPago, $alumno, $fecha, $cobro)){
 	        $cat="Alumno sin categoría asignada";
 	        $conexion = conectar();
 	        $buscarAlumnos = $conexion->prepare("SELECT * FROM alumnos WHERE ID=:ID");
@@ -47,6 +48,10 @@
                     <td>$cat</td>
                     <td>$alumno</td>
                     <td>$$cobro</td>
+                    <td class='btn-actions'>
+                        <a href='editar-pago.php?id=$idPago' class='btn btn-warning btn-icon-split btn-block justify-content-start'><span class='icon text-white-50'><i class='fas fa-edit'></i></span><span class='text'>Editar</span></a><div class='my-2'></div>
+                        <a style='color:white' class='btn btn-danger btn-icon-split btn-block justify-content-start' onclick='del($idPago)'><span class='icon text-white-50'><i class='fas fa-trash'></i></span><span class='text'>Borrar</span></a>
+                    </td>
                 </tr>
             ";
         }

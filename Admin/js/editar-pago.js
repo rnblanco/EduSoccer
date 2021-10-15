@@ -74,29 +74,13 @@ function bprotection(str){
 
 // Validaciones para llenar el formulario
 function validate1(val) {
-    v1 = document.getElementById("alumno");
-    const selector = document.querySelector('.select2-selection');
     v4 = document.getElementById("fecha");
     v5 = document.getElementById("cobro");
 
-    flag1 = true;
-    flag2 = true;
     flag4 = true;
     flag5 = true;
 
     switch (val){
-        
-        case 1:
-            if(v1.value == "") {
-                selector.style.borderColor = "red";
-                flag1 = false;
-            }
-            else {
-                selector.style.borderColor = "green";
-                alumno=v1.value;
-                flag1 = true;
-            }
-        break;
         case 4:
             if(v4.value == "") {
                 v4.style.borderColor = "red";
@@ -119,57 +103,8 @@ function validate1(val) {
                 flag5 = true;
             }
             break;
-        case 0:
-            if(v1.value == "") {
-                v1.style.borderColor = "red";
-                flag1 = false;
-            }
-            else {
-                v1.style.borderColor = "green";
-                flag1 = true;
-                alumno=v1.value;
-            }
-            if(v2.value == "") {
-                v2.style.borderColor = "red";
-                flag2 = false;
-            }
-            else {
-                v2.style.borderColor = "green";
-                flag2 = true;
-                ano=v2.value;
-            }
-            if(v3.value == "") {
-                v3.style.borderColor = "red";
-                f.style.borderColor = "red";
-                flag3 = false;
-            }
-            else {
-                f.style.borderColor = "green";
-                v3.style.borderColor = "green";
-                flag3 = true;
-                img=v3.value;
-            }
-            if(v4.value == "") {
-                v4.style.borderColor = "red";
-                flag4 = false;
-            }
-            else {
-                v4.style.borderColor = "green";
-                flag4 = true;
-                mes=v4.value;
-            }
-            if(v5.value == "") {
-                v5.style.borderColor = "red";
-                flag5 = false;
-            }
-            else {
-                v5.style.borderColor = "green";
-                cobro=v5.value;
-                flag5 = true;
-            }
-        break;
     }
-    flag = flag1 && flag2 && flag4 && flag5;
+    flag = flag4 && flag5;
     return flag;
 }
     
@@ -177,32 +112,32 @@ $(document).ready(function(){
         
         $(".next").click(function(e){
             e.preventDefault();
-            validate1(1);
             validate1(4);
             validate1(5);
 
-            if(validate1(1) == true && validate1(4) == true && validate1(5) == true){
+            if( validate1(4) == true && validate1(5) == true){
 
                 let form_data = new FormData();
-                form_data.append("alumno", alumno); form_data.append("fecha", fecha);form_data.append("cobro", cobro);
+                form_data.append("alumno", document.getElementById('idAlumno').value); form_data.append("cobro", cobro);
+                form_data.append("id", document.getElementById('ids').value); form_data.append("fecha", fecha);
                 $.ajax({
-                    url:'../Db/agregarPago.php',
+                    url:'../Db/editarPago.php',
                     data:form_data,
                     cache: false,
                     contentType: false,
                     processData: false,
                     type:'post',
-                    success:function(data){
-                        if(data.code = 200){
-                               Swal.fire('Pago agregado de manera exitosa! ','','success').then((result)=>{
-                                if(result.value) window.location.href = "pagos.php";
-                            })
-                        }
-                        else Swal.fire('El pago no pudo ser agregado, intenta de nuevo','','error');
+                    success:function(){
+                       Swal.fire('Pago editado de manera exitosa! ','','success').then((result)=>{
+                        if(result.value) window.location.href = "pagos.php";
+                       })
+                    },
+                    error:function(){
+                        Swal.fire('El pago no pudo ser editado, intenta de nuevo','','error');
                     }
                 });
             }
             else Swal.fire('Por favor rellena todos los datos requeridos','','error');
+
         });
 });
-$(document).ready(function() {$('.search-select').select2();});

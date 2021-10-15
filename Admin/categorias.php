@@ -47,8 +47,8 @@
                     <td>$profesor</td>
                     <td><img class='card-img-top' src='../assets/img/EduSoccer/$imagen' alt='Card image cap' style='height:150px!important;width:200px!important;'></td>            
                     <td class='btn-actions'>
-                        <a href='editar-categoria.php?id=$id' class='btn btn-warning btn-icon-split btn-block'><span class='icon text-white-50'><i class='fas fa-edit'></i></span><span class='text'>Editar</span></a><div class='my-2'></div>
-                        <a style='color:white' class='btn btn-danger btn-icon-split btn-block' onclick='del($id)'><span class='icon text-white-50'><i class='fas fa-trash'></i></span><span class='text'>Borrar</span></a>
+                        <a href='editar-categoria.php?id=$id' class='btn btn-warning btn-icon-split btn-block justify-content-start'><span class='icon text-white-50'><i class='fas fa-edit'></i></span><span class='text'>Editar</span></a><div class='my-2'></div>
+                        <a style='color:white' class='btn btn-danger btn-icon-split btn-block justify-content-start' onclick='del($id)'><span class='icon text-white-50'><i class='fas fa-trash'></i></span><span class='text'>Borrar</span></a>
                     </td>
                 </tr>
             ";

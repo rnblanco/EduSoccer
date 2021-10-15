@@ -85,6 +85,7 @@
 												<th>Categoría</th>
 												<th>Alumno</th>
 												<th>Cobro</th>
+												<th>Acciones</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -133,12 +134,13 @@
 		</div>
 		
 		<script src="vendor/jquery/jquery.js"></script>
-		<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+		<script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+		<script src="vendor/jquery-easing/jquery.easing.js"></script>
+		<script src="js/sb-admin-2.js"></script>
 		<script src="vendor/datatables/jquery.dataTables.min.js"></script>
 		<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-		<script src="vendor/bootstrap/js/bootstrap.bundle.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-		<script src="js/sb-admin-2.js"></script>
 		<script src="js/demo/datatables-pagos.js"></script>
 		<script src="js/pagos.js"></script>
 	</body>
